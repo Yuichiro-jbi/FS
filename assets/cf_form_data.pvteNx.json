@@ -1,0 +1,938 @@
+{
+  "form": {
+    "id": "pvteNx",
+    "name": "アカウント作成フォーム",
+    "handle": "form-86",
+    "theme_id": "123908718741",
+    "settings": {
+      "locales": {
+        "back": "戻る",
+        "next": "次へ",
+        "cancel": "キャンセルする",
+        "edit_link": "Edit account",
+        "fix_errors": "続ける前にエラーを修正してください。",
+        "is_invalid": "{{label}} is invalid",
+        "email_taken": "メールはすでに登録されています。",
+        "phone_taken": "電話番号はすでに登録されています。",
+        "server_error": "フォームを保存できませんでした、後でもう一度試してください。",
+        "step_counter": "Step {{current}} of {{total}}",
+        "verify_email": "アカウントを有効にするための認証リンクがメールで送信されますのでご確認ください。",
+        "not_available": "アカウントの保存中にエラーが発生しました。少しお時間をおいてもう一度お試しください。",
+        "create_account": "アカウントを作成する",
+        "update_account": "アカウントを更新する",
+        "recaptcha_error": "Challenge verification failed, please try again",
+        "creating_account": "アカウントを作成しています...",
+        "updating_account": "アカウントを更新しています...",
+        "invalid_email_domain": "メールアドレスに無効なドメイン名が含まれています。"
+      },
+      "enableRecaptcha": false,
+      "whitelistedTags": "",
+      "recaptchaSiteKey": "",
+      "markRequiredFields": true,
+      "displayCancelButton": true,
+      "goBackAfterSubmission": false,
+      "accountApprovalRequired": false,
+      "cancelButtonRedirectUrl": "\/account\/login",
+      "emailVerificationRequired": false,
+      "postSubmissionRedirectUrl": "\/account",
+      "goBackAfterCancelButtonClick": false
+    },
+    "install_locations": [
+      "register",
+      "account_edit",
+      "page_template"
+    ],
+    "created_at": "2021-05-16T00:45:10Z",
+    "updated_at": "2021-06-20T13:16:50Z",
+    "revision_ids": [
+      "3qTeONO",
+      "nRT16pv",
+      "DRTrNVY",
+      "B5TAAe4",
+      "znTVK39",
+      "MDTlYKR",
+      "AdTgq5O",
+      "OzTXX8G",
+      "qYTzY7L",
+      "8oTbkD8",
+      "RxTokdq",
+      "wDTKKvl",
+      "evT9LBP",
+      "akTz2aZ",
+      "LbTo0g5",
+      "GYT52ly",
+      "PnTpNrb",
+      "1wTxkq8",
+      "znTVVeb",
+      "RxTooMP",
+      "4aTRxLn",
+      "wDTK23d",
+      "06Tpz4b",
+      "gyT5MdD",
+      "l5TpYqP",
+      "Y9T7bk5",
+      "evT9Lv8",
+      "VNT3PGr",
+      "B5TA7NE",
+      "xMTx8o6",
+      "NMTvLVw",
+      "mLT0NP3",
+      "OzTXEqN",
+      "NMTvvP6",
+      "ErTA9w8",
+      "3qTeZ3p",
+      "kdT52Lq",
+      "8oTb51Y",
+      "9pTnnr4",
+      "p4TZZLP",
+      "X1TkkqX",
+      "orTYYGl",
+      "znTVVw0",
+      "MDTllN9",
+      "kdT55r8",
+      "8oTbbVZ",
+      "X1TkklL",
+      "akTzzak",
+      "OzTXXg1",
+      "VNT33LA",
+      "mLT00rl",
+      "qYTzz7v",
+      "B5TAAXN",
+      "l5Tpp8w",
+      "1wTxx8x",
+      "06TppNo",
+      "NMTvvkO",
+      "DRTrrBD",
+      "3qTeelK",
+      "PnTppnz",
+      "nRT11PL",
+      "xMTxx9e",
+      "7kTppwo",
+      "p4TZZOZ",
+      "6XTxx6Z",
+      "9pTnn4P",
+      "9pTnnYK",
+      "kdT55xa",
+      "xMTxxRy",
+      "6XTxxG6",
+      "X1Tkkp9",
+      "8oTbb7E",
+      "akTzzGp",
+      "qYTzz67",
+      "ErTAA4y"
+    ]
+  },
+  "revision": {
+    "id": "3qTeONO",
+    "created_at": "2021-07-07T02:30:50Z",
+    "updated_at": "2021-07-07T02:30:50Z",
+    "embed_version": "4.5.9",
+    "published_at": null,
+    "fields": [
+      {
+        "id": 115401,
+        "dataColumn": {
+          "key": "last_name",
+          "label": "Last name",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 0,
+        "type": "text",
+        "stepId": 147429,
+        "default": "",
+        "label": "姓",
+        "placeholder": "佐藤",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "入力されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": "last_name",
+        "autotag": null
+      },
+      {
+        "id": 123204,
+        "dataColumn": {
+          "key": "first_name",
+          "label": "First name",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 1,
+        "type": "text",
+        "stepId": 147429,
+        "default": "",
+        "label": "名",
+        "placeholder": "明子",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 6
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "入力されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": "first_name",
+        "autotag": null
+      },
+      {
+        "id": 426346,
+        "dataColumn": {
+          "key": "default_address.address2",
+          "label": "Address line 2",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 10,
+        "type": "text",
+        "stepId": 147429,
+        "default": "",
+        "label": "マンション名、部屋番号等",
+        "placeholder": "銀座大竹ビジデンス201",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+
+        ],
+        "sensitive": null,
+        "preset": "address2",
+        "autotag": null
+      },
+      {
+        "id": 115691,
+        "dataColumn": {
+          "key": "phone",
+          "label": "Phone number",
+          "dataType": "phone"
+        },
+        "parentId": null,
+        "position": 11,
+        "type": "phone",
+        "stepId": 147429,
+        "default": "",
+        "label": "電話番号",
+        "placeholder": "03-6161-6351",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+          "defaultCountryCode": "JP"
+        },
+        "validations": [
+          {
+            "operator": "longer_than",
+            "comparand": 1,
+            "errorMessage": "正しく入力してください",
+            "metadata": {
+            }
+          },
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "入力されていません",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": "phone_number",
+        "autotag": null
+      },
+      {
+        "id": 400227,
+        "dataColumn": {
+          "key": "email",
+          "label": "Email address",
+          "dataType": "email"
+        },
+        "parentId": null,
+        "position": 12,
+        "type": "email",
+        "stepId": 147429,
+        "default": "",
+        "label": "メールアドレス",
+        "placeholder": "info@fatuite.com",
+        "description": null,
+        "enum": null,
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "is_valid_email",
+            "comparand": null,
+            "errorMessage": "有効なメールアドレスを入力してください。"
+          },
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "入力されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": "email_address",
+        "autotag": null
+      },
+      {
+        "id": 341259,
+        "dataColumn": {
+          "key": "password",
+          "label": "Password",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 13,
+        "type": "text",
+        "stepId": 147429,
+        "default": "",
+        "label": "パスワード 6文字以上の英数字",
+        "placeholder": "",
+        "description": "",
+        "enum": null,
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "longer_than",
+            "comparand": 5,
+            "errorMessage": "パスワードが短すぎます。",
+            "metadata": {
+              "mandatory": true,
+              "staticOperator": true,
+              "comparandFieldProps": {
+                "min": 5
+              }
+            }
+          },
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "Must not be blank",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": true,
+        "preset": "password",
+        "autotag": null
+      },
+      {
+        "id": 393241,
+        "dataColumn": {
+          "key": "sex",
+          "label": "性別",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 2,
+        "type": "dropdown",
+        "stepId": 147429,
+        "default": "女性",
+        "label": "性別",
+        "placeholder": "選択してください",
+        "description": "",
+        "enum": [
+          {
+            "value": "女性",
+            "label": "女性"
+          },
+          {
+            "value": "男性",
+            "label": "男性"
+          },
+          {
+            "value": "その他",
+            "label": "その他"
+          }
+        ],
+        "appearance": {
+          "width": 12,
+          "cssClass": "sex press"
+        },
+        "settings": {
+          "end": 10,
+          "start": 1,
+          "enumType": "list",
+          "separateValues": true
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "選択されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": true
+      },
+      {
+        "id": 355064,
+        "dataColumn": {
+          "key": "birthday_year",
+          "label": "生年月日",
+          "dataType": "integer"
+        },
+        "parentId": null,
+        "position": 3,
+        "type": "dropdown",
+        "stepId": 147429,
+        "default": "1980",
+        "label": "生年月日",
+        "placeholder": "年",
+        "description": "",
+        "enum": [
+          {
+            "value": "Option 1",
+            "label": "Option 1"
+          },
+          {
+            "value": "Option 2",
+            "label": "Option 2"
+          },
+          {
+            "value": "Option 3",
+            "label": "Option 3"
+          }
+        ],
+        "appearance": {
+          "width": 4,
+          "cssClass": "m-year press"
+        },
+        "settings": {
+          "end": 2021,
+          "start": 1920,
+          "enumType": "range",
+          "separateValues": false
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "選択されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 816788,
+        "dataColumn": {
+          "key": "birthday_month",
+          "label": "生年月日",
+          "dataType": "integer"
+        },
+        "parentId": null,
+        "position": 4,
+        "type": "dropdown",
+        "stepId": 147429,
+        "default": "",
+        "label": "生年月日",
+        "placeholder": "月",
+        "description": "",
+        "enum": [
+          {
+            "value": "Option 1",
+            "label": "Option 1"
+          },
+          {
+            "value": "Option 2",
+            "label": "Option 2"
+          },
+          {
+            "value": "Option 3",
+            "label": "Option 3"
+          }
+        ],
+        "appearance": {
+          "width": 4,
+          "cssClass": "m-year aqua press"
+        },
+        "settings": {
+          "end": 12,
+          "start": 1,
+          "enumType": "range",
+          "separateValues": false
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "選択されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 102063,
+        "dataColumn": {
+          "key": "birthday_day",
+          "label": "生年月日",
+          "dataType": "integer"
+        },
+        "parentId": null,
+        "position": 5,
+        "type": "dropdown",
+        "stepId": 147429,
+        "default": "",
+        "label": "生年月日",
+        "placeholder": "日",
+        "description": "",
+        "enum": [
+          {
+            "value": "Option 1",
+            "label": "Option 1"
+          },
+          {
+            "value": "Option 2",
+            "label": "Option 2"
+          },
+          {
+            "value": "Option 3",
+            "label": "Option 3"
+          }
+        ],
+        "appearance": {
+          "width": 4,
+          "cssClass": "m-year aqua press"
+        },
+        "settings": {
+          "end": 31,
+          "start": 1,
+          "enumType": "range",
+          "separateValues": false
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "選択されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 822446,
+        "dataColumn": {
+          "key": "default_address.zip",
+          "label": "Zip\/Postal code",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 6,
+        "type": "text",
+        "stepId": 147429,
+        "default": "",
+        "label": "郵便番号",
+        "placeholder": "104-0061",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "入力されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": "zip",
+        "autotag": null
+      },
+      {
+        "id": 122728,
+        "dataColumn": {
+          "key": "prefectures",
+          "label": "都道府県",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 7,
+        "type": "dropdown",
+        "stepId": 147429,
+        "default": "東京都",
+        "label": "都道府県",
+        "placeholder": "東京都",
+        "description": "",
+        "enum": [
+          {
+            "value": "北海道",
+            "label": "北海道"
+          },
+          {
+            "value": "青森県",
+            "label": "青森県"
+          },
+          {
+            "value": "岩手県",
+            "label": "岩手県"
+          },
+          {
+            "value": "宮城県",
+            "label": "宮城県"
+          },
+          {
+            "value": "秋田県",
+            "label": "秋田県"
+          },
+          {
+            "value": "山形県",
+            "label": "山形県"
+          },
+          {
+            "value": "福島県",
+            "label": "福島県"
+          },
+          {
+            "value": "茨城県",
+            "label": "茨城県"
+          },
+          {
+            "value": "栃木県",
+            "label": "栃木県"
+          },
+          {
+            "value": "群馬県",
+            "label": "群馬県"
+          },
+          {
+            "value": "埼玉県",
+            "label": "埼玉県"
+          },
+          {
+            "value": "千葉県",
+            "label": "千葉県"
+          },
+          {
+            "value": "東京都",
+            "label": "東京都"
+          },
+          {
+            "value": "神奈川県",
+            "label": "神奈川県"
+          },
+          {
+            "value": "新潟県",
+            "label": "新潟県"
+          },
+          {
+            "value": "富山県",
+            "label": "富山県"
+          },
+          {
+            "value": "石川県",
+            "label": "石川県"
+          },
+          {
+            "value": "福井県",
+            "label": "福井県"
+          },
+          {
+            "value": "山梨県",
+            "label": "山梨県"
+          },
+          {
+            "value": "長野県",
+            "label": "長野県"
+          },
+          {
+            "value": "岐阜県",
+            "label": "岐阜県"
+          },
+          {
+            "value": "静岡県",
+            "label": "静岡県"
+          },
+          {
+            "value": "愛知県",
+            "label": "愛知県"
+          },
+          {
+            "value": "三重県",
+            "label": "三重県"
+          },
+          {
+            "value": "滋賀県",
+            "label": "滋賀県"
+          },
+          {
+            "value": "京都府",
+            "label": "京都府"
+          },
+          {
+            "value": "大阪府",
+            "label": "大阪府"
+          },
+          {
+            "value": "兵庫県",
+            "label": "兵庫県"
+          },
+          {
+            "value": "奈良県",
+            "label": "奈良県"
+          },
+          {
+            "value": "和歌山県",
+            "label": "和歌山県"
+          },
+          {
+            "value": "鳥取県",
+            "label": "鳥取県"
+          },
+          {
+            "value": "島根県",
+            "label": "島根県"
+          },
+          {
+            "value": "岡山県",
+            "label": "岡山県"
+          },
+          {
+            "value": "広島県",
+            "label": "広島県"
+          },
+          {
+            "value": "山口県",
+            "label": "山口県"
+          },
+          {
+            "value": "徳島県",
+            "label": "徳島県"
+          },
+          {
+            "value": "香川県",
+            "label": "香川県"
+          },
+          {
+            "value": "愛媛県",
+            "label": "愛媛県"
+          },
+          {
+            "value": "高知県",
+            "label": "高知県"
+          },
+          {
+            "value": "福岡県",
+            "label": "福岡県"
+          },
+          {
+            "value": "佐賀県",
+            "label": "佐賀県"
+          },
+          {
+            "value": "長崎県",
+            "label": "長崎県"
+          },
+          {
+            "value": "熊本県",
+            "label": "熊本県"
+          },
+          {
+            "value": "大分県",
+            "label": "大分県"
+          },
+          {
+            "value": "宮崎県",
+            "label": "宮崎県"
+          },
+          {
+            "value": "鹿児島県",
+            "label": "鹿児島県"
+          },
+          {
+            "value": "沖縄県",
+            "label": "沖縄県"
+          }
+        ],
+        "appearance": {
+          "width": 12,
+          "cssClass": "press"
+        },
+        "settings": {
+          "end": 10,
+          "start": 1,
+          "enumType": "list",
+          "separateValues": true
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "選択されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": null,
+        "autotag": null
+      },
+      {
+        "id": 102652,
+        "dataColumn": {
+          "key": "default_address.city",
+          "label": "City",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 8,
+        "type": "text",
+        "stepId": 147429,
+        "default": "",
+        "label": "市区町村",
+        "placeholder": "中央区銀座",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "入力されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": "city",
+        "autotag": null
+      },
+      {
+        "id": 154371,
+        "dataColumn": {
+          "key": "default_address.address1",
+          "label": "Address line 1",
+          "dataType": "text"
+        },
+        "parentId": null,
+        "position": 9,
+        "type": "text",
+        "stepId": 147429,
+        "default": "",
+        "label": "番地",
+        "placeholder": "1-22-11  ",
+        "description": "",
+        "enum": [
+
+        ],
+        "appearance": {
+          "width": 12
+        },
+        "settings": {
+        },
+        "validations": [
+          {
+            "operator": "not_blank",
+            "comparand": "",
+            "errorMessage": "入力されていません。",
+            "metadata": {
+              "hiddenInApp": true
+            }
+          }
+        ],
+        "sensitive": null,
+        "preset": "address1",
+        "autotag": null
+      }
+    ],
+    "steps": [
+      {
+        "id": 147429,
+        "title": "Step 1",
+        "description": ""
+      }
+    ],
+    "rules": [
+      {
+        "id": 170746,
+        "title": "アカウント作成フォーム",
+        "conditionChaining": "all",
+        "conditions": [
+
+        ],
+        "actions": [
+
+        ]
+      }
+    ]
+  }
+}

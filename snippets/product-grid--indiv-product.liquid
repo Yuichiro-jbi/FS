@@ -1,0 +1,377 @@
+{% assign crop_setting = settings.product-grid %}
+{% assign image_crop = nil %}
+{% if crop_setting == "square" %}
+    {% assign image_crop = "aspect-ratio--square" %}
+{% elsif crop_setting == "tall" %}
+    {% assign image_crop = "aspect-ratio--tall" %}
+{% elsif crop_setting == "wide" %}
+    {% assign image_crop = "aspect-ratio--wide" %}
+{% endif %}
+
+<article class="indiv-product">
+
+  <script type="application/json" id="product-grid-{{ liquidObject.id }}" class="product-grid-json">
+    {{ liquidObject | json }}
+  </script>
+
+  {% case settings.hover-effect %}
+
+  {% when 'none' %}
+  
+
+
+      {% unless liquidObject.available %}
+       {% if liquidObject.tags contains 'mmm' %}
+    {%assign var = "lay"%}
+        {% endif %}
+  {%endunless%}
+  
+  
+    {% comment %}
+  {% assign product_image = liquidObject.metafields.custom.png %}
+ {% endcomment %}
+  
+  {%comment%}
+     {%if liquidObject.type contains 'reserve'%}
+     {%endif%}
+  {%endcomment%}
+
+    <a
+      class="grid__image"
+      href="{{ liquidObject.url | within: collection }}"
+      title="{{ liquidObject.title | escape }}"
+      tabindex="-1"
+    >
+      <div class="{{var}}">
+        {% if image_crop %}<div class="aspect-ratio {{ image_crop }}">{% endif %}
+            {% render 'responsive-image' with liquidObject.media[0].preview_image, alt: liquidObject.media[0].alt , product_image : product_image %}
+        {% if image_crop %}</div>{% endif %}
+           </div>
+    </a>
+  
+  
+
+  {% when 'second-image' %}
+
+    {% if liquidObject.media.size > 1 %}
+      <div class="reveal">
+        <a
+          class="grid__image"
+          href="{{ liquidObject.url | within: collection }}"
+          title="{{ liquidObject.title | escape }}"
+          tabindex="-1"
+        >
+            {% if image_crop %}<div class="aspect-ratio {{ image_crop }}">{% endif %}
+              {% render 'responsive-image' with liquidObject.media[0].preview_image, alt: liquidObject.media[0].alt , product_image : product_image %}
+              <div class="hidden">
+                {% render 'responsive-image' with liquidObject.media[1].preview_image, alt: liquidObject.media[1].alt , product_image : product_image %}
+              </div>
+            {% if image_crop %}</div>{% endif %}
+        </a>
+      </div>
+    {% else %}
+      <a
+        class="grid__image"
+        href="{{ liquidObject.url | within: collection }}"
+        title="{{ liquidObject.title | escape }}"
+        tabindex="-1"
+      >
+        {% if image_crop %}<div class="aspect-ratio {{ image_crop }}">{% endif %}
+            {% render 'responsive-image' with liquidObject.media[0].preview_image, alt: liquidObject.media[0].alt , product_image : product_image %}
+        {% if image_crop %}</div>{% endif %}
+      </a>
+    {% endif %}
+ 
+  
+  {% when 'zoom' %}
+
+    <div class="collection-image--zoom-effect">
+      <div class="zoom-effect--inner">
+        <a
+          class="grid__image"
+          href="{{ liquidObject.url | within: collection }}"
+          title="{{ liquidObject.title | escape }}"
+          tabindex="-1"
+        >
+          {% if image_crop %}<div class="aspect-ratio {{ image_crop }}">{% endif %}
+             {% render 'responsive-image' with liquidObject.media[0].preview_image, alt: liquidObject.media[0].alt , product_image : product_image %}
+          {% if image_crop %}</div>{% endif %}
+        </a>
+      </div>
+    </div>
+
+  {% endcase %}
+
+  <div class="hp-title">
+
+  {% if settings.show_vendor %}
+    <div class="indiv-product-vendor-text">{{ liquidObject.vendor | link_to_vendor }}</div>
+  {% endif %}
+
+    <a href="{{ liquidObject.url | within: collection }}" class="indiv-product__link">
+        {% if liquidObject.id == 6518312992917 %}
+ <span class="indiv-product-title-text">ブライテストファーストエッセンス<br>【リニューアル前の商品です】</span>
+          {% else %}
+       <span class="indiv-product-title-text">{{ liquidObject.title }}</span>
+      {% endif %}
+     {%comment%}   <span class="indiv-product-title-text">{{ liquidObject.metafields.my_fields._product}}</span>{%endcomment%}
+
+      <span class="money-styling">
+
+   {% if liquidObject.compare_at_price_max > liquidObject.price %}
+          <span class="compare-at-price">
+            <span class="money"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ liquidObject.id }}' ymq-b2b-product-handle='{{ liquidObject.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' ymq-b2b-product-compare-price>{{ liquidObject.compare_at_price_max | money }}</span></span>
+          </span>
+        {% endif %}
+
+        {% if liquidObject.price_varies %}
+          <small>{{ 'products.general.from' | t }}</small> <span class="money"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ liquidObject.id }}' ymq-b2b-product-handle='{{ liquidObject.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ liquidObject.price_min | money }}</span></span>
+        {% else %}
+               {% if request.path contains '/en' %}
+  <span class="money"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ liquidObject.id }}' ymq-b2b-product-handle='{{ liquidObject.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ liquidObject.price_min | money }}</span>（{{liquidObject.price_min| times: 1.1|money }} tax inc.)</span>
+          {% elsif request.path contains '/zh' %}
+ <span class="money"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ liquidObject.price_min | money }}</span>（含税价{{liquidObject.price_min| times: 1.1|money }})</span>
+          {% else %}
+          <span class="money"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ liquidObject.id }}' ymq-b2b-product-handle='{{ liquidObject.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ liquidObject.price_min | money }}</span>
+            {% if customer.tags contains "FATUITE社員" %}
+                   <span class="product-tax" >（税込：{{liquidObject.price_min | times:0.7 | times: 1.1|money }})</span>
+                  {% else %}
+                  <span class="product-tax" >（税込：{{liquidObject.price_min| times: 1.1|money }})</span>
+                  {% endif %}
+                {% endif %}
+        {% endif %}
+
+        {% assign first_variant = liquidObject.variants[0] %}
+        {% render 'unit-price-measurement-grid', variant: first_variant %}
+ 
+      </span>
+      
+     
+
+      {% if settings.show_reviews %}
+        <span class="shopify-product-reviews-badge" data-id="{{ liquidObject.id }}"></span>
+      {% endif %}
+
+    </a>
+  </div>
+
+  {% if settings.show_swatches != blank %}
+    {% for option in liquidObject.options %}
+        {% capture downcased_option %}{{ option | downcase }}{% endcapture %}
+        {% assign option_handle = option | handle %}
+        {% assign option_index = forloop.index0 %}
+        {% assign prod_id = liquidObject.id %}
+        {% assign color_option_name = settings.show_swatches | downcase %}
+
+        {% if downcased_option == color_option_name %}
+            {% if liquidObject.variants.size > 1 %}
+              <fieldset>
+                <div data-option-index="{{ prod_id }}" class="{{ option_handle }} options indiv-product__swatches">
+                  {% assign values = '' %}
+
+                  <legend class="sr-only">{{ option_handle }}</legend>
+
+                  {% for variant in liquidObject.variants %}
+                    <div class="position-relative">
+                      {% assign variantID = variant.id %}
+
+                      {% assign value = variant.options[option_index] %}
+                      {% capture wrapped_value %},{{ value }},{% endcapture %}
+                      {% unless values contains wrapped_value %}
+
+                      {% if variant.image %}
+                        {% assign image = variant.image | product_img_url: '400x' %}
+                      {% else %}
+                        {% assign image = liquidObject.media[0].preview_image | product_img_url: '400x' %}
+                      {% endif %}
+
+                          <input
+                            class=""
+                            id="section-{{ section.id }}-swatch-{{ prod_id }}-{{ value | handle }}"
+                            type="radio"
+                            name="option-{{ prod_id }}"
+                            value="{{ value | escape }}"
+                            data-href="{{ image }}"
+                          />
+
+                          <label
+                            for="section-{{ section.id }}-swatch-{{ prod_id }}-{{ value | handle }}"
+                            style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.png' | file_url }};)"
+                          >
+                            <span class="sr-only">{{ value | handle }}</span>
+                            <img class="crossed-out" src="{{ 'soldout_color.svg' | asset_url }}" alt="" />
+                          </label>
+
+                      {% capture values %}{{ values }}{{ wrapped_value }}{% endcapture %}
+                      {% endunless %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </fieldset>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  
+
+ 
+     {%if liquidObject.tags contains 'new'%}
+   <div class="envy-badge sold-out-badge">
+     <div style="position:relative; padding:0px; 0px">
+       <div class="triangle-new"></div>
+     </div>
+   </div> 
+  {%endif%}
+
+        {% comment %}
+
+        {% assign info_tags = 'info,info2,info3,info4' | split: ',' %}
+{% assign messages = '7月6日(土) 0時販売開始予定,7月27日(土) 21時販売開始予定,2024年3月中旬再販予定,2024年4月下旬再販予定' | split: ',' %}
+
+{% for tag in info_tags %}
+  {% if liquidObject.tags contains tag %}
+    <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:10px;">
+        <span style="scale: 0.95; display: block; white-space: nowrap; position: relative; left: -5px;">
+          {{ messages[forloop.index0] }}
+        </span>
+        {% if liquidObject.tags contains 'new' %}
+          <div class="triangle-new"></div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+        {% endcomment %}
+
+          {%if liquidObject.tags contains 'info'%}
+   <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:5px;">
+          <span style="scale: 0.95;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;">2月7日(金) 10時販売開始予定</span>
+       {%if liquidObject.tags contains 'new'%}
+       <div class="triangle-new"></div>
+       {% endif %}
+       </div>
+   </div> 
+  {%endif%}
+
+                  {%if liquidObject.tags contains 'info2'%}
+   <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:10px;">
+          <span style="scale: 0.95;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;">9月3日(火)10時再販予定</span>
+       {%if liquidObject.tags contains 'new'%}
+       <div class="triangle-new"></div>
+       {% endif %}
+       </div>
+   </div> 
+  {%endif%}
+
+         {%if liquidObject.tags contains 'info3'%}
+   <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:10px;">
+          <span style="scale: 0.95;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;">9月21日（土）10時販売開始予定</span>
+       {%if liquidObject.tags contains 'new'%}
+       <div class="triangle-new"></div>
+       {% endif %}
+       </div>
+   </div> 
+  {%endif%}
+
+  {% comment %}
+  {%if liquidObject.tags contains 'info'%}
+   <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:10px;">
+          <span style="scale: 0.95;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;">4月25日(木)10時販売開始予定</span>
+       {%if liquidObject.tags contains 'new'%}
+       <div class="triangle-new"></div>
+       {% endif %}
+       </div>
+   </div> 
+  {%endif%}
+
+   {%if liquidObject.tags contains 'info2'%}
+   <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:10px;">
+          <span style="scale: 0.95;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;">4月25日(木)10時販売開始予定</span>
+       {%if liquidObject.tags contains 'new'%}
+       <div class="triangle-new"></div>
+       {% endif %}
+       </div>
+   </div> 
+  {%endif%}
+
+          {%if liquidObject.tags contains 'info3'%}
+   <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:10px;">
+          <span style="scale: 0.95;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;">2024年3月中旬再販予定</span>
+       {%if liquidObject.tags contains 'new'%}
+       <div class="triangle-new"></div>
+       {% endif %}
+       </div>
+   </div> 
+  {%endif%}
+
+             {%if liquidObject.tags contains 'info4'%}
+   <div class="envy-badge sold-out-badge">
+      <div style="position:relative; padding:10px;">
+          <span style="scale: 0.95;
+    display: block;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;">2024年4月下旬再販予定</span>
+       {%if liquidObject.tags contains 'new'%}
+       <div class="triangle-new"></div>
+       {% endif %}
+       </div>
+   </div> 
+  {%endif%}
+  {% endcomment %}
+  
+  {%comment%}
+  {% if liquidObject.available %}
+   {%if liquidObject.type contains 'reserve'%}
+   <div class="envy-badge sold-out-badge">11月13日予約開始/11月30日発送予定</div> 
+  {%endif%}
+    {% if liquidObject.compare_at_price_max > liquidObject.price and settings.sale_badge %}
+      <div class="envy-badge sale-badge">{{ 'products.general.sale' | t }}</div>
+    {% endif %}
+  {% elsif settings.sold_out_badge %}
+<!--     <div class="envy-badge sold-out-badge">{{ 'products.product.sold_out' | t }}</div> -->
+   {%if liquidObject.title contains '数量限定'%}
+   <div class="envy-badge sold-out-badge">巾着付きセット</div> 
+  {%endif%}
+  {%if liquidObject.title contains '<セット>'%}
+   <div class="envy-badge sold-out-badge">{{ 'products.product.sold_out' | t }}</div> 
+  {%endif%}
+  {% endif %}
+  {%endcomment%}
+  
+  
+  
+</article>
+{% comment %}<!-- ymq b2b done -->{% endcomment %}

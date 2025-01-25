@@ -1,0 +1,105 @@
+{% if request.path contains '/en/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">All components {% if product.tags contains 'セット' or product.title contains 'キット'%}Calmness Cooling Gel{% endif %}</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">
+  AQUA,
+HYDROXYETHYL UREA,
+BUTYLENE GLYCOL,
+SACCHAROMYCES FERMENT FILTRATE,
+PENTYLENE GLYCOL,
+1,2-HEXANEDIOL,
+MALACHITE EXTRACT,
+ECTOIN,
+ALLANTOIN,
+BISABOLOL,
+DIPOTASSIUM GLYCYRRHIZATE,
+ALBATRELLUS CONFLUENS (MUSHROOM) EXTRACT,
+EUCALYPTUS RADIATA LEAF OIL,
+MENTHA PIPERITA (PEPPERMINT) OIL,
+ALOE BARBADENSIS LEAF JUICE,
+APHANOTHECE SACRUM POLYSACCHARIDES,
+HYDROLYZED ROYAL JELLY PROTEIN,
+CENTELLA ASIATICA EXTRACT,
+SCUTELLARIA BAICALENSIS ROOT EXTRACT,
+POLYGONUM CUSPIDATUM ROOT EXTRACT,
+CAMELLIA SINENSIS LEAF EXTRACT,
+GLYCYRRHIZA GLABRA (LICORICE) ROOT EXTRACT,
+CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT,
+ROSMARINUS OFFICINALIS (ROSEMARY) LEAF EXTRACT,
+SODIUM HYALURONATE,
+ARGININE,
+TREHALOSE,
+PEG-40 HYDROGENATED CASTOR OIL,
+PPG-26-BUTETH-26,
+CARBOMER,
+MALTODEXTRIN,
+LYSOLECITHIN,
+GLYCERIN,
+PHENETHYL ALCOHOL,
+CALCIUM SODIUM BOROSILICATE,
+SILVER OXIDE,POLYGLUTAMIC ACID
+</p></div>
+</div>
+</div>
+
+  {% elsif request.path contains '/zh/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">{% if product.tags contains 'セット' or product.title contains 'キット'%}斑点浓缩精华液 {% endif %}所有成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">水,
+羟乙基脲,
+丁二醇,
+酵母菌发酵产物滤液,
+1,2-戊二醇,
+1,2-己二醇,
+孔雀石提取物,
+四氢甲基嘧啶羧酸,
+尿囊素,
+红没药醇,
+甘草酸二钾,
+蕈（ALBATRELLUS CONFLUENS）提取物,
+狭叶桉（EUCALYPTUS RADIATA ）叶油,
+辣薄荷（MENTHA PIPERITA）油 ,
+库拉索芦荟（ALOE BARBADENSIS）叶汁 ,
+水前寺紫菜（APHANOTHECE SACRUM）多糖,
+水解蜂王浆蛋白,
+积雪草（CENTELLA ASIATICA）提取物,
+黄芩（SCUTELLARIA BAICALENSIS）根提取物,
+虎杖（POLYGONUM CUSPIDATUM）根提取物,
+茶（CAMELLIA SINENSIS）叶提取物,
+光果甘草（GLYCYRRHIZA GLABRA）根提取物,
+母菊（CHAMOMILLA RECUTITA）花提取物,
+迷迭香（ROSMARINUS OFFICINALIS）叶提取物,
+透明质酸钠,
+精氨酸,
+海藻糖,
+PEG-40 氢化蓖麻油 ,
+PPG-26-丁醇聚醚-26 ,
+卡波姆,
+麦芽糊精 ,
+溶血卵磷脂,
+甘油,
+苯乙醇 ,
+硼硅酸钠钙,
+氧化银,	
+聚谷氨酸
+</p></div>
+</div>
+</div>
+
+  {% else %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title top-b">全成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">水、ヒドロキシエチルウレア、BG、サッカロミセス培養液、ペンチレングリコール、1,2-ヘキサンジオール、孔雀石抽出物、エクトイン、アラントイン、ビサボロール、グリチルリチン酸2K、ニンギョウタケエキス、ユーカリプツスラジアタ葉油、セイヨウハッカ油、アロエベラ液汁、スイゼンジノリ多糖体、加水分解ローヤルゼリータンパク、ツボクサエキス、オウゴン根エキス、イタドリ根エキス、チャ葉エキス、カンゾウ根エキス、カミツレ花エキス、ローズマリー葉エキス、ヒアルロン酸Na、アルギニン、トレハロース、PEG-40水添ヒマシ油、PPG-26ブテス-26、カルボマー、マルトデキストリン、リゾレシチン、グリセリン、フェネチルアルコール、ホウケイ酸(Ca/Na)、酸化銀、ポリグルタミン酸</p>
+</div>
+</div>
+</div>
+  {% endif %}

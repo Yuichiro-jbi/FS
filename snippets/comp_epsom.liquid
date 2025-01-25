@@ -1,0 +1,32 @@
+{% if request.path contains '/en/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">All components {% if product.tags contains 'セット' or product.title contains 'キット'%}Epsom Salt (3 bags){% endif %}</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">Magnesium Sulfate,Cyclodextrin,Bentonite,Fragrance Flavor</p></div>
+</div>
+</div>
+
+  {% elsif request.path contains '/zh/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">{% if product.tags contains 'セット' or product.title contains 'キット'%}泻盐（3袋） {% endif %}所有成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">硫酸镁,环糊精,膨润土,香精</p></div>
+</div>
+</div>
+
+  {% else %}
+
+ <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title top-b">{% if product.title contains 'セット' %}エプソムソルトの{% endif %}全成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">硫酸マグネシウム、シクロデキストリン、ベントナイト、香料</p>
+</div>
+</div>
+</div>
+  {% endif %}

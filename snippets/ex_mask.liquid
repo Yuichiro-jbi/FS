@@ -1,0 +1,71 @@
+{% if request.path contains '/en/' %}
+  
+<h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">For better skin condition, feel like reborn</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">A full-fledged ※aging care sheet mask focuses on the rebirth of the skin.</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Retinoic acid is essential for skin turnover, which determines the feeling of care.</span></p>
+<p style="margin-top: 20px;">Two ingredients are combined. "Bakuchiol", which is attracting attention as a next-generation retinol, and "mastic resin" a new ingredient that focuses on suppressing the decomposition of retinoic acid in the skin.</p>
+<p style="margin-top: 20px;">It leads to skin with high firmness density with less noticeable pores.</p>
+<p style="margin-top: 20px;">Uses a separate type sheet mask that can care from the face to the neck. A sheet containing plenty of beauty essense fits perfectly and enhances the feeling of intensive care.</p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">
+※1 Age-appropriate firmness and moisture care
+</span></p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'mask1' %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Amount: 30mL x 1 piece</span></p>
+  {% elsif product.tags contains 'mask15'  %}
+   <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Amount: 30mL x 7 pieces × 2 sets ＋ 1 piece. Total 15 pieces.</span></p>
+     {% elsif product.tags contains 'mask8'  %}
+   <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Amount: 30mL x 7 pieces × 1 set ＋ 1 piece. Total 8 pieces.</span></p>
+{% else %}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Amount: 30mL x 7 pieces </span></p>
+{% endif %}
+
+<p data-mce-fragment="1">・Petroleum surfactant free<br data-mce-fragment="1">・Synthetic fragrance/synthetic coloring free<br data-mce-fragment="1">・Mineral oil free<br data-mce-fragment="1">・Ethanol-free<br>・Animal-derived raw material-free<br></p>
+
+  {% elsif request.path contains '/zh/' %}
+  
+    <h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">打造更上一级的肤质，如同重生般实感</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">重生般肤质，全面抗衰老护理※1 面膜。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">肌肤的新陈代谢不可欠缺的维生素A酸，能左右肌肤修复。</span></p>
+<p style="margin-top: 20px;">受瞩目的新一代视黄醇 「补骨脂酚」与专注于抑制维生素A酸分解的新成分「乳香」双重配合。</p>
+<p style="margin-top: 20px;">让毛孔变得更紧致，肌肤更滑润。</p>
+<p style="margin-top: 20px;">采用从脸至上颈部皆能一起保养的分离型片状面膜，饱满的美容液充满其中，更能提高严密滋养的实感。</p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">
+※1 根据年龄保养肌肤水分和滑润。
+</span></p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'mask1' %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量：30毫升 x 1片装</span></p>
+  {% elsif product.tags contains 'mask15'  %}
+   <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量：30毫升 x 7片装 × 2套 ＋ 1片装。共有15片装。</span></p>
+     {% elsif product.tags contains 'mask8'  %}
+   <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量：30毫升 x 7片装 × 1套 ＋ 1片装。共有8片装。</span></p>
+{% else %}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量：30毫升 x 7片装</span></p>
+{% endif %}
+<p data-mce-fragment="1">・不含石化界面活性剂<br data-mce-fragment="1">・不含合成香料/合成著色剂<br data-mce-fragment="1">・不含矿物油<br data-mce-fragment="1">・不含防腐剂<br data-mce-fragment="1">・不含乙醇<br>・不含动物源性原料</p>
+ {% else %}
+
+<h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">さらなる高みを目指す肌に、生まれ変わるような実感を。</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">肌の生まれ変わりにフォーカスした、本格エイジングケア※1シートマスク。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">お手入れ実感を左右する、肌のターンオーバーに不可欠なレチノイン酸。</span></p>
+<p style="margin-top: 20px;">次世代レチノールとして注目を集める「バクチオール」と、肌のレチノイン酸分解抑制に着目した新成分「マスチック樹脂」をW配合。</p>
+<p style="margin-top: 20px;">毛穴が目立ちにくくハリ密度の高い肌へ導きます。</p>
+<p style="margin-top: 20px;">顔から首元までケアができるセパレートタイプのシートマスクを採用。美容液をたっぷりと含んだシートがフィットし、集中ケアの実感を高めます。</p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">
+※1 年齢に応じたハリとうるおいのお手入れ
+</span></p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'mask1' %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:30mL × 1枚入り</span></p>
+  {% elsif product.tags contains 'mask15'  %}
+   <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:30mL×7枚入り×2セット＋1枚。合計15枚</span></p>
+     {% elsif product.tags contains 'mask8'  %}
+   <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:30mL×7枚入り×1セット＋1枚。合計8枚</span></p>
+{% else %}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:30mL × 7枚入り</span></p>
+{% endif %}
+
+<p data-mce-fragment="1">・石油系界面活性剤フリー<br data-mce-fragment="1">・合成香料/合成着色料フリー<br data-mce-fragment="1">・鉱物油フリー<br data-mce-fragment="1">・パラベンフリー<br data-mce-fragment="1">・エタノールフリー<br>・動物由来原料フリー</p>
+
+{% endif %}

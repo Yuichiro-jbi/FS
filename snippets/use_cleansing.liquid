@@ -1,0 +1,16 @@
+{% if request.path contains '/en/' %}
+<div class="use">
+<p class="p-h3"> How to use {% if product.tags contains 'セット' or product.title contains 'キット' %}Purify Deep Cleansing Gel{% endif %}</p>
+<p class="">Apply a cherry-sized amount to dry skin. Gently blend it with makeup and rinse with lukewarm water. Please use facial cleanser afterwards.</p>
+</div>
+{% elsif request.path contains '/zh/' %}
+<div class="use">
+<p class="p-h3"> {% if product.tags contains 'セット' or product.title contains 'キット' %}净化洁肤凝胶{% endif %} 使用方法</p>
+<p class="">在未湿润的肌肤上使用樱桃大小的量。轻轻与化妆品融合，然后用温水冲洗。请之后使用洁面产品。</p>
+</div>
+{% else %}
+<div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' or product.title contains 'キット' %}ピュリファイン ディープクレンジングジェルの{% endif %}使用方法</p>
+<p class="">サクランボ大程度を濡れていない肌に使用します。 優しくメイクとなじませ、ぬるま湯で洗い流してください。 その後洗顔料をご使用ください。</p>
+</div>
+{% endif %}

@@ -1,0 +1,34 @@
+{% comment %} 
+This snippet changes automatically with updates! Any modifications will be overwritten.
+{% endcomment %}
+            
+    <!--  advanced registration starts ( https://apps.shopify.com/advanced-registration ) -->
+ 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.1/iframeResizer.min.js"></script>
+    
+    <!--{% form 'customer_login' %}{% capture loginErrors %}{% if form.errors %}{% for field in form.errors %}{{form.errors.messages[field]}}|{% endfor %}{% endif %}{% endcapture %}{% endform %} -->
+    <div style="position:relative">
+    <iframe id="advancedRegForm" onload="iFrameResize({log:false}, '#advancedRegForm')" 
+    src="https://taloncommerce.com/advanced_registration/api/registration_form/?id=3991&loginErrors={{loginErrors| url_encode }}&curUrl={{ canonical_url | url_encode }}" 
+   
+     style="min-width: 100%;border:none;  min-height:500px;overflow:hidden;" width="100%" height="100%" allowtransparency="true">
+      <p>Your browser does not support iframes.</p>
+    </iframe>
+       {% form 'recover_customer_password' %}          
+    {% if form.posted_successfully? %}
+    <script> 
+        var iframe = document.getElementById("advancedRegForm").contentWindow;
+        window.setTimeout(function() {
+            iframe.postMessage("afterRecover", "*"); 
+       }, 
+       2000);//wait 2 seconds to be sure the iframe which we don't have cross-origin permission to see for has loaded. 
+    </script>
+    {% endif %}
+    {% endform %}
+    
+<script src="https://taloncommerce.com/static/javascript/advanced-registration.js"></script>
+
+    </div>
+
+    

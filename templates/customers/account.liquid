@@ -1,0 +1,349 @@
+{% assign url = request.path %}
+<style>
+  .cf-edit-account-link{
+    max-width:260px;
+    margin:auto;
+  }
+
+  .accordion-title{
+    background: #7c664a;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    margin: 0px 0px;
+    font-weight: bold;
+  }
+
+  .accordion-container{
+      padding:0px 15px;
+  }
+
+  .pay_bar{
+    margin: 10px 0px 0px;
+  }
+
+  .accordion-title:before {
+    content: "";
+    background-color: white;
+  }
+
+   .accordion-title:after {
+    content: "";
+    background-color: white;
+  }
+
+  .accordion-wrap {
+    border-bottom: none;
+    margin-bottom:15px;
+  }
+
+  /* ページネーション用のスタイルを追加 */
+  .pay_order_pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+    gap: 10px;
+  }
+
+  .pay_order_pagination-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .pay_order_pagination-btn.active {
+    background: #7c664a;
+    color: white;
+    border-color: #7c664a;
+  }
+
+  .pay_order_pagination-btn.disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+    color: #999;
+  }
+
+@media screen and (min-width: 601px) {
+  .accordion-container {
+      padding: 0px !important;
+      width: 80%;
+    display:none;
+  }
+
+  .accordion-title{
+    width:240px;
+  }
+
+  .accordion-content .c-inner-wrap {
+    padding: 0px !important;
+  }
+
+    .pay_bar {
+    margin: 10px 0px 0px;
+    width: 240px;
+  }
+  
+}
+
+  .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.pagination a,
+.pagination span {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination span {
+  background-color: #7c664a;
+  color: white;
+  border-color: #7c664a;
+  font-weight: bold;
+}
+
+.pagination a[disabled] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+  
+</style>
+<div class="content clearfix">
+
+<!-- 	<div class="title-bar custom-font">
+		<h2 class="main-heading">{{ 'customer.account.title' | t }}</h2>
+	</div> -->
+<!--   <div class="custom-font" style="width: 70%;">
+  <h2　class="pay_h2">会員情報</h2>
+    </div> -->
+
+  <div class="row pay_back">
+
+    {% comment %}
+    {% if customer.tags contains "omuni" %}
+{% render 'omnihub_barcode' version:'1.0' %}
+    {% endif %}
+    {% endcomment %}
+ 
+  <h2 class="pay_h2">
+  {% if url contains '/en' %}Member Information{% elsif url contains '/zh' %}会员信息{% else %}会員情報{% endif %}
+  </h2>
+
+  <div class="accordion-container" id="accordion">
+    <div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">店頭用バーコードを表示する</p>
+<div class="accordion-content" style="display: none;">
+<div class="c-inner-wrap">
+       <div class="pay_bar">
+{% render 'omnihub_barcode' version:'1.0' %}
+         </div>
+</div>
+</div>
+</div>
+</div>
+
+       <!------------------------------------------------------------------------------------- LINE登録 ------------------------------------------------------------->
+<!-- <div style="background-color: #DFF0D8; color: #468847; padding: 15px; max-width: 400px;
+    margin: 20px auto;
+    width: 90%;">
+  <p>
+    <strong>LINE連携で購入がもっと楽に</strong>
+  </p>
+  <p>LINE登録後に会員登録したメールアドレスと連携することで注文履歴や配送状況をLINEから確認することができます！</p>
+  <p>※取得したメールアドレスは、<a href="/policies/privacy-policy">プライバシーポリシー</a>に記載した目的以外では使用いたしません。</p>
+</div> -->
+             
+              <!-- LINE ID 連携ボタン（リンク） -->
+    {% unless customer.tags contains "LINE連携" %}
+               <div class="line_new_ec">
+                <div class="button-container">
+                  <a class="button btn-line line-token-set-btn" href="https://lin.ee/XspGYn8" target="_blank" rel="noopener noreferrer">
+                    <span class="before-btn-line" style="background-image:url('https://d2w53g1q050m78.cloudfront.net/dr365cojp/uploads/themes/mypage_renew0607_20220607102736/ec_force/assets/images/login-line.png')"></span>
+                  <span> LINEとの連携はこちらから</span>
+
+                    <span class="after-btn-line"></span>
+                  </a>
+                </div>
+              </div> 
+      {% endunless %}
+            
+<!------------------------------------------------------------------------------------- end line登録 ------------------------------------------------------------------------------>
+
+  <div id="customer_account_bar" class="">
+    <div id="customer_detail" class="group">
+
+<div class="pay_flex pay_flex_first">
+  <p class="pay_bottom"><span class="pay_table">{% if url contains '/en' %}Name{% elsif url contains '/zh' %}姓名{% else %}お名前{% endif %}</span><span>{{customer.last_name}}{{ customer.first_name }}</span></p>
+</div>
+<div class="pay_flex">
+  <p class="pay_bottom"><span class="pay_table">{% if url contains '/en' %}Email Address{% elsif url contains '/zh' %}电子邮件地址{% else %}メールアドレス{% endif %}</span><span>{{ customer.email }}</span></p>
+</div>
+<div class="pay_flex">
+  <p class="pay_bottom phone note"><span class="pay_table">{% if url contains '/en' %}Phone Number{% elsif url contains '/zh' %}电话号码{% else %}お電話番号{% endif %}</span>0<span class="phone-c"></span></p>
+</div>
+<div class="pay_flex">
+  <p class="pay_bottom"><span class="pay_table">{% if url contains '/en' %}Gender{% elsif url contains '/zh' %}性别{% else %}性別{% endif %}</span><span>{{customer.metafields.customer_fields.data["sex"]}}</span></p>
+</div>
+<div class="pay_flex">
+  <p class="pay_bottom"><span class="pay_table">{% if url contains '/en' %}Date of Birth{% elsif url contains '/zh' %}出生日期{% else %}生年月日{% endif %}</span><span>{{ customer.metafields.customer_fields.data["birthday_year"] }}年{{ customer.metafields.customer_fields.data["birthday_month"] }}月{{ customer.metafields.customer_fields.data["birthday_day"] }}日</span></p>
+</div>
+<div class="pay_flex">
+  <p class="pay_bottom"><span class="pay_table">{% if url contains '/en' %}Postal Code{% elsif url contains '/zh' %}邮政编码{% else %}郵便番号{% endif %}</span><span>〒{{customer.default_address.zip}}</span></p>
+</div>
+<div class="pay_flex">
+  <p class="pay_bottom"><span class="pay_table">{% if url contains '/en' %}Address{% elsif url contains '/zh' %}地址{% else %}住所{% endif %}</span>
+    <span>{% comment %}{{customer.metafields.customer_fields.data["prefectures"]}}{% endcomment %}{{ customer.default_address.province }}{{customer.default_address.city}}{{customer.default_address.address1}}{{customer.default_address.address2}}</span></p>
+</div>
+
+      
+      {%assign phone = customer.default_address.phone%}
+     
+      <script>
+        window.addEventListener('DOMContentLoaded', function(){
+        var phone = '{{phone}}';
+        var number = phone.slice(3) ;
+     $(".phone-c").text(number);
+});
+      </script>
+          {% comment %}
+     {% if shop.locale == 'en' %}
+  <a href="/account?view=edit" style="font-size: 14px; max-width: 200px; display:inline-block; line-height: 2;" class="btn-customa ffffff">Change Registration Information</a>
+{% elsif shop.locale == 'zh-CN' %}
+  <a href="/account?view=edit" style="font-size: 14px; max-width: 200px; display:inline-block; line-height: 2;" class="btn-customa ffffff">更改注册信息</a>
+{% else %}
+  <a href="/account?view=edit" style="font-size: 14px; max-width: 200px; display:inline-block; line-height: 2;" class="btn-customa ffffff">登録情報を変更する</a>
+{% endif %}
+       {% endcomment %}
+
+      
+			<div class="address note">
+              {% if customer.tags contains "omuni" %}
+<a href="{{ order.customer_url }}" data-order-id="{{ order.id }}">{{ order.name }}</a>
+                {% else %}
+				<a id="view_address" class="button--text-subdued" 
+                  href="{{ routes.account_addresses_url }}">
+                  {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+                </a>
+                {% endif %}
+			</div>
+
+    </div>
+  </div>
+
+  <div id="customer_orders" class="col-md-9 pay_order">
+  <div class="hide"><h2>{{ 'customer.orders.title' | t }}</h2></div>
+
+    {% if customer.orders.size != 0 %}
+    
+      {% paginate customer.orders by 50 %}
+      <table class="table table-responsive-md" style="margin-top: 40px;">
+        <thead>
+          <tr>
+            <th class="order_number">{{ 'customer.orders.order_number' | t }}</th>
+            <th class="date">{{ 'customer.orders.date' | t }}</th>
+            <th class="payment_status">{{ 'customer.orders.payment_status' | t }}</th>
+            <th class="fulfillment_status">{{ 'customer.orders.fulfillment_status' | t }}</th>
+            <th class="total">{{ 'customer.orders.total' | t }}</th>
+            <th>領収書</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in customer.orders limit: orders_per_page offset: offset %}
+          <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+            <td class="order_number__value">{{ order.name | link_to: order.customer_url }}</td>
+            <td><span class="note">{{ order.created_at | date: format: 'long' }}</span></td>
+            <td><span class="status_{{ order.financial_status_label }}">{{ order.financial_status_label }}</span></td>
+            <td><span class="status_{{ order.fulfillment_status_label }}">{{ order.fulfillment_status_label }}</span></td>
+            <td><span class="total money">{{ order.total_price | money }}</span></td>
+            <td data-label="領収書">
+              <a href="#" onclick="downloadClick('/tools/receipts-app/download-pdf/52760608917/{{ order.id | times: 4465182950 }}/{{ order.id | append: "52760608917" | append: "d003c0b61c" | hmac_sha256: "343ffecd2c66" }}', '{{ order.billing_address.name}}')" class="js-download">PDF</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+  {% if paginate.pages > 1 %}
+    <nav class="pagination">
+      {% if paginate.previous %}
+        <a href="{{ paginate.previous.url }}">前へ</a>
+      {% endif %}
+
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <a href="{{ part.url }}">{{ part.title }}</a>
+        {% else %}
+          <span>{{ part.title }}</span>
+        {% endif %}
+      {% endfor %}
+
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}">次へ</a>
+      {% endif %}
+    </nav>
+  {% endif %}
+        
+    {% endpaginate %}
+    {% else %}
+      <p>{{ 'customer.orders.none' | t }}</p>
+    {% endif %}
+  </div>
+  </div>
+
+  <a href="/collections/products" class="btn-customa btn" style="width: 260px; margin: 0px auto 20px; display: block;">商品一覧</a>
+  <a href="{{ routes.account_logout_url }}" class="button--text-subdued btn-customb">{{ 'layout.customer.log_out' | t }}</a>
+
+</div>
+
+<script type="text/javascript" src="https://receipt.unbyte.jp/js/orders.js"></script>
+
+<script>
+  function waitForElement(selector) {
+    return new Promise((resolve, reject) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            resolve(element);
+        }
+        new MutationObserver((mutations, observer) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                resolve(element);
+                observer.disconnect();
+            }
+        }).observe(document.body, { childList: true, subtree: true });
+    });
+}
+
+waitForElement('.cf-edit-account-link')
+    .then(element => {
+        const hrefBase = window.location.href.includes('/en/') ? '/en/tools' : window.location.href.includes('/zh/') ? '/zh/tools' : '/tools';
+        const text = window.location.href.includes('/en/') ? 'Change account information' : window.location.href.includes('/zh/') ? '更改账户信息' : 'アカウント情報を変更する';
+        element.textContent = text;
+       element.style.color = "white";
+        element.style.textDecoration = "none";
+        element.href = `${hrefBase}/customr/edit-account`;
+    })
+    .catch(error => {
+        console.log('Element not found.', error);
+      });
+
+</script>

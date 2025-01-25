@@ -1,0 +1,44 @@
+{% if request.path contains '/en/' %}
+
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Precautions for storage and handling</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">・Do not store in extremely hot or cold places, or in direct sunlight.</p>
+<p class="m-zero topup">・Keep out of reach of children</p>
+<p class="m-zero topup">・Please use as soon as possible after opening.</p>
+<p class="m-zero topup">・Due to the product characteristics, sediments may occur. They are the items with attached ingredients, and please be assured that there is no affect on the quality or the safety to use.</p>
+<p class="m-zero topup">・Because of the naturally derived ingredients, the color might become uneven due to the change in temperature. However, there is no quality problem, so please shake well before use.</p>
+</div>
+</div>
+</div>
+  {% elsif request.path contains '/zh/' %}
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">保管和使用注意事项</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">・不要放置在极高或极低的温度下或在阳光直射下的地方。</p>
+<p class="m-zero topup">・放在儿童接触不到的地方。</p>
+<p class="m-zero topup">・开封后请尽快使用。</p>
+<p class="m-zero topup">・产品可能会形成沉淀物，但并不影响产品的质量和安全，请安心使用。</p>
+<p class="m-zero topup">・该产品由天然成分制成，因此受温度或其他因素变化的影响，部分颜色可能变得不均匀，所以使用前请先摇匀，这并无品质上的问题，请安心使用。</p>
+</div>
+</div>
+</div>
+  {% else %}
+
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">保管及び取り扱い上の注意</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">・極端に高温又は低温の場所、直射日光のあたる場所には保管しないでください。</p>
+<p class="m-zero topup">・乳幼児の手の届かないところに保管してください。</p>
+<p class="m-zero topup">・開封後は、お早めにお使いください。</p>
+<p class="m-zero topup">・製品の特性上、沈殿物が生じる場合があります。内容成分が付着したものであり、品質や安全性に影響はございませんので、安心してご使用ください。</p>
+<p class="m-zero topup">・天然由来成分を使用しているため、温度の変化などで部分的に色味が不均一になる場合がございます。品質には問題ございませんので、よく振ってからご使用ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+  {% endif %}

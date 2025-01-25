@@ -1,0 +1,251 @@
+{% comment %} 
+$(document).on("click", ".menu-close", function () {
+	$('#slideout-overlay').trigger("click");
+});
+
+$(document).on("click", "#115691", function () {
+   var counta = $("#115691").val()
+    $(this).delay(20).queue(function(){
+        if (counta.indexOf("+") > -1){
+   var phone = $("#115691").val();
+        var number = phone.slice(20) ;
+     $("#115691").val(number);
+      $(this).dequeue();
+    }
+});
+  });
+
+$(document).on("keyup", "#115691", function () {
+   var countb = $("#115691").val()
+        if (countb.indexOf("+") > -1){
+   var phonee = $("#115691").val();
+        var numberr ="0"+phonee.slice(4) ;
+     $("#115691").val(numberr);
+        }
+});
+
+$(document).on("keyup", "#400227,#341259", function () {
+     var counta = $("#115691").val();
+ var count = $("#115691 ").val().length;
+      if (counta.indexOf("+") > -1){
+    if (count > 10){
+       var phone = $("#115691").val();
+        var number = "0"+phone.slice(4) ;
+       var fire = number;
+     $("#115691").val(fire);
+          };
+      };
+});
+
+$(document).on("mouseout", "#115691", function () {
+    $("#115691").removeAttr("pattern","[0-9]*");
+  });
+
+$(document).on("mouseover", "#115691", function () {
+    $("#115691").attr("pattern","[0-9]*");
+  }); {% endcomment %}
+
+// $(function(){
+//   setTimeout(function(){
+//      var count = $("#115691 ").val().length;
+//     if (count > 14){
+//        var phone = $("#115691").val();
+//         var number = "0"+phone.slice(4) ;
+//        var fire = number;
+//      $("#115691").val(fire);
+//     };
+//         },300);
+//   });
+
+$(document).on("click", ".press", function () {
+    $(this).removeClass('press');
+  });
+
+$(function() {
+  $('.js-accordion-title').on('click', function () {
+    /*クリックでコンテンツを開閉*/
+    $(this).next().slideToggle(400);
+    /*矢印の向きを変更*/
+    $(this).toggleClass('open', 400);
+  });
+  
+  });
+
+ $(function(){
+   $('.accordion-title').on('click', function () {
+        if ($(this).hasClass('xoss')){
+          $(this).delay(400).queue(function(){
+            $(this).removeClass('xoss');
+            $(this).dequeue();
+        });
+        } else {
+          $(this).addClass('xoss');
+        }
+   });
+});
+
+$(function() {
+ 
+  $('#customer_detail a').addClass('btn');
+  });
+
+$(function() {
+  $('#customer_detail a').css('display','block');
+  });
+
+
+// $(window).on('load',function(){
+// 　if(document.URL.match('refund-policy')) {
+// 　  $('h1').text('返品ポリシー')
+// 　};
+// });
+
+$(function() {
+  $('.swatch .swatch-element:last-child input').trigger("click");
+});
+
+// $(function() {
+//   $('.lay').on('click', function () {
+//      window.location.href = 'https://fatuite.com/collections/reserve/products/holiday?variant=41402875347093';
+//     });
+// });
+
+
+$(function() {
+   setTimeout(function(){
+  $('ol .sold-lay').parents('ol').addClass('kintyaku');
+       },100);
+});
+
+$(function() {
+   setTimeout(function(){
+  $('.grid__item .sold-lay').parents('.grid__item').addClass('kintyaku');
+       },100);
+});
+
+// $(".money").each(function(index) {
+//   var mon = $(this).text();
+//   var men = mon + "?";
+//   console.log(men);
+// });
+
+// $(function() {
+// var array1 = [];
+// $(".money").each(function(i){
+//   var  text = $(this).text();
+//     array1.push(text);
+// });
+// console.log(array1);
+// // const isAllEqual = array => array.every(value => value === array[0]);
+//   const isAllUnique = array => array.length === new Set(array).size;
+// const lex = isAllUnique(array1);
+//   console.log(lex)
+//  });
+
+$(function() {
+  $(".gallery").modaal({
+  type: 'image',
+  overlay_close:true,//モーダル背景クリック時に閉じるか
+  before_open:function(){// モーダルが開く前に行う動作
+    $('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
+  },
+  after_close:function(){// モーダルが閉じた後に行う動作
+    $('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
+  }
+});
+  });
+
+  $(function() {
+  $(".galle").modaal({
+  type: 'video',
+  overlay_close:true,//モーダル背景クリック時に閉じるか
+  before_open:function(){// モーダルが開く前に行う動作
+    $('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
+  },
+  after_close:function(){// モーダルが閉じた後に行う動作
+    $('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
+  }
+});
+  });
+
+// $(function() {
+//   $(".c-wrap").modaal({
+//   type: 'image',
+//   overlay_close:true,//モーダル背景クリック時に閉じるか
+//   before_open:function(){// モーダルが開く前に行う動作
+//     $('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
+//   },
+//   after_close:function(){// モーダルが閉じた後に行う動作
+//     $('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
+//   }
+// });
+//   });
+
+$(function() {
+	var scrollPos;//topからのスクロール位置
+	$('.yybtn').click(function() {
+      console.log("fire");
+		scrollPos = $(window).scrollTop();//topからのスクロール位置を格納
+		$(this).parent().parent().find('.m-content').fadeIn();//モーダルをフェードイン
+		$('body').addClass('fixed').css({ top: -scrollPos });//背景固定
+		return false;//<a>を無効化
+	});
+	$('.m-content, .modal__close').click(function() {
+		$('.m-content').fadeOut();//モーダルをフェードアウト
+		$('body').removeClass('fixed').css({ top: 0 });//背景固定を解除
+		$(window).scrollTop(scrollPos);//元の位置までスクロール
+		return false;//<a>を無効化
+	});
+});
+
+$(function() {
+	var scrollPos;//topからのスクロール位置
+	$('.yybt').click(function() {
+      console.log("fire");
+		scrollPos = $(window).scrollTop();//topからのスクロール位置を格納
+		$(this).parent().find('.m-content').fadeIn();//モーダルをフェードイン
+		$('body').addClass('fixed').css({ top: -scrollPos });//背景固定
+		return false;//<a>を無効化
+	});
+	$('.m-content, .modal__close').click(function() {
+		$('.m-content').fadeOut();//モーダルをフェードアウト
+		$('body').removeClass('fixed').css({ top: 0 });//背景固定を解除
+		$(window).scrollTop(scrollPos);//元の位置までスクロール
+		return false;//<a>を無効化
+	});
+});
+
+const waitForElements = (selector, interval, maxAttempts) => {
+  let attempts = 0;
+  return new Promise((resolve, reject) => {
+    const intervalId = setInterval(() => {
+      const elements = document.querySelectorAll(selector);
+      if (elements.length > 0) {
+        clearInterval(intervalId);
+        resolve(elements);
+      } else {
+        attempts++;
+        if (attempts >= maxAttempts) {
+          clearInterval(intervalId);
+          reject(new Error(`Timeout waiting for elements with selector ${selector}`));
+        }
+      }
+    }, interval);
+  });
+};
+
+waitForElements('.ag-leading-none', 1000, 10)
+  .then(elements => {
+    elements.forEach(function(element) {
+      const text = element.textContent;
+      if (text === 'お届け先を指定して送る') {
+        element.textContent = 'お届け先を指定して購入する（通常購入）';
+      } else if (text === '住所を知らない相手にeギフトで贈る') {
+        element.textContent = '住所を知らない相手にプレゼントとして購入する（eギフト購入）';
+      }
+    });
+    console.log('テキストの更新が完了しました。');
+  })
+  .catch(error => {
+    console.error('テキストの更新中にエラーが発生しました。', error);
+  });

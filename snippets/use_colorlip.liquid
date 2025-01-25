@@ -1,0 +1,16 @@
+{% if request.path contains '/en/' %}
+<div class="use">
+<p class="p-h3"> How to use {% if product.tags contains 'セット' or product.title contains 'キット' %}Brightest Lip Essence{% endif %}</p>
+<p class="">You can use it at any time you like, such as when your lips are dry. It can be used before applying lipstick as a base.</p>
+</div>
+  {% elsif request.path contains '/zh/' %}
+<div class="use">
+<p class="p-h3"> {% if product.tags contains 'セット' or product.title contains 'キット' %}最优秀护唇精华{% endif %} 使用方法</p>
+<p class="">随时皆可使用，比如嘴唇干裂的时候，可以先用此唇膏打底再涂口红。</p>
+</div>
+  {% else %}
+<div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' %}ブライテスト カラーリップエッセンスの{% endif %}使用方法</p>
+<p class="">唇の乾燥が気になるタイミングなど、お好きなタイミングでお使いいただけます。口紅を塗る前にも下地としてもご使用いただけます。</p>
+</div>
+  {% endif %}

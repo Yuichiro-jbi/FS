@@ -1,0 +1,16 @@
+{% if request.path contains '/en/' %}
+<div class="use">
+<p class="p-h3">How to use {% if product.title contains 'セット' or product.title contains 'キット' %}Spots Concentrate Serum{% endif %}</p>
+<p class="">After conditioning your skin with lotion, gently apply a small amount to areas of concern.</p>
+</div>
+  {% elsif request.path contains '/zh/' %}
+<div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' or product.title contains 'キット' %}斑点浓缩精华液{% endif %} 使用方法</p>
+<p class="">用爽肤水调理皮肤后，将适量的爽肤水轻轻涂抹在需要护理的部位。</p>
+</div>
+  {% else %}
+  <div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' %}スポッツコンセントレイトセラムの{% endif %}使用方法</p>
+<p class="">化粧水で肌を整えた後、気になる部分に適量を優しくなじませてください。</p>
+</div>
+  {% endif %}

@@ -1,0 +1,107 @@
+
+{% if request.path contains '/en/' %}
+  <!--/.accordion-content-->
+
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Precautions for use</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+     {% unless product.title == 'エプソムソルト(3袋入り)' %}
+<p class="m-zero topup">・Please check carefully that there are no abnormalities on your skin before use. Should this product disagree with your skin, that is, in the following cases, discontinue use. Continuing to use cosmetics may worsen the symptoms, so we recommend that you consult a dermatologist.</p>
+<br>
+<p class="m-zero topup">1. If any abnormalities such as redness, swelling, itchiness, irritation, color loss (white spots etc) or derkening appear during use.</p>
+<p class="m-zero topup">2. When the above abnormalities appear while its in use and is exposed to direct sunlight.</p>
+<p class="m-zero topup">3. Please do not use on areas with skin abnormalities such as wounds, swelling, or eczema.</p>
+<br>
+<p class="m-zero topup">・In case of any contact with the eyes,  rinse immediately well with water or warm water.</p>
+  {% endunless %}
+
+    {% for tag in product.tags %}
+                    {% assign pain = tag | split : '_'  %}                   
+                {% if pain contains 'epsom' %}
+                  {% unless product.title == 'エプソムソルト(3袋入り)' %}
+<p style="font-weight:bold;">Precautions for use of Epsom salt</p>
+   {% endunless %}
+<p class="m-zero topup">・Do not use for purposes other than bathing.</p>
+<p class="m-zero topup">・This product cannot be eaten. If swallowed, take appropriate measures such as drinking a large amount of water.</p>
+<p class="m-zero topup">・If you have an abnormality on your skin or body, consult a doctor before using.</p>
+<p class="m-zero topup">・Should you observe any skin abnormalities such as rash, redness, itchiness, or irritation during or after use, discontinue use and consult a specialist.</p>
+<p class="m-zero topup">・Although it does not contain sulfur components that may damage the bathtub, please wash it off immediately after use.</p>
+<p class="m-zero topup">・Some special baths, such as the 24-hour circulation system, may not be usable. Please contact each bathtub manufacturer.</p>
+<p class="m-zero topup">・Do not use leftover water from the bath for washing machine.</p>
+{% endif %}
+{% endfor %}
+</div>
+</div>
+</div>
+  {% elsif request.path contains '/zh/' %}
+  <!--/.accordion-content-->
+
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">使用注意事项</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+     {% unless product.title == 'エプソムソルト(3袋入り)' %}
+<p class="m-zero topup">・为避免任何皮肤问题请小心使用，如果出现肤质排斥反应，请停止使用，如产品与您的肤质不合，却继续使用化妆品可能会加重症状，建议咨询皮肤科医生。</p>
+<br>
+<p class="m-zero topup">1. 使用过程中出现皮肤发红、肿胀、瘙痒、刺激、脱色（如白斑）或变黑。</p>
+<p class="m-zero topup">2. 皮肤暴露在阳光直射下，出现上述异常情况。</p>
+<p class="m-zero topup">3. 不要在有皮肤原先就有问题的部位使用，如疤痕、肿胀、湿疹或红斑等部位。</p>
+<br>
+<p class="m-zero topup">・如果它喷入眼睛，请立即用清水或温水彻底冲洗。</p>
+  {% endunless %}
+
+    {% for tag in product.tags %}
+                    {% assign pain = tag | split : '_'  %}                   
+                {% if pain contains 'epsom' %}
+                  {% unless product.title == 'エプソムソルト(3袋入り)' %}
+<p style="font-weight:bold;">使用泻盐的注意事项</p>
+   {% endunless %}
+<p class="m-zero topup">・请勿用于入浴以外的用途。</p>
+<p class="m-zero topup">・本产品不可食用，如不慎食用，请饮用大量的水。</p>
+<p class="m-zero topup">・如有任何皮肤或身体问题，请在使用前咨询医生。</p>
+<p class="m-zero topup">・使用中或使用后出现皮疹、发红、瘙痒或刺激皮肤的症状，请停止使用并咨询医生。</p>
+<p class="m-zero topup">・本产品无硫磺成分并不会伤害浴缸，使用后请尽速冲洗浴缸。</p>
+<p class="m-zero topup">・如24小时循环浴槽等特殊浴缸无法使用，详细请询问浴缸制造商。</p>
+<p class="m-zero topup">・入浴后请勿使用剩水进行洗衣。</p>
+{% endif %}
+{% endfor %}
+</div>
+</div>
+</div>
+  {% else %}
+  <!--/.accordion-content-->
+
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">ご使用上の注意</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+     {% unless product.title == 'エプソムソルト(3袋入り)' %}
+<p class="m-zero topup">・お肌に異常が生じていないか、よく注意して使用してください。お肌に合わないとき即ち次のような場合には、使用を中止してください。そのまま化粧品類の使用を続けますと、症状を悪化させること がありますので、皮膚科専門医等にご相談されることをおすすめします。</p>
+<br>
+<p class="m-zero topup">1. 使用中、赤み、はれ、かゆみ、刺激、色抜け(白斑等)や黒ずみ等の異常があらわれた場合。</p>
+<p class="m-zero topup">2.使用したお肌に、直射日光があたって上記のような異常があらわれた場合。</p>
+<p class="m-zero topup">3.傷やはれもの、しっしん等、お肌に異常のある部分にはお使いにならないでください。</p>
+<br>
+<p class="m-zero topup">・目に入った場合は、すぐに水又はぬるま湯等で十分に洗い流してください。</p>
+  {% endunless %}
+
+    {% for tag in product.tags %}
+                    {% assign pain = tag | split : '_'  %}                   
+                {% if pain contains 'epsom' %}
+                  {% unless product.title == 'エプソムソルト(3袋入り)' %}
+<p style="font-weight:bold;">エプソムソルトの注意事項</p>
+   {% endunless %}
+<p class="m-zero topup">・入浴以外の用途に使用しないでください。</p>
+<p class="m-zero topup">・本品は食べられません。万一飲み込んだ場合は、大量の水を飲ませるなどの処理を行ってください。</p>
+<p class="m-zero topup">・皮膚あるいは体質に異常がある場合は、医師に相談してからご使用ください。</p>
+<p class="m-zero topup">・使用中や使用後、皮膚に発疹、発赤、かゆみ、刺激感等の異常が現れた場合、使用を中断し専門医にご相談ください。</p>
+<p class="m-zero topup">・浴槽を傷める可能性のある硫黄成分は入っていませんが、使用後は速やかに洗い流してください。</p>
+<p class="m-zero topup">・24時間循環方式など、一部特殊な風呂では使用不可の場合がございます。各浴槽メーカーにお問い合せください。</p>
+<p class="m-zero topup">・残り湯による洗濯はしないでください。</p>
+{% endif %}
+{% endfor %}
+</div>
+</div>
+</div>
+  {% endif %}

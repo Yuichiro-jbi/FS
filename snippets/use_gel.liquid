@@ -1,0 +1,16 @@
+{% if request.path contains '/en/' %}
+<div class="use">
+<p class="p-h3">How to use {% if product.title contains 'セット' or product.title contains 'キット' %}Calmness Cooling Gel{% endif %}</p>
+<p class="">After washing your face, apply this gel with enough thickness to cover the entire face. Leave for about 10 minutes and wash off , or gently wipe off with a cotton pad soaked with lotion. After that, use normal skin care.</p>
+</div>
+  {% elsif request.path contains '/zh/' %}
+<div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' or product.title contains 'キット' %}平静清凉胶囊{% endif %} 使用方法</p>
+<p class="">洗脸后，将面霜均匀地涂抹在整个脸部，厚度要足够覆盖整个皮肤。等待10分钟左右，然后用水冲洗或用含化妆水的棉片轻轻擦拭。之后请继续使用您平时的护肤程序。</p>
+</div>
+  {% else %}
+<div class="use">
+<p class="p-h3">カームネス クーリングジェルの使用方法</p>
+<p class="">洗顔後、顔全体に肌が充分覆われる程度の厚さに伸ばします。10分程時間をおき、洗い流すか、化粧水を含ませたコットンで優しく拭き取ってください。その後は通常のスキンケアをご使用ください。</p>
+</div>
+{% endif %}

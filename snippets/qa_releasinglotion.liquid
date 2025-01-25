@@ -1,0 +1,312 @@
+{% unless product.tags contains "ローションリニューアル" %}
+{% unless product.tags contains "wide-layout" %}
+<p class="inquiry-p">Q&amp;A {% if product.title contains 'セット' or product.title contains 'キット' %}(ブライテスト リリーシングローション){% endif %}</p>
+{% endunless %}
+<div id="accordion" class="accordion-container inquiry">
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どんな成分が配合されていますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">{% unless request.path contains 'faq' %}
+ A:上記「ブライテスト リリーシングローションの全成分」をご確認ください。
+    {% else %}
+     A:配合成分は商品ページにてご確認ください。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:変色・沈殿について</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:天然由来の原料を使用しており、色の変化や沈殿物が生じる場合がありますが、品質に影響はございませんので、安心してご使用いただけます。合成着色料不使用です。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どのような香りですか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:香料不使用ですが、ティーツリーや植物由来エキスの爽やかな香りです。</p>
+</div>
+</div>
+</div>
+  {% unless product.tags contains "サンプル" %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:1本でどれくらいの期間使えますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:「ブライテスト リリーシングローション」は目安の使用量で朝晩ご使用いただいた場合、{% if product.tags contains 'travel' %}{% if product.tags contains 'travel-set' %}約2ヶ月{% else %}約1週間{% endif %}{% else %}約2ヶ月{% endif %}ご使用いただけます。{% if product.tags contains 'travel-set' %}※トラベルキットについては約1週間分。{% endif %}</p>
+</div>
+</div>
+</div>
+    {% endunless %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:スキンケアの順番を教えてください</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:洗顔後、「ブライテスト ファーストエッセンス」のあと、「ブライテスト リリーシングローション」をご使用ください。そのあとはお手持ちの美容液やクリームをお好みでご使用ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どんな効果がありますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup"> {% unless request.path contains 'faq' %}
+  A:上記商品説明をご確認ください。
+     {% else %}
+     A:商品ページにてご確認ください。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:保存方法を教えてください。</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:高温多湿を避け、常温で保管ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:開封後の使用期限を教えてください。</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:開封後はお早めにご使用ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:敏感肌でも使えますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:敏感肌の方にもお使いいただける処方ではありますが、肌質には個人差がありますので、ご心配な方は上腕部内側でパッチテストをしてからお使いください。万が一、赤み痒み、ピリつきなどの刺激がある場合はすぐに水かぬるま湯で洗い流し、使用をお控えください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:合わせて使用しない方が良い商品・成分は<br class="sp">ありますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:併用できない成分等は特にございません。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:美顔器などの導入で使用してもいいですか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:導入用の製品ではございません。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:朝も使用できますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:紫外線を浴びることで肌の刺激になるような成分は配合されていませんので、安心して朝晩お使いください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:界面活性剤は入っていますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:「ブライテスト リリーシングローション」では、製造過程では界面活性剤を使用しておりませんが、原料自体に微量ながら含まれております。原料については肌に対する安全性を第一に考え、選択して使用しておりますので安心してご使用頂けます。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:鉱物油やパラベンは使用していますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:鉱物油・パラベンともに不使用です。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+</div>
+
+    
+{% else %}
+
+
+    
+{% unless product.tags contains "wide-layout" %}
+<p class="inquiry-p">Q&amp;A {% if product.title contains 'セット' or product.title contains 'キット' %}(ブライテスト リリーシングローションa){% endif %}</p>
+{% endunless %}
+<div id="accordion" class="accordion-container inquiry">
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どんな成分が配合されていますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">{% unless request.path contains 'faq' %}
+ A:上記「ブライテスト リリーシングローションaの全成分」をご確認ください。
+    {% else %}
+     A:配合成分は商品ページにてご確認ください。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:変色・沈殿について</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:天然由来の原料を使用しており、色の変化や沈殿物が生じる場合がありますが、品質に影響はございませんので、安心してご使用いただけます。合成着色料不使用です。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どのような香りですか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:香料不使用ですが、ティーツリーや植物由来エキスの爽やかな香りです。</p>
+</div>
+</div>
+</div>
+   {% unless product.tags contains "サンプル" %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:1本でどれくらいの期間使えますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:「ブライテスト リリーシングローションa」は目安の使用量で朝晩ご使用いただいた場合、{% if product.tags contains 'travel' %}{% if product.tags contains 'travel-set' %}約2ヶ月{% else %}約1週間{% endif %}{% else %}約2ヶ月{% endif %}ご使用いただけます。{% if product.tags contains 'travel-set' %}※トラベルキットについては約1週間分。{% endif %}</p>
+</div>
+</div>
+</div>
+  {% endunless %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:スキンケアの順番を教えてください</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:洗顔後、「ブライテスト ファーストエッセンスa」のあと、「ブライテスト リリーシングローションa」をご使用ください。そのあとはお手持ちの美容液やクリームをお好みでご使用ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どんな効果がありますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup"> {% unless request.path contains 'faq' %}
+  A:上記商品説明をご確認ください。
+     {% else %}
+     A:商品ページにてご確認ください。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:保存方法を教えてください。</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:高温多湿を避け、常温で保管ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:開封後の使用期限を教えてください。</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:開封後はお早めにご使用ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:敏感肌でも使えますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:アレルギーテスト<small>※1</small>及び皮膚刺激性テスト<small>※2</small>を実施しております。敏感肌の方にもお使いいただける処方ではありますが、肌質には個人差がありますので、ご心配な方は上腕部内側でパッチテストをしてからお使いください。万が一、赤み痒み、ピリつきなどの刺激がある場合はすぐに水かぬるま湯で洗い流し、使用をお控えください。
+<br>
+<small>※1全ての方にアレルギーが起こらないということではありません。</small><br>
+<small>※2 全ての方に皮膚刺激が発生しないということではありません。</small></p></div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:合わせて使用しない方が良い商品・成分は<br class="sp">ありますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:併用できない成分等は特にございません。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:美顔器などの導入で使用してもいいですか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:導入用の製品ではございません。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:朝も使用できますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:紫外線を浴びることで肌の刺激になるような成分は配合されていませんので、安心して朝晩お使いください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:界面活性剤は入っていますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:「ブライテスト リリーシングローションa」では、製造過程では界面活性剤を使用しておりませんが、原料自体に微量ながら含まれております。原料については肌に対する安全性を第一に考え、選択して使用しておりますので安心してご使用頂けます。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:鉱物油やパラベンは使用していますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:鉱物油・パラベンともに不使用です。</p>
+</div>
+</div>
+</div>
+  <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:エタノールは配合していますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:エタノールは配合していません。</p>
+</div>
+</div>
+</div>
+   <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:動物性原料は使用していますか？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:動物性原料は不使用です。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+</div>
+    {% endunless %}

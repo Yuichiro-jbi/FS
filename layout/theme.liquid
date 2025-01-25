@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en" fontify-lang="{{ shop.locale }}">
+<!--<![endif]-->
+<head>
+
+	<meta charset="utf-8">
+
+	<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+{% if template.name == 'index' %}
+<title>FATUITE</title>
+{% elsif product.url contains 'brightest-firstessence' %}
+<title>FATUITE | {{ page_title }}</title>
+  {% elsif request.path contains 'noindex' %}
+<title>noindex</title>
+{% elsif product.url contains 'brightest-releasinglotion' %}
+<title>FATUITE | {{ page_title }}</title>
+{% elsif collection.url contains 'products' %}
+<title>FATUITE | {{ page_title }}</title>
+{% else %}
+<title>{{ page_title }}</title>
+{% endif %}
+
+  {% if handle contains 'noindex' or handle contains "1kjchgythes" or product.path contains "out-of-stock" %}
+<meta name="robots" content="noindex">
+{% endif %}
+
+  {% if request.path contains "fahdkjfhadafnlkdj" %}
+  {{ 'register-custom2.js' | asset_url | script_tag }}
+    {% else %}
+    {{ 'register-custom.js' | asset_url | script_tag }}
+  {% endif %}
+	
+
+   <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TGV2TDM');</script>
+<!-- End Google Tag Manager -->
+
+
+	<script type="text/javascript">
+		document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+	</script>
+
+	{% if page_description %}
+	<meta name="description" content="{{ page_description | escape }}">
+	{% endif %}
+
+	{% if template contains 'product' %}
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	{% else %}
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{% endif %}
+
+	{% render 'social-meta-tags' %}
+	{% render 'css-variables' %}
+
+	<link rel="canonical" href="{{ canonical_url }}" />
+
+
+	<!-- CSS -->
+	{% render 'css-variables' %}
+
+	{% if template == 'index' %}
+  		<link rel="preload" href="{{ 'theme-index.min.css' | asset_url }}" as="style">
+		{{ 'theme-index.min.css' | asset_url | stylesheet_tag }}
+	{% elsif template == 'collection' %}
+	    <link rel="preload" href="{{ 'theme-collection.min.css' | asset_url }}" as="style">
+	    {{ 'theme-collection.min.css' | asset_url | stylesheet_tag }}
+	{% elsif template == 'list-collections' %}
+	    <link rel="preload" href="{{ 'theme-collection-list.min.css' | asset_url }}" as="style">
+	    {{ 'theme-collection-list.min.css' | asset_url | stylesheet_tag }}
+	{% elsif template == 'product' %}
+		<link rel="preload" href="{{ 'theme-product.min.css' | asset_url }}" as="style">
+	  	{{ 'theme-product.min.css' | asset_url | stylesheet_tag }}
+	{% elsif template == 'blog' %}
+		<link rel="preload" href="{{ 'theme-blog.min.css' | asset_url }}" as="style">
+	  	{{ 'theme-blog.min.css' | asset_url | stylesheet_tag }}
+	{% elsif template == 'cart' %}
+		<link rel="preload" href="{{ 'theme-cart.min.css' | asset_url }}" as="style">
+	  	{{ 'theme-cart.min.css' | asset_url | stylesheet_tag }}
+	{% else %}
+		<link rel="preload" href="{{ 'theme.min.css' | asset_url }}" as="style">
+	  	{{ 'theme.min.css' | asset_url | stylesheet_tag }}
+	{% endif %}
+
+	{{ 'custom.css' | asset_url | stylesheet_tag }}
+
+	{% render 'font-links' %}
+
+	{% if settings.favicon != blank %}
+		<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+	{% endif %}
+
+	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+
+  
+	{{ content_for_header }} 
+ 
+
+	<script type="text/javascript">
+	window.lazySizesConfig = window.lazySizesConfig || {};
+	window.lazySizesConfig.rias = window.lazySizesConfig.rias || {};
+
+	// configure available widths to replace with the {width} placeholder
+	window.lazySizesConfig.rias.widths = [150, 300, 600, 900, 1200, 1500, 1800, 2100];
+
+	window.wetheme = {
+		name: 'Envy',
+	};
+	</script>
+
+	{% if template contains 'customers' %}
+		{{ "shopify_common.js" | shopify_asset_url | script_tag }}
+		{{ "customer_area.js" | shopify_asset_url | script_tag }}
+	{% endif %}
+
+	<script defer type="module" src="{{ 'theme.min.js' | asset_url }}"></script>
+	<script defer nomodule src="{{ 'theme.legacy.min.js' | asset_url }}"></script>
+
+  {%- comment -%} 
+    {%- if shop.metafields.loyalty['stealth_mode'] == "false" -%}
+      {{ 'easy_points.css' | asset_url | stylesheet_tag }}
+      {{ 'easy_points.js' | asset_url | script_tag }}
+    {%- endif -%}
+{{ 'ndnapps-easyfaqs.css' | asset_url | stylesheet_tag }}
+ {%- endcomment -%}
+{% comment %}Do not edit this line{% endcomment %}
+{% render '_hasigo-pre-order-v0.0.8.liquid', product: product, api_host: 'pre-order.app.growth.ec', assets_host: 'assets-pre-order.app.growth.ec', theme_snippet_version: 'v0.0.8' %}
+{% comment %}Do not edit this line{% endcomment %}
+
+  
+ 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+{% render '_hasigo-sales-period-v0.0.8.liquid', product: product, api_host: 'sales-period.app.growth.ec', assets_host: 'assets-sales-period.app.growth.ec', theme_snippet_version: 'v0.0.8' %}
+
+     {% if customer %}
+  <script>
+    window.customerTags = {{ customer.tags | json }};
+  </script>
+{% else %}
+  <script>
+    window.customerTags = [];
+  </script>
+{% endif %}
+
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S7SYCTH24B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S7SYCTH24B');
+</script>
+</head>
+
+<body
+	id="{{ page_title | handle }}"
+	class="page-title--{{ page_title | handle }} {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} flexbox-wrapper{% unless settings.animations_enabled %} animations-disabled{% endunless %} "
+>
+  
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGV2TDM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  
+
+	{% if template != 'cart' %}
+		{% render 'cart-drawer' %}
+	{% endif %}
+
+	<div id="main-body">
+
+		<div id="slideout-overlay"></div>
+
+   
+{% section 'announcement-bar' %}
+{% section 'announcement-bar-2' %}
+{% section 'announcement-bar-3' %}
+      
+		{% section 'header' %}
+		<main id="main">
+
+			{% unless template == "index" or template == "collection" %}
+				<div class="container">
+			{% endunless %}
+
+			{{ content_for_layout }}
+
+			{% unless template == "index" or template == "collection" %}
+				</div>
+			{% endunless %}
+
+		</main>
+
+		{% section 'footer' %}
+	</div>
+
+	{% render 'verification-popup' %}
+	{% render 'popup' %}
+
+	<script type="application/json" id="wetheme-global">
+		{
+			{% comment %}Translations that will be used in javascript section handling{% endcomment %}
+			"translations": {
+				"addToCart": {{ 'products.product.add_to_cart' | t | json }},
+				"added": {{ 'products.product.added' | t | json }},
+				"soldOut": {{ 'products.product.sold_out' | t | json }},
+				"unavailable": {{ 'products.product.unavailable' | t | json }},
+				"makeASelection": {{ 'products.product.make_a_selection' | t | json }},
+				"showMore": {{ 'general.filters.show_more' | t | json }},
+				"showLess": {{ 'general.filters.show_less' | t | json }},
+				"saving": {{ 'products.general.saving' | t | json }},
+				"products": {{ 'general.search.products' | t | json }},
+		        "pages": {{ 'general.search.pages' | t | json }},
+		        "collections": {{ 'general.search.collections' | t | json }},
+		        "articles": {{ 'general.search.articles' | t | json }},
+		        "loading": {{ 'collections.paginate.loading' | t | json }},
+		        "no_results_html": {{ 'general.search.no_results_html' | t | json }},
+		        "view_all": {{ 'general.search.view_all' | t | json }},
+		        "clear": {{ 'general.search.clear' | t | json }},
+		        "cart_title": {{ 'cart.general.title' | t | json }},
+		        "cart_subtotal": {{ 'cart.general.subtotal' | t | json }},
+		        "added_to_cart": {{ 'cart.general.added_to' | t | json }},
+		        "removed_from_cart": {{ 'cart.general.removed_from' | t | json }},
+		        "cart_item": {{ 'cart.general.item' | t | json }},
+		        "slide": {{ 'general.slider.slide' | t | json }},
+		        "pause": {{ 'general.slider.pause' | t | json }},
+		        "search_found": {{ 'general.search.search_found' | t | json }},
+		        "none_found": {{ 'general.search.none_found' | t | json }},
+		        "search_result": {{ 'general.search.search_result' | t | json }},
+		        "search_result_plural": {{ 'general.search.search_result_plural' | t | json }}
+			},
+			"moneyFormat": {{ shop.money_format | json }}
+		}
+	</script>
+
+</body>
+{{ 'common.js' | asset_url | script_tag }} 
+</html>
+
+{% if request.path contains "edit-account" %}
+{{ 'edit.js' | asset_url | script_tag }}
+  {% endif %}

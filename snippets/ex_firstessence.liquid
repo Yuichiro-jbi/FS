@@ -1,0 +1,53 @@
+
+
+  {% unless product.tags contains "ファーストエッセンスリニューアル" %}
+ {% if product.title contains 'セット' %}<p class="p-t">ブライテスト ファーストエッセンス</p>{% endif %}
+<h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">内側から発光するような透明感へのファーストステップ</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">内側から輝き放つ発光肌を目指して、透明感を阻害する要因の生成過程やエイジングの根本原因に着目した高機能美容液。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">洗顔後のまっさらな肌に素早くなじみ、うるおってもっちりとした肌に整えます。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">使いやすいスプレーディスペンサーでジェリー状の美容液が肌へ均一にひろがります。</span></p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'travel' %}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:15mL(約1週間分)</span></p>
+{% else %}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:120mL(約2ヶ月分)</span></p>
+{% if product.tags contains 'travel-set'%}<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">トラベルキット：容量:15mL(約1週間分)</span></p> {% endif %}
+{% endif %}
+<p data-mce-fragment="1">・石油系界面活性剤フリー<br data-mce-fragment="1">・合成香料/合成着色料フリー<br data-mce-fragment="1">・鉱物油フリー<br data-mce-fragment="1">・パラベンフリー<br data-mce-fragment="1">・動物由来原料フリー</p>
+{% else %}
+ {% if product.title contains 'セット' %}<p class="p-t">ブライテスト ファーストエッセンスa</p>{% endif %}
+<h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">瞬間、透明感。</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">内側から発光するような透明感へ素早く導く、高機能ブースター美容液。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">進化した「７Dブライトニングコンプレックス」がくすみの原因を多角的にケア。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">黄ぐすみの要因となる酸化・糖化・炎症や肌の透明感に大きく影響を与える毛穴ノイズにも着目。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">さらにブースター効果によって、次に使用するアイテムの肌なじみを高め、もっちりと吸い付くような肌に整えます。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">スプレーで均一にひろがるジェリー状美容液が、洗顔後のまっさらな肌に素早くなじみ、角層細胞のにごりをクリアに導くことで、うるおい輝く透明感を叶えます。</span></p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'travel' %}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:15mL(約1週間分)</span></p>
+{% elsif product.tags contains 'サンプル'%}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:2mL(1回分)</span></p>
+  {% else %}
+<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:120mL(約2ヶ月分)</span></p>
+{% if product.tags contains 'travel-set'%}<p class="txt-m" data-mce-fragment="1"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">トラベルキット：容量:15mL(約1週間分)</span></p> {% endif %}
+{% endif %}
+<p data-mce-fragment="1">
+・石油系界面活性剤フリー<br>
+・合成香料フリー<br>
+・合成着色料フリー<br>
+・鉱物油フリー<br>
+・シリコーンフリー<br>
+・動物性原料フリー<br>
+・金属封鎖剤フリー
+</p>
+  <p>
+<br>◆アレルギーテスト済み※1<br>
+◆皮膚刺激性テスト済み※2<br>
+◆ニキビになりにくい処方（ノンコメドジェニックテスト済み）※3<br>
+
+<small>※1 全ての方にアレルギーが起こらないということではありません。</small><br>
+<small>※2 全ての方に皮膚刺激が発生しないということではありません。</small><br>
+<small>※3 全ての方にコメド（ニキビのもと）が発生しないということではありません。</small>
+  </p>
+
+    {% endunless %}

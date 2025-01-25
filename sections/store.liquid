@@ -1,0 +1,212 @@
+<style>
+ .entry-content p{
+    font-family: YuGothic, "Yu Gothic Medium", "Yu Gothic", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, Verdana, Meiryo, sans-serif !important;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .entry-content {
+    max-width: 1000px;
+    margin: 35px auto 10px !important;
+    display: flex;
+    /* gap: 5%; */
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+  .store-wrap{
+    width: 48%;
+    margin-bottom: 50px;
+  }
+
+   h1{
+    font-family: 'F37Bergman-bold' !important;
+  }
+  
+.custom-h1 {
+    margin: 0 20px;
+    font-size: 2em;
+}
+
+.shop-img {
+    width: 100%;
+    max-height: 500px;
+    display: block;
+    margin: 20px 0;
+    object-fit: cover;
+}
+
+.sp-img {
+    display: none; /* モバイル用の画像はデフォルトで非表示 */
+}
+
+.shop-info {
+    padding: 20px;
+    border: 1px solid #eee;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+address {
+    font-style: normal;
+    margin-bottom: 20px;
+}
+
+.g-map {
+    width: 100%;
+    border: none;
+}
+
+.shop-ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.reserve-btn {
+    background-color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.reserve-btn a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.shop-s {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 20px;
+}
+
+  .c-shop__map {
+   display: flex;
+    align-items: center;
+    font-family: Inter,sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1;
+    background-color: #ebebeb;
+    border-radius: 5px;
+    padding: 5px 10px 5px 5px;
+    margin-bottom: 10px;
+    max-width: 200px;
+    text-align: center;
+    justify-content: center;
+}
+
+  .c-shop__map:before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0527/6060/8917/files/map.png?v=1694613990);
+}
+
+  @media screen and (max-width:798px) {
+  .entry-content {
+    max-width: 1000px;
+    margin: 35px auto 10px !important;
+    display: block;
+    /* gap: 5%; */
+    justify-content: space-around;
+}
+
+  .store-wrap{
+    width: 100%;
+    margin-bottom: 50px;
+  }
+ 
+}
+ 
+</style>
+
+{% schema %}
+{
+  "name": "店舗情報",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "店舗",
+      "settings": [
+        {
+          "type": "text",
+          "id": "store_name",
+          "label": "店舗名"
+        },
+        {
+          "type": "text",
+          "id": "store_address",
+          "label": "住所"
+        },
+        {
+          "type": "text",
+          "id": "store_hours",
+          "label": "営業時間"
+        },
+        {
+          "type": "text",
+          "id": "store_phone",
+          "label": "電話番号"
+        },
+        {
+          "type": "text",
+          "id": "store_phone2",
+          "label": "電話番号"
+        },
+        {
+          "type": "image_picker",
+          "id": "store_image",
+          "label": "店舗画像"
+        },
+        {
+          "type": "url",
+          "id": "google_map_url",
+          "label": "Google Map URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "店舗情報"
+    }
+  ]
+}
+{% endschema %}
+
+<article id="{{page.handle}}" class="page hentry">
+  <header>
+    <div class="title-bar custom-font">
+      <h1 class="main-heading">STORE</h1>
+    </div>
+  </header>
+
+  <section class="entry-content">
+    {% for block in section.blocks %}
+    <div class="store-wrap">
+      {% if block.settings.store_image %}
+      <img src="{{ block.settings.store_image | img_url: '1024x1024' }}" alt="{{ block.settings.store_name }}" class="shop-img">
+        {% endif %}
+      <h2>{{ block.settings.store_name }}</h2>
+      <p>
+        <span style="margin-bottom:15px; display:inline-block;">{{ block.settings.store_address }}</span>
+        <span style="margin-bottom:15px; display:block;">{{ block.settings.store_hours }}</span>
+        <span style="display:block;"><a href="tel:{{ block.settings.store_phone2 }}">電話番号：{{ block.settings.store_phone }}</a></span>
+        <a class="c-shop__map" href="{{ block.settings.google_map_url }}" target="_blank" style="margin-top:15px;">Google Map</a>
+      </p>
+    </div>
+    {% endfor %}
+  </section>
+</article>

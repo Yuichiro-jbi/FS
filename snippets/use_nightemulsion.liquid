@@ -1,0 +1,11 @@
+  {% unless product.tags contains "ナイトエマルジョンリニューアル" %}
+<div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' %}ブライテスト エナジャイジングナイトエマルジョンの{% endif %}使用方法</p>
+<p class="">夜のスキンケアの最後に、パール粒2つくらいの量を顔と首に優しくなじませてください。<br>目安の使用量で毎晩ご使用いただいた場合、{% if product.tags contains 'travel' %}約1週間{% else %}約2ヶ月{% endif %}ご使用いただけます。</p>
+</div>
+ {% else %}
+<div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' %}ブライテスト エナジャイジングナイトエマルジョンaの{% endif %}使用方法</p>
+<p class="">夜のスキンケアの最後に、顔から首に2~3プッシュを目安に優しくなじませてください。<br>目安の使用量で毎晩ご使用いただいた場合、{% if product.tags contains 'travel' %}約1週間{% else %}約2ヶ月{% endif %}ご使用いただけます。</p>
+</div>
+    {% endunless %}

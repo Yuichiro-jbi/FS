@@ -1,0 +1,110 @@
+
+<div class="index-section category">
+
+{%- if section.settings.title != blank -%}
+    <div class="section-header">
+      <p class="subt">{{ section.settings.subtitle }}</p>
+      <h2 class="section-header__title sptitle" style="text-align:center;">{{ section.settings.title }}</h2>
+    </div>
+  {%- endif -%}
+ 
+  
+  <ul id="" class="linktree">
+    {%- for block in section.blocks -%}
+        <a class="the-link" href="{{ block.settings.link}}">
+        <li class="link-link"> <img class="cg-img" src="{{block.settings.image | img_url : "master" }}" alt=""><p class="menu-p">{{block.settings.menu_text}}</p></li>
+          </a>
+    {%endfor%}
+    </ul>  
+</div>
+
+<style>
+.link-link{
+      list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+  .link-link .menu-p{
+    margin:0px 15px;
+    font-size:13px;
+    font-weight:bold;
+  }
+
+  .linktree{
+    padding:0px;
+    max-width:500px;
+     margin:20px auto;
+  }
+
+  .link-link img{
+    max-width:70px;
+    border-radius: 50%;
+  }
+
+  .the-link{
+  display: block;
+    margin: 40px auto;
+    padding: 10px;
+    border: 1px solid;
+  }
+
+  @media screen and (max-width: 601px) {
+  .link-link .menu-p{
+    margin:0px 15px;
+    font-size:12px;
+    font-weight:bold;
+  }
+  }
+
+  </style>
+
+{% schema %}
+  {
+    "name": "CLOSE-UP リンク",
+    "settings": [
+ {
+        "type": "text",
+        "id": "subtitle",
+        "label": "サブタイトル",
+        "default": "サブタイトル"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "タイトル",
+        "default": "CLOSE-UP LINK"
+      }],
+  "blocks" : [
+      {
+        "type": "category",
+        "name": "カテゴリー",
+        "settings": [
+      {
+        "type": "liquid",
+        "id": "menu_text",
+        "label": "リンクテキスト",
+        "default": "MENU"
+      },
+           {
+        "type": "url",
+        "id": "link",
+        "label": "リンクurl"
+      },
+{
+            "type": "image_picker",
+            "id": "image",
+            "label": "画像"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

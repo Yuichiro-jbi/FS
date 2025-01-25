@@ -1,0 +1,98 @@
+{% if request.path contains '/en/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">All components {% if product.tags contains 'セット' or product.title contains 'キット'%}Spots Concentrate Serum{% endif %}</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">Aqua,
+Butylene Glycol,
+Glycerin,
+Triethylhexanoin,
+Pentylene Glycol,
+Sorbitol,
+Bakuchiol,
+Pistacia Lentiscus (Mastic) Gum,
+Allantoin,
+Dipotassium Glycyrrhizate,
+Centella Asiatica Extract,
+Scutellaria Baicalensis Root Extract,
+Polygonum Cuspidatum Root Extract,
+Glycyrrhiza Glabra (Licorice) Root Extract,
+Camellia Sinensis Leaf Extract,
+Rosmarinus Officinalis (Rosemary) Leaf Extract,
+Chamomilla Recutita (Matricaria) Flower Extract,
+Isomalt,
+Lecithin,
+Tocopherol,
+Caprylic/Capric Triglyceride,
+Glyceryl Stearate,
+Polyglyceryl-10 Myristate,
+Xanthan Gum,
+Carbomer,
+Acrylates/C10-30 Alkyl Acrylate Crosspolymer,
+Disodium Edta,
+Glyceryl Caprylate,
+Phenoxyethanol,
+Ethylhexylglycerin,
+Potassium Hydroxide,
+Glycine Soja (Soybean) Oil</p></div>
+</div>
+</div>
+
+  {% elsif request.path contains '/zh/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">{% if product.tags contains 'セット' or product.title contains 'キット'%}斑点浓缩精华液 {% endif %}所有成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">水,
+丁二醇,
+甘油,
+甘油三（乙基己酸）酯,
+1,2-戊二醇,
+山梨（糖）醇,
+補⾻脂酚,
+粘胶乳香树（PISTACIA LENTISCUS）胶,
+尿囊素,
+甘草酸二钾,
+积雪草（CENTELLA ASIATICA）提取物,
+黄芩（SCUTELLARIA BAICALENSIS）根提取物,
+虎杖（POLYGONUM CUSPIDATUM）根提取物,
+光果甘草（GLYCYRRHIZA GLABRA）根提取物,
+茶（CAMELLIA SINENSIS）叶提取物,
+迷迭香（ROSMARINUS OFFICINALIS）叶提取物,
+母菊（CHAMOMILLA RECUTITA）花提取物,
+异麦芽,
+卵磷脂,
+生育酚（维生素E）,
+辛酸/癸酸甘油三酯,
+甘油硬脂酸酯,
+聚甘油-10 肉豆蔻酸酯,
+黄原胶,
+卡波姆,
+丙烯酸（酯）类/C10-30 烷醇丙烯酸酯交联聚合物,
+EDTA 二钠,
+甘油辛酸酯,
+苯氧乙醇,
+乙基己基甘油,
+氢氧化钾,
+野大豆（GLYCINE SOJA）油</p></div>
+</div>
+</div>
+
+  {% else %}
+
+
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title"> {% if product.title contains 'セット' %}リニューアレイジ グロウマスクの{% endif %}全成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="p1">
+水、BG、グリセリン、トリエチルヘキサノイン、ベンチレングリコール、ソル ビトール、バクチオール、マスチック樹脂、アラントイン、グリチルリチン酸 2K、ツボクサエキス、オウゴン根エキス、イタドリ根エキス、カンゾウ根エ キス、チャ葉エキス、ローズマリー葉エキス、カミツレ花エキス、イソマルト、 レシチン、トコフェロール、トリ(カプリル酸/カプリン酸)グリセリル、ステ アリン酸グリセリル、ミリスチン酸ポリグリセリル -10、キサンタンガム、カ 
+ルボマー、(アクリレーツ/アクリル酸アルキル(C10-30))クロスポリマー、 EDTA-2Na、(カプリル酸／カプリン酸)グリセリル、フェノキシエタノール、エチルヘキシ ルグリセリン、水酸化K、ダイズ油
+</p>
+</div>
+</div>
+</div>
+  {% endif %}

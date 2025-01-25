@@ -1,0 +1,11 @@
+<div class="product-grid--pricing--price-per-unit">
+  {%- if variant.unit_price_measurement -%}
+    (<span class="money"><span class='ymq-b2b-price-hidden' ymq-b2b-product-id='{{ product.id }}' ymq-b2b-product-handle='{{ product.handle }}' ymq-b2b-variant-price ymq-b2b-variant-id='{{ variant.id }}' >{{ variant.unit_price | money }}</span></span>
+    <span> / </span>
+    {%- if variant.unit_price_measurement.reference_value != 1 -%}
+      {{- variant.unit_price_measurement.reference_value -}}
+    {%- endif -%}
+    {{ variant.unit_price_measurement.reference_unit }})
+  {%- endif -%}
+</div>
+{% comment %}<!-- ymq b2b done -->{% endcomment %}

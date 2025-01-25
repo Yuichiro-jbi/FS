@@ -1,0 +1,270 @@
+
+<style>
+  .egift_page {
+    text-align: center;
+  }
+  .egift_page--top {
+    position: relative;
+  }
+  .egift_page--top--text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 6.4vw;
+    color: #fff;
+    font-weight: bold;
+    font-size: 3.6vw;
+  }
+  .egift_page--note {
+    padding: 80px 0 20px;
+    font-size: 33px;
+  }
+  .egift_page--section1 {
+    padding: 30px 0;
+  }
+  .egift_page--section1--title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .egift_page--section1--content {
+    padding: 15px 0;
+    font-size: 16px;
+  }
+  .egift_page--section1--text {
+    font-size: 18px;
+  }
+  .egift_page--section1--explanation {
+    padding: 20px 0
+  }
+  .egift_page--section2 {
+    padding: 50px 0;
+  }
+  .egift_page--section2--title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .egift_page--section2--content {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .egift_page--section2--content--1,
+  .egift_page--section2--content--2,
+  .egift_page--section2--content--3 {
+    padding: 0 15px;
+/*     width: 370px; */
+    max-width: 370px;
+    width: 100%;
+  }
+  .egift_page--section2--content--1--text,
+  .egift_page--section2--content--2--text,
+  .egift_page--section2--content--3--text {
+    font-size: 14px;
+    padding: 10px 0 20px;
+  }
+  .egift_page--section3 {
+    padding-bottom: 50px;
+  }
+  .egift_page--section3--title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .egift_page--section3--content {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .egift_page--section3--content--1,
+  .egift_page--section3--content--2,
+  .egift_page--section3--content--3 {
+    padding: 0 15px;
+    width: 370px;
+    max-width: 370px;
+    width: 100%;
+  }
+  .egift_page--section3--content--1--text,
+  .egift_page--section3--content--2--text,
+  .egift_page--section3--content--3--text {
+    font-size: 14px;
+    padding: 10px 0 20px;
+  }
+  .visible-xs {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .egift_page--top--text {
+      bottom: 0.4vw;
+      font-size: 6.2vw;
+    }
+    .egift_page--note {
+      font-size: 20px;
+    }
+    .egift_page--section1--content {
+      font-size: 14px;
+    }
+    .egift_page--section1--text {
+      font-size: 16px;
+    }
+    .egift_page--section1--explanation {
+      padding: 10px 0;
+    }
+    .egift_page--section1--explanation img {
+      max-width: 100%;
+    }
+    .egift_page--section2--content {
+      padding: 50px 0 0;
+      font-size: 14px;
+      display: block;
+    }
+    .egift_page--section2--content--1,
+    .egift_page--section2--content--2,
+    .egift_page--section2--content--3 {
+      padding: 20px 0;
+      margin: 0 auto;
+    }
+    .egift_page--section2--content img {
+      padding-bottom: 18px;
+    }
+    .egift_page--section3--content {
+      font-size: 14px;
+      display: block;
+    }
+    .egift_page--section3--content--1,
+    .egift_page--section3--content--2,
+    .egift_page--section3--content--3 {
+      padding: 20px 0;
+      margin: 0 auto;
+    }
+    .egift_page--section3--content img {
+      padding-bottom: 18px;
+    }
+    .visible-xs {
+      display: block;
+    }
+  }
+</style>
+
+<div class="egift_page">
+  <div class="egift_page--top">
+    <img width="100%" src="{{ 'eGift_Top.jpg' | asset_url }}" alt="">
+  </div>
+  
+  <div class="egift_page--note">
+    大切な方やご家族、ご友人へのギフトに<br>
+    FATUITEのアイテムを
+  </div>
+
+  <div class="egift_page--section1">
+    <div class="egift_page--section1--title">
+      eギフトとは
+    </div>
+    <div class="egift_page--section1--content">
+      相手の住所を知らなくても、<br class="visible-xs">LINEやメールなどオンライン上で<br>
+      URLを送ることで手軽にギフトを贈れるサービスです
+    </div>
+    <div class="egift_page--section1--note">
+      <img width="160" src="{{ 'eGift_Note.png' | asset_url }}" alt="">
+    </div>
+    <div class="egift_page--section1--explanation">
+      <img width="900" src="{{ 'eGift_Explanation.png' | asset_url }}" alt="">
+    </div>
+  </div>
+
+  <div class="egift_page--section2">
+    <div class="egift_page--section2--title">
+      eギフトの贈り方
+    </div>
+    <div class="egift_page--section2--content">
+      <div class="egift_page--section2--content--1">
+        <div class="egift_page--section2--content--1--title">
+          <img width="280" src="{{ 'eGift_Title1.png' | asset_url }}" alt="">
+        </div>
+        <div class="egift_page--section2--content--1--text">
+          商品ページからお届け方法として、「住所を知らない<br>
+          相手にプレゼントとして購入する(eギフト)」<br>
+          を選択すると、お相手の方にeギフトで贈れます。
+        </div>
+        <div class="egift_page--section2--content--1--image">
+          <img width="235" src="{{ 'eGift_HowtoSend_sp_01.png' | asset_url }}" alt="">
+        </div>
+      </div>
+      <div class="egift_page--section2--content--2">
+        <div class="egift_page--section2--content--2--title">
+          <img width="240" src="{{ 'eGift_Title2.png' | asset_url }}" alt="">
+        </div>
+        <div class="egift_page--section2--content--2--text">
+          購入完了で、eギフトのURLが発行されます。<br>
+          完了画面でURLのコピーや、贈られる方の<br>
+          ページを確認することが可能です。
+        </div>
+        <div class="egift_page--section2--content--1--image">
+          <img width="240" src="{{ 'eGift_HowtoSend_sp_03.png' | asset_url }}" alt="">
+        </div>
+      </div>
+      <div class="egift_page--section2--content--3">
+        <div class="egift_page--section2--content--3--title">
+          <img width="240" src="{{ 'eGift_Title3.png' | asset_url }}" alt="">
+        </div>
+        <div class="egift_page--section2--content--3--text">
+          LINE、Facebook、Twitter<br>
+          Instagramなど各種SNSや、メール経由で<br>
+          eギフトを贈ることができます。
+        </div>
+        <div class="egift_page--section2--content--1--image">
+          <img width="230" src="{{ 'eGift_HowtoSend_sp_04.png' | asset_url }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="egift_page--section3">
+    <div class="egift_page--section3--title">
+      eギフトの受け取り方
+    </div>
+    <div class="egift_page--section3--content">
+      <div class="egift_page--section3--content--1">
+        <div class="egift_page--section3--content--1--title">
+          <img width="200" src="{{ 'eGift_Title4.png' | asset_url }}" alt="">
+        </div>
+        <div class="egift_page--section3--content--1--text">
+          URLをタップすると、受け取り画面が表示されるので<br>
+          「eギフトを受け取る」 をタップして<br>
+          お届け先情報の入力に進みます。
+        </div>
+        <div class="egift_page--section3--content--1--image">
+          <img width="240" src="{{ 'eGift_HowtoReceive_sp_01.png' | asset_url }}" alt="">
+        </div>
+      </div>
+      <div class="egift_page--section3--content--2">
+        <div class="egift_page--section3--content--2--title">
+          <img width="200" src="{{ 'eGift_Title5.png' | asset_url }}" alt="">
+        </div>
+        <div class="egift_page--section3--content--2--text">
+          URLを受け取った方は、登録不要で<br>
+          お届け先情報を入力するだけで配送されます。<br>
+          ※ 入力した情報は、贈り主にはわかりません。
+        </div>
+        <div class="egift_page--section3--content--1--image">
+          <img width="240" src="{{ 'eGift_HowtoReceive_sp_02.png' | asset_url }}" alt="">
+        </div>
+      </div>
+      <div class="egift_page--section3--content--3">
+        <div class="egift_page--section3--content--3--title">
+          <img width="220" src="{{ 'eGift_Title6.png' | asset_url }}" alt="">
+        </div>
+        <div class="egift_page--section3--content--3--text">
+          入力した住所宛にギフトが発送されます。<br>
+          <br>
+          贈られた方は住所を入力するのみで、<br>
+          ギフトを受け取ることが可能です。
+        </div>
+        <div class="egift_page--section3--content--1--image">
+          <img width="260" src="{{ 'eGift_HowtoReceive_sp_03.png' | asset_url }}" alt="">
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>

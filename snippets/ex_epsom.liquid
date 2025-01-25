@@ -1,0 +1,50 @@
+{% if request.path contains '/en/' %}
+  
+<h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Full of Beauty. Luxurious Bath Time</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">A bath salt that improves the skin texture and make it smooth and supple.</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It improves the circulation and leads to healthy skin with a good complexion from the inside.</span></p>
+<p style="margin-top: 20px;">Based on tea tree, with the addition of sweet and warm fragrance such as fig, yuzu, and cypress, it is a scent that will make you feel relaxed, with the image of a luxurious time in winter.</p>
+<p style="margin-top: 20px;">It is recommended to take a bath for about 15 to 20 minutes.</p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'salt3' %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Amount : 300g (100g x 3 bags)</span></p>
+{% elsif product.tags contains 'salt1' %}
+  <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Amount : 100g (100g x 1 bags)</span></p>
+{% else %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Amount : 1,000g (10 times)</span></p>
+{% endif %}
+  
+  {% elsif request.path contains '/zh/' %}
+  
+   <h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">缠绕美的光辉，享受奢华沐浴时光</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">改善肌肤肤质，使肌肤轻盈柔软。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">调节血液循环，由内而外的散发自然健康气色。</span></p>
+<p style="margin-top: 20px;">在茶树的基础上加入无花果、柚子和桧木等甜蜜温和清香，得到舒缓心情，唤醒奢华的冬日体验。</p>
+<p style="margin-top: 20px;">推荐入浴时间为15-20分钟。</p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'salt3' %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量：300克（3袋100克）。</span></p>
+{% elsif product.tags contains 'salt1' %}
+  <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量：100克（1袋100克）。</span></p>
+{% else %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量：1,000克（10次）。</span></p>
+{% endif %}
+  
+ {% else %}
+
+<h2 class="h2"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">美しさめぐる。贅沢なバスタイム。</span></h2>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">肌のキメを整え、なめらかでもっちりとした肌を叶える入浴剤。</span></p>
+<p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">めぐりを整え、内側から血色感のある健やかな肌へ導きます。</span></p>
+<p style="margin-top: 20px;">ティーツリーをベースに、イチジクやゆず、ひのきなど、甘く温かな香りを追加することで、冬の贅沢なひとときをイメージした、気持ちが解きほぐされるような香りです。</p>
+<p style="margin-top: 20px;">15~20分程度の入浴がおすすめです。</p>
+<p data-mce-fragment="1"> </p>
+{% if product.tags contains 'salt3' %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:300g(100g×3袋)</span></p>
+{% elsif product.tags contains 'salt1' %}
+  <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:100g(100g×1袋)</span></p>
+{% else %}
+ <p data-mce-fragment="1" class="txt-m"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">容量:1kg(約10回分)</span></p>
+{% endif %}
+
+{% endif %}
+

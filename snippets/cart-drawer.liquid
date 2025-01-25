@@ -1,0 +1,323 @@
+<aside id="cartSlideoutAside">
+    <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-drawer-form">
+        <div id="cartSlideoutWrapper" class="envy-shopping-right slideout-panel-hidden cart-drawer-right" role="dialog"
+            aria-labelledby="cart_dialog_label" aria-describedby="cart_dialog_status" aria-modal="true">
+            <div class="cart-drawer__top">
+                <div class="cart-drawer__empty-div"></div>
+                <h2 class="type-subheading type-subheading--1 wow fadeIn" id="cart_dialog_label">
+                    <span class="cart-drawer--title">{{ 'cart.general.title' | t }}</span>
+                </h2>
+
+                <div class="cart-close-icon-wrapper">
+                    <button class="slide-menu cart-close-icon cart-menu-close alt-focus"
+                        aria-label="{{ 'cart.general.close_cart' | t }}" type="button">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cart-error-box"></div>
+
+            <div aria-live="polite" class="cart-empty-box">
+                {{ 'cart.general.empty' | t }}
+            </div>
+
+            <script type="application/template" id="cart-item-template">
+				<li>
+					<article class="cart-item">
+						<div class="cart-item-image--wrapper">
+							<a class="cart-item-link" href="/product" tabindex="-1">
+								<img
+									class="cart-item-image"
+									src="/product/image.jpg"
+									alt=""
+								/>
+							</a>
+						</div>
+						<div class="cart-item-details--wrapper">
+							<h3 class="cart-item__title">
+								<a href="/product" class="cart-item-link cart-item-details--product-title-wrapper">
+									<span class="cart-item-product-title"></span>
+									<span class="cart-item-variant-title hide"></span>
+									<span class="cart-item-selling-plan hide"></span>
+                                    <span class="cart-item-type hide"></span>
+                 <span class="cart-item-properties hide"></span>
+								</a>
+							</h3>
+
+							<div class="cart-item-price-wrapper">
+								<span class="sr-only">{{ 'products.general.now_price' | t }}</span>
+								<span class="cart-item-price xxx"></span>
+								<span class="sr-only">{{ 'products.general.was_price' | t }}</span>
+								<span class="cart-item-price-original"></span>
+								<span class="cart-item-price-per-unit"></span>
+							</div>
+
+							<ul class="order-discount--cart-list" aria-label="{{ 'customer.order.discount' | t }}"></ul>
+
+							<div class="cart-item--quantity-remove-wrapper">
+								<div class="cart-item--quantity-wrapper">
+									<button
+										type="button"
+										class="alt-focus cart-item-quantity-button cart-item-decrease"
+										data-amount="-1"
+										aria-label="Reduce item quantity by one"
+									>-</button>
+									<input
+										type="text"
+										class="cart-item-quantity"
+										min="1"
+										pattern="[0-9]*"
+										aria-label="Quantity"
+									>
+									<button
+										type="button"
+										class="alt-focus cart-item-quantity-button cart-item-increase"
+										data-amount="1"
+										aria-label="Increase item quantity by one"
+									>+</button>
+								</div>
+
+								<div class="cart-item-remove-button-container">
+									<button type="button" id="cart-item-remove-button" class="alt-focus" aria-label="Remove product">{{ 'cart.general.remove' | t }}</button>
+								</div>
+							</div>
+						</div>
+					</article>
+				</li>
+			</script>
+            <script type="application/json" id="initial-cart">
+				{{ cart | json }}
+			</script>
+
+            <ul class="cart-items"></ul>
+
+            <div class="ajax-cart--bottom-wrapper">
+                <div class="dual">
+                    <p><span class="melc"></span><span class="mel"></span><span
+                            class="me">どちらか一方の商品をカートから削除し、<br>決済にお進みください。</span></p>
+                    </ {% if settings.allow_note %} <div class="ajax-cart--checkout-add-note">
+                    <p>{{ 'cart.general.note' | t }}&hellip;</p>
+                    <textarea id="note" name="note" class="form-control">{{ cart.note }}</textarea>
+                </div>
+                {% endif %}
+
+                {% if settings.enable_terms_conditions %}
+                <div class="ajax-cart--terms-conditions">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="agree"
+                                    data-terms-agree="{{ 'cart.general.terms_agree' | t | escape }}" />
+
+                                {% if settings.terms_conditions_link == blank %}
+                                {{ 'cart.general.terms_text' | t }}
+                                {% else %}
+                                {{ 'cart.general.terms_text_html' | t | replace: '#', settings.terms_conditions_link }}
+                                {% endif %}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="ajax-cart--cart-discount">
+                    <div class="cart--order-discount-wrapper custom-font ajax-cart-discount-wrapper"></div>
+                </div>
+
+                <span class="cart-price-text type-subheading">{{ 'cart.general.subtotal' | t }}</span>
+
+                <div class="ajax-cart--cart-original-price">
+                    <span class="cart-item-original-total-price"><span class="money"><span class='ymq-b2b-price-hidden'
+                                ymq-b2b-item-key='' ymq-b2b-cart-total-price>{{ cart.original_total_price | money
+                                }}</span></span></span>
+                </div>
+
+                <div class="ajax-cart--total-price">
+                    <h2 id="cart_dialog_status" role="status" class="js-cart-drawer-status sr-only"></h2>
+
+                    <h5 id="cart_drawer_subtotal">
+                        <span class="cart-total-price" id="cart-price">
+                            <span class="money"><span class='ymq-b2b-price-hidden' ymq-b2b-item-key=''
+                                    ymq-b2b-cart-total-price>{{ cart.total_price | money }}</span></span>
+                        </span>
+                    </h5>
+                </div>
+
+                {%- capture taxes_shipping_checkout -%}
+                {%- if shop.taxes_included and shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                {%- elsif shop.taxes_included -%}
+                {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+                {%- elsif shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                {%- else -%}
+                {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+                {%- endif -%}
+                {%- endcapture -%}
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="cart--shipping-message">{{ taxes_shipping_checkout }}</p>
+                    </div>
+                </div>
+
+                {% assign url = request.path %}
+                {% if url contains '/en' %}
+                <p class="peg">Only <span style="color:red;">¥</span><span class="fire" style="color:red;"></span> more
+                    for free shipping</p>
+                {% elsif url contains '/zh' %}
+                <p class="peg">再购买 <span style="color:red;">¥</span><span class="fire" style="color:red;"></span>
+                    就能享受免费邮寄</p>
+                {% else %}
+                <p class="peg">あと <span style="color:red;">¥</span><span class="fire"
+                        style="color:red;"></span>以上ご注文で送料無料</p>
+                {% endif %}
+
+
+
+                <!--送料表示 -->
+                <script>
+
+                    //             $(document).ready(function(){
+                    // $.ajax({
+                    //     type: 'GET',
+                    //     url: '/cart.js',
+                    //     cache: false,
+                    //     dataType: 'json'
+                    // })
+                    // .then(
+                    //     // 通信成功時
+                    //     function (cart) {
+                    //      var price = cart.total_price
+                    //       var cost = price/100
+                    //       var result = 12000 - cost
+                    //         if (result < 0 || price == 0){
+                    //              $('.peg').addClass('past-n');
+                    //         } else{
+                    //                   $('.fire').text(result);
+                    //             $('.peg').removeClass('past-n');
+                    //         }
+                    //     },
+                    //     // 通信失敗時
+                    //     function () {
+                    //         console.log("cart.js 読み込み失敗");
+                    //     }
+                    // );
+                    //   });
+
+                    //                 $(document).on('click',function(){
+                    //                   setTimeout(function(){
+                    // $.ajax({
+                    //     type: 'GET',
+                    //     url: '/cart.js',
+                    //     cache: false,
+                    //     dataType: 'json'
+                    // })
+                    // .then(
+                    //     // 通信成功時
+                    //     function (cart) {
+
+                    //      var price = cart.total_price
+                    //       var cost = price/100
+                    //       var result = 12000 - cost
+                    //       if (result <= 0 || price == 0){
+                    //              $('.peg').addClass('past-n');
+                    //         } else{
+                    //                   $('.fire').text(result);
+                    //             $('.peg').removeClass('past-n');
+                    //           console.log(price)
+                    //         };
+                    //     },
+                    //     // 通信失敗時
+                    //     function () {
+                    //         console.log("cart.js 読み込み失敗");
+                    //     }
+                    // );
+                    //                       }, 1200);
+                    //   });
+
+                    $(document).ready(function () {
+                        function updateCart() {
+                            $.ajax({
+                                type: 'GET',
+                                url: '/cart.js',
+                                cache: false,
+                                dataType: 'json'
+                            })
+                                .then(
+                                    // On success
+                                    function (cart) {
+                                        var price = cart.total_price;
+                                        var cost = price / 100;
+                                        var result = 12000 - cost;
+
+                                        // Check if customerTags is defined and includes the desired tag
+                                        if (window.customerTags && window.customerTags.includes("FATUITE社員") && result !== 0) {
+                                            result = result / 2;
+                                        }
+
+                                        if (result < 0 || price == 0) {
+                                            $('.peg').addClass('past-n');
+                                        } else {
+                                            $('.fire').text(result);
+                                            $('.peg').removeClass('past-n');
+                                        }
+                                    },
+                                    // On failure
+                                    function () {
+                                        console.log("cart.js 読み込み失敗");
+                                    }
+                                );
+                        }
+
+                        // Initial cart update
+                        updateCart();
+
+                        $(document).on('click', function () {
+                            setTimeout(function () {
+                                updateCart();
+                            }, 1200);
+                        });
+                    });
+
+
+                    $(document).ready(function () {
+                        setInterval(function () {
+                            if ($('.cart-items').is(":contains('reserve')") && $('.cart-items').is(":contains('normal')")) {
+                                $('.dual').addClass('double');
+                                $('.dual .melc').html('予約販売商品と通常販売商品を<br>同時に購入することはできません。');
+                            } else {
+                                $('.dual').removeClass('double');
+                            }
+                        }, 300);
+                    });
+                </script>
+
+
+                <div class="slide-checkout-buttons">
+                    {% if settings.enable_continue_shopping %}
+                    <a {% if template.name=="product" %} {% if product.type=="reserve" %}
+                        href="https://fatuite.com/collections/reserve" {% else %}
+                        href="https://fatuite.com/collections/products" {% endif %} {% else %}
+                        href="https://fatuite.com/collections/products" {% endif %}
+                        class="btn btn-default cart-menu-close secondary-button">{{ 'layout.cart.continue_shopping' | t
+                        }}</a><br />
+                    {% endif %}
+                    <button type="submit" name="checkout" class="btn cart-button-checkout">
+                        <span class="cart-button-checkout-text">{{ 'cart.general.checkout' | t }}</span>
+                        <div class="cart-button-checkout-spinner lds-dual-ring hide"></div>
+                    </button>
+                    {% if additional_checkout_buttons and settings.enable-additional-checkout-buttons %}
+                    <div class="additional-checkout-buttons">
+                        {{ content_for_additional_checkout_buttons }}
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</aside>
+{% comment %}<!-- ymq b2b done -->{% endcomment %}

@@ -1,0 +1,104 @@
+<section class="reserve-section">
+  <div class="res-flex">
+
+
+     <a href="https://fatuite.com/collections/products"><div class="res-item">
+      <img class="ppc"  src="https://cdn.shopify.com/s/files/1/0527/6060/8917/files/Frame_310_11b6dd77-1370-4f59-af34-40644f3f3f04.png?v=1697888818" alt="">
+        <img class="ssp" src="https://cdn.shopify.com/s/files/1/0527/6060/8917/files/Frame_310_11b6dd77-1370-4f59-af34-40644f3f3f04.png?v=1697888818" alt="">
+    </div></a>
+    
+    
+      <a href="https://fatuite.com/collections/reserve"><div class="res-item">
+      <img class="ppc"  src="https://cdn.shopify.com/s/files/1/0527/6060/8917/files/Frame_1_63beeef8-80e6-4254-82e9-101ffb380629.png?v=1728984118" alt="">
+         <img class="ssp" src="https://cdn.shopify.com/s/files/1/0527/6060/8917/files/Frame_1_63beeef8-80e6-4254-82e9-101ffb380629.png?v=1728984118" alt="">
+    </div></a>
+
+   
+
+    
+  </div>
+</section>
+
+<style>
+  
+  .reserve-section{
+  padding:0px 20px;
+  }
+  
+  .res-flex{
+  display: flex;
+    max-width: 1125px;
+    justify-content: space-between;
+    margin:60px auto 120px;
+  }
+  
+  .res-item{
+  position:relative;
+  }
+  
+  .res-flex a{
+  display: block;
+   width: 48%;
+  }
+  
+  .res-flex img{
+  width:100%;
+  }
+  
+    .ssp{
+    display:none;
+    }
+  
+     .res-flex a:first-child{
+  order:1;
+  }
+ 
+  
+  @media screen and (max-width: 600px) {
+
+    .ppc{
+    display:none;
+    }
+    
+    .ssp{
+    display:block;
+    }
+    
+    
+     .res-flex a{
+  display: block;
+   width: 100%;
+       margin:20px 0px;
+  }
+    
+     .res-flex{
+ flex-wrap: wrap;
+    display: flex;
+    max-width: 1125px;
+    justify-content: space-between;
+    margin: 40px auto 30px;
+  }
+    
+       .res-flex a:first-child{
+  order:1;
+  }
+    
+     .reserve-section{
+  padding:0px 15px;
+  }
+}
+  
+</style>
+
+{% schema %}
+{
+"name": "reserve",
+
+"presets": [
+    {
+    "category": "my custom reserve",
+    "name": "lesson schema"
+    }
+  ]
+}
+{% endschema %}

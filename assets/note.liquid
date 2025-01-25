@@ -1,0 +1,133 @@
+
+
+** template--product.liquid **
+
+  415~
+  
+                <div class="col-md-12 product-page--submit-action" data-stock-email-enabled="{{ section.settings.show_out_of_stock_email }}">
+                {% assign disabled = pick_an_option %}
+                {% unless current_variant.available %}
+                  {% assign disabled = true %}
+                {% endunless %}
+
+  					    <button
+                  type="submit"
+                  name="add"
+                  id="purchase"
+                  class="btn {% if section.settings.show_smart_checkout and product.selling_plan_groups.size == 0 %} secondary-button{% endif %}"{% if disabled %}
+                  disabled{% endif %}
+                  data-cart-action="{{ section.settings.cart-action }}"
+                >
+  					      {% if pick_an_option or current_variant.available %}
+  					        {{ 'products.product.add_to_cart' | t }}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% endif %}
+  					    </button>
+                
+                {% if section.settings.show_smart_checkout %}
+                  {{ form | payment_button }}
+                {% endif %}
+              </div>
+
+  
+  
+  400~
+  
+<!--      pick an option        -->
+
+  {% if section.settings.show_quantity_selector %}
+              <div class="quantity-controls__outer {% if settings.show_swatches != blank %}swatches-wrapper{% else %}selector-wrapper{% endif %} {% if section.settings.image_size == 'large' %}col-md-12{% else %}col-md-6{% endif %} col-sm-12 col-12">
+  				        <label for="quantity" style="font-size: 14px;" >{{ 'products.product.quantity' | t }}：1</label>
+                  <div class="quantity-controls" style="display: none;" >
+                  </div>
+  					    </div>
+  					  {% endif %}
+               
+<!--       end        -->
+  
+  
+  ↓使わない
+              {% if section.settings.show_quantity_selector %}
+              <div class="quantity-controls__outer {% if settings.show_swatches != blank %}swatches-wrapper{% else %}selector-wrapper{% endif %} {% if section.settings.image_size == 'large' %}col-md-12{% else %}col-md-6{% endif %} col-sm-12 col-12">
+  				        <label for="quantity">{{ 'products.product.quantity' | t }}</label>
+                  <div class="quantity-controls">
+                      <button
+                        type="button"
+                        class="qty-minus alt-focus"
+                        aria-label="Reduce item quantity by one"
+                      >-</button>
+                      <input
+                        id="quantity"
+                        class="quantity-selector"
+                        value="1"
+                        min="1"
+                        type="text"
+                        name="quantity"
+                      >
+                      <button
+                        type="button"
+                        class="qty-plus alt-focus"
+                        aria-label="Increase item quantity by one"
+                      >+</button>
+                  </div>
+  					    </div>
+  					  {% endif %}
+  
+  
+
+  250
+  
+                <!-- Variant price -->             
+              {% comment %}
+              <li class="product-page--pricing--variant-price">
+                  <span class="js" id="price-field">
+                  {% if pick_an_option %}
+                  <span class="type-subheading">{{ 'products.product.make_a_selection' | t }}</span>
+                  {% elsif current_variant.available %}
+                  <span class="money">{{ current_variant.price | money }}</span>
+                  <span>（税込：{{ current_variant.price | times: 1.10 | money }}）</span>
+                  {% else %}
+                    {{ "products.product.sold_out" | t }} 
+                    {% assign on_sale = false %}
+                  
+                  {% endif %}
+                </span>
+              {% endcomment %}
+                              <p>3月27日21時 販売開始</p>
+              </li>
+  
+  
+  ** customers/account.liquid **
+
+  14~
+  このMY PAGEトップでは、名前とメールアドレスのみ表示することにするため、住所情報を削除した。
+  
+  			<div class="address note">
+				{% if customer.default_address != nil %}
+					<p>{{ customer.default_address.zip}}
+					<br />{% if address.province_code %}{{customer.default_address.province}}, {% endif %}{{customer.default_address.province}} {{ customer.default_address.city}}
+                      {% comment %}{{customer.default_address.country}}{% endcomment %}
+					<br />{{ customer.default_address.address1 }}
+                    {% if customer.default_address.address2 != "" %}
+						<br />{{ customer.default_address.address2 }}
+					{% endif %}
+					<br />{% comment %}{{ customer.default_address.phone }}{% endcomment %}</p>
+				{% endif %}
+				<a id="view_address" class="button--text-subdued" href="{{ routes.account_addresses_url }}">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+			</div>
+                
+            
+** customers/addresses.liquid **
+                  
+登録したメールアドレスを表示することは出来たが、編集内容が保存されないためタグとして削除した。
+またやり直す時に使う。
+                  
+            <tr>
+            <td class="label">
+              <label for="email" class="login">{{ 'customer.register.email' | t }}</label>
+            </td>
+            <td class="value">
+              <input type="email" class="form-control"  name="customer[email]" value="{{customer.email}}"　id="email" class="large" size="30" />
+            </td>
+          </tr>

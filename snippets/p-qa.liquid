@@ -1,0 +1,125 @@
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q&A</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+{% assign product_order = "firstessence,releasinglotion,daycream,dayemulsion,nightcream,nightemulsion,lock,cleansing,resetform,hand,colorlip,mask,lip,spots,flex,peal,epsom" | split: "," %}
+
+{% for item in product_order %}
+  {% for tag in product.tags %}
+    {% assign pain = tag | split: '_' %}
+    {% if pain contains item %}
+      <!--/#accordion-->
+      <div id="accordion" class="accordion-container inquiry">
+        <!--/.accordion-content-->
+        <div class="accordion-wrap">
+          <p class="accordion-title js-accordion-title set-title">
+            {% case item %}
+              {% when 'firstessence' %}
+                {% unless product.tags contains "ファーストエッセンスリニューアル" %}
+                  <span class="ac">ブライテストファーストエッセンス</span>
+                {% else %}
+                  <span class="ac">ブライテストファーストエッセンスa</span>
+                {% endunless %}
+              {% when 'releasinglotion' %}
+                {% unless product.tags contains "ローションリニューアル" %}
+                  <span class="ac">ブライテストリリーシングローション</span>
+                {% else %}
+                  <span class="ac">ブライテストリリーシングローションa</span>
+                {% endunless %}
+              {% when 'daycream' %}
+                {% unless product.tags contains "デイクリームリニューアル" %}
+                  <span class="ac">ブライテスト マルチプロテクションデイクリーム</span>
+                {% else %}
+                  <span class="ac">ブライテスト マルチプロテクションデイクリームa</span>
+                {% endunless %}
+              {% when 'dayemulsion' %}
+                {% unless product.tags contains "デイエマルジョンリニューアル" %}
+                  <span class="ac">ブライテスト マルチプロテクションデイエマルジョン</span>
+                {% else %}
+                  <span class="ac">ブライテスト マルチプロテクションデイエマルジョンa</span>
+                {% endunless %}
+              {% when 'nightcream' %}
+                {% unless product.tags contains "ナイトクリームリニューアル" %}
+                  <span class="ac">ブライテスト エナジャイジングナイトクリーム</span>
+                {% else %}
+                  <span class="ac">ブライテスト エナジャイジングナイトクリームa</span>
+                {% endunless %}
+              {% when 'nightemulsion' %}
+                {% unless product.tags contains "ナイトエマルジョンリニューアル" %}
+                  <span class="ac">ブライテスト エナジャイジングナイトエマルジョン</span>
+                {% else %}
+                  <span class="ac">ブライテスト エナジャイジングナイトエマルジョンa</span>
+                {% endunless %}
+              {% when 'lock' %}
+                <span class="ac">リニューアレイジ アンロックセラム</span>
+              {% when 'cleansing' %}
+                <span class="ac">ピュリファイン ディープクレンジングジェル</span>
+              {% when 'resetform' %}
+                <span class="ac">ピュリファイン リセットフォーム</span>
+              {% when 'hand' %}
+                <span class="ac">ブライテスト セラムフォーハンド</span>
+              {% when 'colorlip' %}
+                <span class="ac">ブライテスト カラーリップエッセンス</span>
+              {% when 'mask' %}
+                <span class="ac">リニューアレイジ グロウマスク</span>
+              {% when 'lip' %}
+                <span class="ac">ブライテスト リップエッセンス</span>
+              {% when 'spots' %}
+                <span class="ac">スポッツコンセントレイトセラム</span>
+              {% when 'flex' %}
+                <span class="ac">リニューアレイジ フレキシブルゾーンセラム</span>
+              {% when 'peal' %}
+                <span class="ac">リニューアレイジ スムースピーリング</span>
+              {% when 'epsom' %}
+                <span class="ac">エプソムソルト</span>
+            {% endcase %}
+          </p>
+          <div class="accordion-content">
+            <div class="c-inner-wrap set-back">
+              {% case item %}
+                {% when 'firstessence' %}
+                  {% render 'qa_firstessence' %}
+                {% when 'releasinglotion' %}
+                  {% render 'qa_releasinglotion' %}
+                {% when 'daycream' %}
+                  {% render 'qa_daycream' %}
+                {% when 'dayemulsion' %}
+                  {% render 'qa_dayemulsion' %}
+                {% when 'nightcream' %}
+                  {% render 'qa_nightcream' %}
+                {% when 'nightemulsion' %}
+                  {% render 'qa_nightemulsion' %}
+                {% when 'lock' %}
+                  {% render 'qa_lock' %}
+                {% when 'cleansing' %}
+                  {% render 'qa_cleansing' %}
+                {% when 'resetform' %}
+                  {% render 'qa_resetform' %}
+                {% when 'hand' %}
+                  {% render 'qa_hand' %}
+                {% when 'colorlip' %}
+                  {% render 'qa_colorlip' %}
+                {% when 'mask' %}
+                  {% render 'qa_mask' %}
+                {% when 'lip' %}
+                  {% render 'qa_lip' %}
+                {% when 'spots' %}
+                  {% render 'qa_spots' %}
+                {% when 'flex' %}
+                  {% render 'qa_flex' %}
+                {% when 'peal' %}
+                  {% render 'qa_peal' %}
+                {% when 'epsom' %}
+                  {% render 'qa_epsom' %}
+              {% endcase %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+</div>
+</div>
+</div>

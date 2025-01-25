@@ -1,0 +1,16 @@
+
+    {% unless product.tags contains "ファーストエッセンスリニューアル" %}
+  <div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' or product.title contains 'キット' %}ブライテスト ファーストエッセンスの{% endif %}使用方法</p>
+<p class="">洗顔後のまっさらな肌に使用します。<br>額、両頬、首に直接スプレーして、優しくなじませハンドプレスします。<br>使用量の目安：顔と首にそれぞれ2~3プッシュ。<br>目安の使用量で朝晩ご使用いただいた場合、{% if product.tags contains 'travel' %}約1週間{% else %}約2ヶ月{% endif %}ご使用いただけます。</p>
+</div>
+{% else %}
+  <div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' or product.title contains 'キット' %}ブライテスト ファーストエッセンスa {% if product.tags contains 'サンプル' %}(サンプル){% endif %}の{% endif %}使用方法</p>
+      {% if product.tags contains 'サンプル' %}
+<p class=""> 洗顔後、顔から首にサンプル内の溶液を全て使用し、優しくなじませてください。</p>
+    {% else %}
+<p class=""> 洗顔後、顔から首に5~6プッシュを目安に優しくなじませてください。<br>目安の使用量で朝晩ご使用いただいた場合、{% if product.tags contains 'travel' %}約1週間{% else %}約2ヶ月{% endif %}ご使用いただけます。</p>
+{% endif %}
+        </div>
+{% endunless %}

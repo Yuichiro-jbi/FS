@@ -1,0 +1,67 @@
+{% comment %}
+    AnyGiftアプリ用: eギフト購入時にチェックアウト画面をカスタマイズ（ダミー住所セット等）
+    最終更新: 2022/12/14
+{% endcomment %}
+// anygift-custom.js
+
+var anyReachScript = {
+  {% comment %}checkout.liquidからeギフトの場合のみ呼び出される{% endcomment %}
+  pageCheckout: () => {
+    const inputDummyShippingAddress = () =>{
+      const shippingAddress = document.querySelector(".section--shipping-address");
+      if(shippingAddress) {
+        const lastName = document.querySelector("#checkout_shipping_address_last_name");
+        const firstName = document.querySelector("#checkout_shipping_address_first_name"); //任意項目なので不要
+        const zip = document.querySelector("#checkout_shipping_address_zip");
+        const pref = document.querySelector("#checkout_shipping_address_province");
+        const city = document.querySelector("#checkout_shipping_address_city");
+        const addr1 = document.querySelector("#checkout_shipping_address_address1");
+        const phone = document.querySelector("#checkout_shipping_address_phone");
+        lastName.value = "ダミー";
+        firstName.value = "ダミー";
+        zip.value = "000-0000";
+        pref.value = "JP-13";
+        city.value = "ダミー";
+        addr1.value = "ダミー";
+        phone.value ="0000000000";
+        shippingAddress.style.display = "none";
+      }      
+    };
+    const replaceShippingAddress = () =>{
+      {% comment %}domのidやclass等の属性で判別する手段がないため、表示文字列で判断するしか無い{% endcomment %}
+      const deliveryAddressLabelTitle = "配送先";
+      const eGiftDeliveryAddress = "eギフトのため、受取手が住所入力時に決まります";
+      document.querySelectorAll(".review-block").forEach(elementRow => {
+        if(elementRow.querySelector(".review-block__label").innerHTML.trim() != deliveryAddressLabelTitle ){
+          return;
+        }
+        elementRow.querySelector(".review-block__content .address").innerHTML = eGiftDeliveryAddress;
+        elementRow.querySelector(".review-block__link").style.display = "none";
+      });
+    };
+    
+    const clickDifferentBillingAddress = () =>{
+      const differentBillingAddress = document.querySelector('label[for="checkout_different_billing_address_true"]');
+      if(!differentBillingAddress){
+        return;
+      }
+      differentBillingAddress.click();
+
+      //不要なラジオの非表示
+      const sameBillingAddress = document.querySelector("[data-same-billing-address]");
+      sameBillingAddress.style.display = "none";
+      sameBillingAddress.nextElementSibling.style.borderTop = "none";//borderが2重になって若干太くなるので調整。
+
+      //メッセージの追加
+      const eGiftAddressMsgDom = document.createElement('p');
+      eGiftAddressMsgDom.className = 'section__text';
+      eGiftAddressMsgDom.textContent = "※ eギフトの受け取り期限を過ぎた場合、以下にご入力いただいた住所に商品を発送させていただきます。";
+      document.querySelector(".section--billing-address .section__header").appendChild(eGiftAddressMsgDom);
+      document.scrollingElement.scrollTop = 0;
+    };
+    
+    inputDummyShippingAddress();
+    replaceShippingAddress();
+    clickDifferentBillingAddress();
+  }
+};

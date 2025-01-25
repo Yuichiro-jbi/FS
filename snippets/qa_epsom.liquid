@@ -1,0 +1,240 @@
+{% if request.path contains '/en/' %}
+<!--/#accordion-->
+{% unless product.tags contains "wide-layout" %}
+<p class="inquiry-p">Q&amp;A {% if product.tags contains 'セット' or product.title contains 'キット' %}(Epsom salt){% endif %}</p>
+  {% endunless %}
+<div id="accordion" class="accordion-container inquiry">
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:what kind of ingredients are included?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">{% unless request.path contains 'faq' %}
+A:Please review the ”all ingredients of Epsom salt” above.
+    {% else %}
+     A:Please review the product page for the ingredients.
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:What kind of scent is this product?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A: Based on tea tree, by adding sweet and warm fragrance such as fig, yuzu, and cypress, it is a scent that will calm your feelings with the image of a luxurious time in winter.</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q: How long can one product be last?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A: Approximately 100g (1 bag) is used for 3 times.</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:what is the effect of "Epsom salt"?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">{% unless request.path contains 'faq' %}
+ A:Please review the prodct description above.
+    {% else %}
+     A:Please review the prodct page.
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:How to store the product?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:Store at room temperature, away from heat and moisture.</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:Can it be used on sensitive skin?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A: It contains ingredients that can be used by people with sensitive skin and children, but if you are concerned about it, please try it little by little.</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+</div>
+<!--/#accordion-->
+  {% elsif request.path contains '/zh/' %}
+{% unless product.tags contains "wide-layout" %}
+<p class="inquiry-p">问答{% if product.tags contains 'セット' or product.title contains 'キット' %}(泻盐){% endif %}</p>
+  {% endunless %}
+<div id="accordion" class="accordion-container inquiry">
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">问：配方中含有哪些成分？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">{% unless request.path contains 'faq' %}
+答：请参见上面的 "泻盐的所有成分"。
+    {% else %}
+     A:请查看产品页面了解其成分。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">问：香味如何？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">答：以茶树为基础，加入无花果、柚子、桧木等香甜温润的味道，营造出松香、绚丽的冬日时光感。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">问：一货物可以使用多久时间？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">答：大约100克（1袋），使用3次。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">问：有什么效用？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">{% unless request.path contains 'faq' %}
+ 答：请看上面的产品描述。
+    {% else %}
+      答:查看产品页面。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">问：如何保存？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">答：请放置于常温室温内，避免高温和潮湿。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">问：开封后的使用期限是多久？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">答：开封后请尽早使用该产品。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">问：可以用于敏感肌肤吗？</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">答：适合皮肤敏感的人和小孩使用，如有疑虑请少量尝试使用。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+</div>
+<!--/#accordion-->
+  {% else %}
+
+
+
+<!--/#accordion-->
+{% unless product.tags contains "wide-layout" %}
+<p class="inquiry-p">Q&amp;A{% if product.title contains 'セット' %} (エプソムソルト){% endif %}</p>
+{% endunless %}
+<div class="accordion-container inquiry" id="accordion"><!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title top-b">Q:どんな成分が配合されていますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">{% unless request.path contains 'faq' %}
+A:上記「エプソムソルトの全成分」をご確認ください。
+    {% else %}
+     A:配合成分は商品ページにてご確認ください。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どのような香りですか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:ティーツリーをベースに、イチジクやゆず、ひのきなど、甘く温かな香りを追加することで、冬の贅沢なひとときをイメージした、気持ちが解きほぐされるような香りです。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:1個でどれくらいの期間使えますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">
+  {% if product.tags contains 'salt3' %}
+A:1回約100g(1袋)を使用して3回分です。
+{% elsif product.tags contains 'salt1' %}
+A:1回約100g(1袋)を使用して1回分です。
+{% else %}
+A:1回約100g(付属のスプーン4杯分)を使用して10回分です。
+{% endif %}
+</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:どんな効果がありますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup"> {% unless request.path contains 'faq' %}
+  A:上記商品説明をご確認ください。
+     {% else %}
+     A:商品ページにてご確認ください。
+    {% endunless %}</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:保存方法を教えてください。</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:高温多湿を避け、常温で保管ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:開封後の使用期限を教えてください。</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:開封後はお早めにご使用ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">Q:敏感肌でも使えますか?</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero topup">A:敏感肌の方やお子様もお使いいただける処方ではありますが、ご心配な方は少しずつ試しながらご使用ください。</p>
+</div>
+</div>
+</div>
+<!--/.accordion-content--></div>
+<!--/#accordion-->
+  {% endif %}

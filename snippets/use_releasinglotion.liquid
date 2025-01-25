@@ -1,0 +1,15 @@
+  {% unless product.tags contains "ローションリニューアル" %}
+<div class="use">
+<p class="p-h3"> {% if product.tags contains 'セット' or product.title contains 'キット' %}ブライテスト リリーシングローションの{% endif %}使用方法</p>
+<p class="">「ブライテスト ファーストエッセンス」の後に使用します。 手のひらまたはコットンに500円硬貨大をとり、顔全体に馴染ませてください。<br>目安の使用量で朝晩ご使用いただいた場合、{% if product.tags contains 'travel' %}約1週間{% else %}約2ヶ月{% endif %}ご使用いただけます。</p>
+</div>
+ {% else %}
+<div class="use">
+<p class="p-h3"> {% if product.tags contains 'セット' or product.title contains 'キット' %}ブライテスト リリーシングローションa{% if product.tags contains 'サンプル' %}(サンプル){% endif %}の{% endif %}使用方法</p>
+  {% if product.tags contains 'サンプル' %}
+<p class="">手のひらまたはコットンにサンプル内の溶液を全て使用し、顔と首に優しくなじませてください。</p>
+    {% else %}
+<p class="">手のひらまたはコットンに500円硬貨大をとり、顔と首に優しくなじませてください。</p>
+    {% endif %}
+</div>
+    {% endunless %}

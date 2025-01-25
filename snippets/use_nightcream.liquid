@@ -1,0 +1,11 @@
+  {% unless product.tags contains "ナイトクリームリニューアル" %}
+<div class="use">
+<p class="p-h3">  {% if product.title contains 'セット' or product.title contains 'キット' %}ブライテスト エナジャイジングナイトクリームの{% endif %}使用方法</p>
+<p class="">夜のスキンケアの最後に、パール粒2つくらいの量を顔と首に優しくなじませてください。<br>目安の使用量で毎晩ご使用いただいた場合、{% if product.tags contains 'travel' %}約1週間{% else %}約2ヶ月{% endif %}ご使用いただけます。</p>
+</div>
+{% else %}
+<div class="use">
+<p class="p-h3">  {% if product.title contains 'セット' or product.title contains 'キット' %}ブライテスト エナジャイジングナイトクリームaの{% endif %}使用方法</p>
+<p class="">夜のスキンケアの最後に、パール粒2つくらいの量を顔と首に優しくなじませてください。<br>目安の使用量で毎晩ご使用いただいた場合、{% if product.tags contains 'travel' %}約1週間{% else %}約2ヶ月{% endif %}ご使用いただけます。</p>
+</div>
+    {% endunless %}

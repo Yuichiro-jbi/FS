@@ -1,0 +1,16 @@
+{% if request.path contains '/en/' %}
+<div class="use">
+<p class="p-h3"> How to use {% if product.tags contains 'セット' or product.title contains 'キット' %}Renewal-age Glow Mask{% endif %}</p>
+<p class="">It contains two parts, one for the face and one for the neck. Spread the mask out and fit it firmly on each of the face and neck areas, and leave it on for 10 minutes. Take off the mask and blend the absorbed serum into the skin.</p>
+</div>
+  {% elsif request.path contains '/zh/' %}
+<div class="use">
+<p class="p-h3"> {% if product.tags contains 'セット' or product.title contains 'キット' %}重生面膜{% endif %} 使用方法</p>
+<p class="">它包含2个部分，1个用于面部，1个用于颈部。 解开面膜，将其紧紧地贴在脸部和颈部的每个部位，并让其停留10分钟。取出面膜，将吸收的精华液涂在皮肤上。</p>
+</div>
+  {% else %}
+<div class="use">
+<p class="p-h3"> {% if product.title contains 'セット' %}リニューアレイジ グロウマスクの{% endif %}使用方法</p>
+<p class="">顔用と首元用の2パーツが入っています。マスクを広げて顔と首元 それぞれにしっかりとフィットさせ、10分程度時間をおきます。 マスクをとり、残った美容液を肌になじませてください。</p>
+</div>
+  {% endif %}

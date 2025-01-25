@@ -1,0 +1,9 @@
+<script defer src="{{ "omnihub_barcode.js" | asset_url }}"></script>
+
+<div
+  id="omni-hub-barcode"
+  data-customer-id="{{ customer.id }}"
+  data-customer-code="{{customer.metafields.omni_hub.customer_code}}"
+  data-shop-domain="{{shop.permanent_domain}}"
+  data-version="{{version}}">
+</div>

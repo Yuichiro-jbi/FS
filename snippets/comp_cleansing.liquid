@@ -1,0 +1,135 @@
+{% if request.path contains '/en/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">All components {% if product.tags contains 'セット' or product.title contains 'キット'%}Purify Deep Cleansing Gel{% endif %}</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">Aqua,
+Diglycerin,
+Niacinamide,
+Butylene Glycol,
+Glycerin,
+Squalane,
+Caprylyl 2-Glyceryl Ascorbate,
+Dipotassium Glycyrrhizate,
+Glycogen,
+Alpha-Arbutin,
+Ceramide Ap,
+Ceramide Np,
+Ceramide Eop,
+Rh-Oligopeptide-１,
+Sodium Hyaluronate,
+Mitracarpus Scaber Extract,
+Arctostaphylos Uva-Ursi Leaf Extract,
+Aspergillus/Soybean Seed Extract Ferment Extract Filtrate,
+Carnosine,
+Silybum Marianum Fruit Extract,
+Tocopherol,
+Superoxide Dismutase,
+Lactobacillus/Pear Juice Ferment Filtrate,
+Lactobacillus/Grape Juice Ferment Filtrate,
+Cymbopogon Schoenanthus Leaf/Stem Extract,
+Bis-Ethylhexyl Hydroxydimethoxy Benzylmalonate,
+Epilobium Fleischeri Extract,
+Centella Asiatica Extract,
+Chamomilla Recutita (Matricaria) Flower Extract,
+Glycyrrhiza Glabra (Licorice) Root Extract,
+Scutellaria Baicalensis Root Extract,
+Polygonum Cuspidatum Root Extract,
+Camellia Sinensis Leaf Extract,
+Rosmarinus Officinalis (Rosemary) Leaf Extract,
+Amidinobenzyl Benzylsulfonyl D-Seryl Homophenylalaninamide Acetate,
+Phytosphingosine,
+Glycine Soja (Soybean) Oil,
+Citric Acid,
+Lecithin,
+Sodium Hydroxide,
+1,2-Hexanediol,
+Peg-240/Hdi Copolymer Bis-Decyltetradeceth-20 Ether,
+Cholesterol,
+Xanthan Gum,
+Carbomer,
+Potassium Sorbate,
+Pentylene Glycol,
+Alcohol,
+Sodium Dilauramidoglutamide Lysine,
+Sodium Lauroyl Lactylate,
+Ethylhexylglycerin,
+Glyceryl Caprylate</p>
+</div>
+</div>
+</div>
+
+  {% elsif request.path contains '/zh/' %}
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">{% if product.tags contains 'セット' or product.title contains 'キット'%}净化洁肤凝胶 {% endif %}所有成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">水,
+双甘油,
+烟酰胺,
+丁二醇,
+甘油,
+角鲨烷,
+2-甘油抗坏血酸辛酸酯,
+甘草酸二钾,
+糖原,
+α-熊果苷,
+神经酰胺6II,
+神经酰胺3,
+神经酰胺1,
+人寡肽-1,
+透明质酸钠,
+粗糙帽果（MITRACARPUS SCABER）提取物,
+熊果（ARCTOSTAPHYLOS UVA URSI）叶提取物,
+曲霉/野大豆籽提取物发酵产物提取物滤液 ,
+肌肽,
+水飞蓟（SILYBUM MARIANUM）果提取物,
+生育酚（维生素E）,
+超氧化物歧化酶（SOD）,
+乳酸杆菌/梨汁发酵产物滤液,
+乳酸杆菌/葡萄汁发酵产物滤液,
+蔺花香茅（CYMBOPOGON SCHOENANTHUS）叶/茎提取物,
+双乙基己基羟基二甲氧基丙二酸苄酯,
+弗来歇氏柳叶菜（EPILOBIUM FLEISCHERI）提取物,
+积雪草（CENTELLA ASIATICA）提取物,
+母菊（CHAMOMILLA RECUTITA）花提取物,
+光果甘草（GLYCYRRHIZA GLABRA）根提取物,
+黄芩（SCUTELLARIA BAICALENSIS）根提取物,
+虎杖（POLYGONUM CUSPIDATUM）根提取物,
+茶（CAMELLIA SINENSIS）叶提取物,
+迷迭香（ROSMARINUS OFFICINALIS）叶提取物,
+苄基磺酰基D-丝氨酰基高苯丙氨酸脒基苄胺乙酸盐,
+植物鞘氨醇,
+野大豆（GLYCINE SOJA）油,
+柠檬酸,
+卵磷脂,
+氢氧化钠,
+1,2-己二醇,
+PEG-240/HDI 共聚物双-癸基十四醇聚醚-20 醚,
+胆甾醇,
+黄原胶,
+卡波姆,
+山梨酸钾,
+1,2-戊二醇,
+乙醇,
+二（月桂酰胺谷氨酰胺）赖氨酸钠,
+月桂酰乳酰乳酸钠,
+乙基己基甘油,
+甘油辛酸酯</p></div>
+</div>
+</div>
+
+  {% else %}
+
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">{% if product.tags contains 'セット' or product.title contains 'キット'%}ピュリファイン ディープクレンジングジェルの{% endif %}全成分</p>
+<div class="accordion-content">
+<div class="c-inner-wrap">
+<p class="m-zero">水添ポリイソブテン，テトラエチルヘキサン酸ペンタエリスリチル，グリセリン，ソルビトール，水，ジメチコン，イソドデカン，ステアリン酸スクロース，モロッコ溶岩クレイ，流紋岩末，グリチルリチン酸２Ｋ，アラントイン，糖脂質，マロン酸ビスエチルヘキシルヒドロキシジメトキシベンジル，ＰＰＧ－１５ブテス－２０，ＰＥＧ－６０水添ヒマシ油，ココイルメチルタウリンＮａ，ＰＥＧ／ＰＰＧ／ポリブチレングリコール－８／５／３グリセリン，トコフェロール，フェノキシエタノール，ＥＤＴＡ－２Ｎａ，ＢＧ</p>
+</div>
+</div>
+</div>
+  {% endif %}

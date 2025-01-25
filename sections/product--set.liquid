@@ -1,0 +1,1612 @@
+{%- assign product_thumb_size = '160x160' -%}
+{%- assign product_image_zoom_size = '1024x1024' -%}
+
+{% comment %}Pick an option only makes sense together with dropdowns{% endcomment %}
+{% if settings.show_swatches == blank and section.settings.pick_an_option %}
+  {% assign pick_an_option = true %}
+{% else %}
+  {% assign pick_an_option = false %}
+{% endif %}
+
+{% if product.tags contains "wide-css" %}
+<style>
+
+  #shopify-section-product--set{
+    max-width:700px;
+margin:auto;
+  }
+  
+  @media (min-width: 768px){
+#product-box {
+  display: block !important;
+}
+
+.m-x .accordion-title {
+  font-size: 14px !important;
+}
+
+.template-product .col-md-7 {
+  max-width: 100% !important;
+}
+
+.product-page--thumb-slider.horizontal {
+  padding: 40px;
+  width: 70%;
+  margin: auto;
+}
+
+.template-product .col-md-5 {
+  -ms-flex: 0 0 42.666667% !important;
+  flex: 0 0 42.666667% !important;
+  max-width: 100% !important;
+  margin: auto;
+}
+
+.breadcrumb {
+  background: 0 0;
+  padding: 0 0 10px;
+  font-size: 12px;
+  margin: 0 0 20px;
+  width: 100%;
+  margin: 25px auto;
+}
+
+}
+
+  .inquiry .accordion-title {
+    text-indent: 0em; 
+}
+
+  .topup {
+    text-indent: 0em !important;
+    padding-left: 1em;
+    padding-right: 8px;
+}
+
+    p.p-t,h2.h2{
+      display:none;
+    }
+
+  .inquiry .accordion-title.set-title{
+    padding: 20px 50px 19px 0em !important;
+    text-indent: 0em;
+  }
+
+  .set-back{
+    padding: 10px !important;
+    background: #fff;
+    border: none;
+  }
+
+  .accordion-container.inquiry {
+    margin-bottom: 20px;
+}
+
+  .template-product p {
+    width: 100%;
+}
+
+   .inquiry .each-use .accordion-title{
+    padding: 20px 50px 19px 0em !important;
+    text-indent: 0em;
+  }
+
+  .m-x{
+    margin-top:30px !important;
+  }
+
+  .template-product .p-h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0px 15px 0px !important;
+}
+
+   @media (max-width: 765px){
+.abb{
+      font-size:14px;
+    }
+     .product-single__thumbnails .swiper-pagination-bullet .swiper-pagination-bullet-dot {
+    background: var(--border-color-subtle);
+    border-radius: 50%;
+    display: block;
+    width: 6px;
+    height: 6px;
+}
+   }
+
+ #ProductPhotoImg {
+     width: 100%; 
+}
+  </style>
+  {% endif %}
+  
+
+  <style>
+    .ac{
+  display:block;
+  font-size:14px;
+}
+
+     .product-medias {
+    margin-bottom: 30px;
+}
+
+        .inquiry .accordion-title {
+    text-indent: 0em; 
+}
+
+  .topup {
+    text-indent: 0em !important;
+    padding-left: 1em;
+    padding-right: 8px;
+}
+
+    p.p-t,h2.h2{
+      display:none;
+    }
+
+  .inquiry .accordion-title.set-title{
+    padding: 20px 50px 19px 0em !important;
+    text-indent: 0em;
+  }
+
+  .set-back{
+    padding: 10px !important;
+    background: #fff;
+    border: none;
+  }
+
+  .accordion-container.inquiry {
+    margin-bottom: 20px;
+}
+
+     .inquiry .each-use .accordion-title{
+    padding: 20px 50px 19px 0em !important;
+    text-indent: 0em;
+  }
+
+  .m-x{
+    margin-top:30px !important;
+  }
+
+  .template-product .p-h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0px 15px 0px !important;
+}
+
+   @media (max-width: 765px){
+.abb{
+      font-size:14px;
+    }
+     .product-single__thumbnails .swiper-pagination-bullet .swiper-pagination-bullet-dot {
+    background: var(--border-color-subtle);
+    border-radius: 50%;
+    display: block;
+    width: 6px;
+    height: 6px;
+}
+   }
+  </style>
+
+{% if pick_an_option %}
+  {%- assign current_variant = product.selected_variant -%}
+{% else %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+{% endif %}
+{%- assign featured_image = current_variant.image | default: product.featured_image -%}
+
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if current_variant.compare_at_price > current_variant.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign full_width = false %}
+{% if section.settings.image_size == 'full-width' %}
+  {% assign full_width = true %}
+{% endif %}
+
+<meta itemprop="name" content="{{ product.title }}{% unless current_variant.title == 'Default Title' %} - {{ current_variant.title }}{% endunless %}">
+<meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+<meta itemprop="brand" content="{{ product.vendor }}">
+<meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+<meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+{% case section.settings.image_size %}
+  {% when 'small' %}
+    {%- assign product_image_width = 6 -%}
+    {%- assign product_image_size = '345x' -%}
+  {% when 'medium' %}
+    {%- assign product_image_width = 7 -%}
+    {%- assign product_image_size = '530x' -%}
+  {% when 'large' %}
+    {%- assign product_image_width = 8 -%}
+    {%- assign product_image_size = '720x' -%}
+  {% when 'full-width' %}
+    {%- assign product_image_width = 12 -%}
+    {%- assign product_image_size = '900x' -%}
+{% endcase %}
+
+{% if section.settings.thumbnail_position == 'below' or product.images.size <= 1 %}
+  {% case section.settings.image_size %}
+    {% when 'small' %}
+      {%- assign product_description_width = 'col-md-6' -%}
+    {% when 'medium' %}
+      {%- assign product_description_width = 'col-md-5' -%}
+    {% when 'large' %}
+      {%- assign product_description_width = 'col-md-4' -%}
+    {% when 'full-width' %}
+      {%- assign product_description_width = 'col-md-12' -%}
+  {% endcase %}
+{% else %}
+  {% case section.settings.image_size %}
+    {% when 'small' %}
+      {%- assign product_description_width = 'col-md-5' -%}
+    {% when 'medium' %}
+      {%- assign product_description_width = 'col-md-4' -%}
+    {% when 'large' %}
+      {%- assign product_description_width = 'col-md-3' -%}
+    {% when 'full-width' %}
+      {%- assign product_description_width = 'col-md-12' -%}
+  {% endcase %}
+{% endif %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<div class="row {{ current_variant.sku }}">
+  <div class="col-md-12">
+  	<nav class="breadcrumb" aria-label="breadcrumbs">
+  	  <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.back_home' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+
+  	    {% if collection %}
+  	      <span aria-hidden="true">&rsaquo;</span>
+  	      {% if collection.handle %}
+  	        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+  	        {{ collection.title | link_to: url }}
+  	      {% endif %}
+  	    {% endif %}
+  	    <span aria-hidden="true">&rsaquo;</span>
+  	    <span>{{ product.title }}</span>
+  	</nav>
+  </div>
+</div>
+
+{% capture thumbnails %}
+<div class="product-single__thumbnails product-single__thumbnails--{{ section.settings.thumbnail_position }} product-page--thumb-slider
+{% if section.settings.thumbnail_position != 'below' %}
+  {% if product.media.size <= 4 %} no-arrows{% endif %}
+  vertical col-md-2
+{% else %}
+  {% if product.media.size <= 5 %} no-arrows{% endif %}
+  horizontal
+{% endif %}">
+  {% if settings.sale_badge %}
+    <div class="sale-badge mobile product-price__sale-label-{{ section.id }}{% unless on_sale %} hide{% endunless %}">{{ 'products.general.sale' | t }}</div>
+  {% endif %}
+  {% if product.media.size > 0 %}
+    <div class="thumbs-direction-nav">
+      <a class="thumbs-direction-nav--prev" href="#">
+          {% if section.settings.thumbnail_position == 'below' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          {% endif %}
+      </a>
+    </div>
+    <div class="swiper-container"
+      data-direction="{% if section.settings.thumbnail_position == 'below' %}horizontal{% else %}vertical{% endif %}"
+      data-slides-per-view="{% if section.settings.thumbnail_position != 'below' %}4{% else %}5{% endif %}"
+    >
+      <div class="swiper-wrapper">
+        {% assign featured_media = current_variant.featured_media | default: product.featured_media %}
+        {% render 'product-media', product: product, section_id: section.id, featured_media_id: featured_media.id, enable_video_loop: section.settings.enable_video_loop, autoplay:false %}
+      </div>
+    </div>
+    <div class="thumbs-direction-nav">
+      <a class="thumbs-direction-nav--next" href="#">
+          {% if section.settings.thumbnail_position == 'below' %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          {% endif %}
+      </a>
+    </div>
+    <div class="swiper-pagination"></div>
+  {% endif %}
+</div>
+{% endcapture %}
+
+<div class="row media-size-{{ section.settings.image_size }}" id="product-box" data-section-id="{{ section.id }}" data-wetheme-section-type="template--product" data-wetheme-section-id="{{ section.id }}">
+  {% if section.settings.thumbnail_position == 'left' %}
+    {{ thumbnails }}
+  {% endif %}
+  <div class="product-medias{% if section.settings.thumbnail_position != 'below' and product.media.size > 1 %} col-sm-12 col-md-{{ product_image_width | minus: 2 }}{% else %} col-md-{{ product_image_width }}{% endif %}">
+
+    <input type="hidden" id="thumbnail_changes_variant" value="{% if section.settings.thumbnail_changes_variant %}true{% else %}false{% endif %}" />
+
+    {% if settings.sale_badge %}
+      <div class="sale-badge desktop product-price__sale-label-{{ section.id }}{% unless on_sale %} hide{% endunless %}">{{ 'products.general.sale' | t }}</div>
+    {% endif %}
+
+    <div class="product-single__medias">
+      {% comment %}Medias for thumbnails will go here on desktop{% endcomment %}
+      {% if product.media.size == 0 %}
+        {{ 'product-1' | append: current | placeholder_svg_tag: 'icon--placeholder' }}
+      {% endif %}
+    </div>
+
+    {% if section.settings.thumbnail_position == 'below' %}
+      {{ thumbnails }}
+    {% endif %}
+  </div>
+  {% if section.settings.thumbnail_position == 'right' %}
+    {{ thumbnails }}
+  {% endif %}
+
+  {% capture out_of_stock_email_form %}
+    <div class="sold-out-notification" id="sold-out">
+      {% form 'contact' %}
+      <p class="accent-text success-msg form-success {% unless form.posted_successfully? %}hide{% endunless %}">
+        {{ 'products.product.thanks' | t }}
+      </p>
+      {% capture var_title %}
+        <span id="variant_title" style="{% if product.has_only_default_variant %}display:none;{% endif %}"></span>
+      {% endcapture %}
+        <span id="notify-me">{{ 'products.product.out-stock_html' | t: product: product.title, variant: var_title }}</span>
+      {% if form.errors %}
+        <div class="error feedback accent-text">
+          <span>{{ 'products.product.wrong-email' | t }}</span>
+        </div>
+      {% endif %}
+      <div id="notify-me-wrapper" class="clearfix">
+        {% if customer %}
+          <input type="hidden" value="0">
+          <input type="email" name="contact[email]" value="{{ customer.email }}" class="form-control{% if form.errors contains 'email' %} error{% endif %} notify-me_input" />
+        {% else %}
+          <input style="position:relative;" required="required" type="email" name="contact[email]" placeholder="your@email.com" class="form-control{% if form.errors contains 'email' %} error{% endif %} notify-me_input" value="" autocorrect="off" autocapitalize="off" />
+        {% endif %}
+        <div>
+          <input type="hidden" name="contact[body]" value="Please notify me when {{ product.title | escape }}, variant: [X] becomes available." />
+        </div>
+        <div class="notify-me_submit">
+          <input class="btn custom-font" type="submit" value="Send" />
+          <span class="lds-dual-ring newsletter-spinner hide"></span>
+        </div>
+      </div>
+      {{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
+      {% endform %}
+    </div>
+  {% endcapture %}
+  <div class="col-sm-12 {{ product_description_width }}">
+  	<section class="entry-content product-description-main-wrapper{% unless section.settings.show_variant_labels %} hide-variant-labels{% endunless %}{% if settings.show_swatches != blank %} variant-swatches-enabled{% else %} variant-dropdown-enabled{% endif %}{% if settings.enable_store_pickup %} store-pickup-enabled{% endif %}">
+      {% if settings.show_vendor or settings.show_SKU %}
+        <div class="row product-vendor-sku">
+          {% if settings.show_vendor %}
+            <div class="indiv-product-vendor-text{% unless full_width %} col-{% if settings.show_SKU %}6{% else %}12{% endif %}{% endunless %}">{{ product.vendor }}</div>
+          {% endif %}
+          {% if settings.show_SKU %}
+            <div class="indiv-product-sku-text{% unless full_width %} col-{% if settings.show_vendor %}6 text-right{% else %}12{% endif %}{% endunless %}{% unless current_variant.sku %} hide{% endunless %}">{{ current_variant.sku }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% comment %}
+      {% if product.tags contains "wide-layout" %}
+        <div class="wide-layout">
+        {% endif %}
+      {% endcomment %}
+
+  		<h1 class="custom-font product-description-header{% if settings.show_reviews %} reviews-enabled{% endif %}">{{ product.title }}</h1>
+          
+
+      {% if settings.show_reviews %}
+      <a class="product-template--reviews-header" href="#shopify-product-reviews"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></a>
+      {% endif %}
+
+      {% if full_width %}
+        <div class="row">
+      {% endif %}
+
+      {% if section.settings.description_position == "below" %}
+          {% if full_width %}
+            <div class="col-sm-12 col-md-6 col-lg-8">
+          {% endif %}
+
+          <div class="product-description-wrapper above">
+              {% render 'product-description-slider', product: product %}
+          </div>
+
+          {% if full_width %}
+            </div>
+          {% endif %}
+      {% endif %}
+
+      {% if full_width %}
+        <div class="col-sm-12 col-md-6 col-lg-4">
+      {% endif %}
+          
+              {%if product.tags contains 'SPF' %}
+          <p style="margin-bottom:10px; font-size:14px; font-weight:bold;">SPF30 PA+++</p>
+          {%endif%}
+          
+           {%if product.tags contains 'SPF2' %}
+          <p style="margin-bottom:10px; font-size:14px; font-weight:bold;">SPF37 PA+++</p>
+          {%endif%}
+
+          {% form 'product', product, id: "add-to-cart-form" %}
+            <input type="hidden" id="cart-link" value="{{ routes.cart_url }}" />
+            <ul class="product-page--pricing{% unless section.settings.show_discount == 'hide' %} discount-badge{% endunless %}">
+              <!-- price -->
+              <li class="product-page--pricing--variant-price">
+                       {% if request.path contains '/en/' %}
+ <span class="money">{{product.price|money}}<span class="product-tax">（{{product.price| times: 1.1|money }} tax inc.)</span></span>
+          {% elsif request.path contains '/zh/' %}
+<span class="money">{{product.price|money}}<span class="product-tax">（含税价{{product.price| times: 1.1|money }})</span></span>
+          {% else %}
+                <span class="money">{{product.price|money}}<span class="product-tax">（税込：{{product.price| times: 1.1|money }})</span></span>
+                  {% endif %}
+              </li>
+
+             {%if product.tags contains 'info'%}
+                 <li class="" style="font-size: 20px;">
+                   <span class="" style="font-size:14px;margin-top: 8px; display:block; font-weight:bold;">2月7日(金) 10時販売開始予定</span>
+              </li>
+              {% endif %}
+          
+            
+        
+            {%if product.tags contains 'info2'%}
+                 <li class="" style="font-size: 20px;">
+                   <span class="" style="font-size:14px;margin-top: 15px; display:block; font-weight:bold;">7月27日(土)21時販売開始予定</span>
+              </li>
+             {%endif%}
+
+              <!-- Variant price -->             
+<!-- <li class="product-page--pricing--variant-price">
+                <p style="font-size: 16px; margin-top: 15px;"></p>
+              </li> -->
+
+              <!-- Variant 'compare at' price -->
+<!--               <li class="product-page--pricing--variant-compare-at-price">
+                <span class="compare-at-price js{% unless on_sale %} hide{% endunless %}">
+                </span>
+              </li> -->
+
+               {% if product.metafields.custom.product_av %}
+           <div style="margin:30px 0px 10px;">
+          {{ product.metafields.custom.product_av}}
+          </div>
+          {% endif %}
+              
+            
+              {% render 'unit-price-measurement-variant', current_variant: current_variant %}
+            </ul>
+
+            {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+              <div class="product-page__policies rte">
+                {%- if shop.taxes_included and section.settings.tax_included -%}
+                  {{ 'products.product.include_taxes' | t }}
+                {%- endif -%}
+                {%- if shop.shipping_policy.body != blank and section.settings.shipping_policy -%}
+                  {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {% unless section.settings.show_discount == 'hide' %}
+            <div class="product-page--pricing--discount">
+              {% case section.settings.show_discount %}
+                {% when 'percentage' %}
+                  <span class="variant-percentage-wrapper hide">
+                    - <span class="variant-percentage">{{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | money_without_currency | times: 100 | remove: '.0'}}%</span>
+                  </span>
+                {% when 'value' %}
+                  {% comment %}<span class="variant-value-wrapper hide">
+                    - <span class="variant-value"><span class="money">{{ current_variant.compare_at_price | minus: current_variant.price | money }}</span></span>{% endcomment %}
+                  </span>
+              {% endcase %}
+            </div>
+            {% endunless %}
+
+            {% assign hide_default_title = false %}
+            {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+              {% assign hide_default_title = true %}
+            {% endif %}
+
+            <div class="row">
+             {% if product.variants.size > 0  %}
+
+                {% if settings.show_swatches != blank %}
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options %}
+                      {% render 'swatch' with option, product: product, section: section %}
+                    {% endfor %}
+                  {% endunless %}
+                {% else %}
+
+                  {% for option in product.options_with_values %}
+                  <div class="product-form-option {% if section.settings.image_size == 'large' %}col-md-12{% else %}col-md-6{% endif %} col-sm-12 col-12{% if hide_default_title == true %} hide{% endif %}">
+                    <div class="input-field product-option-select">
+                      <wetheme-dropdown fit="parent">
+                        <select id="SingleOptionSelector-{{ forloop.index0 }}"{% if option.values.size == 1 %} disabled{% endif %}>
+                            {% if pick_an_option and option.values.size > 0 %}
+                              <option value="" selected data-placeholder>Pick a {{ option.name }}</option>
+                            {% endif %}
+                            {% for value in option.values %}
+                                {% if pick_an_option and option.values.size > 0 %}
+                                    {% assign props = '' %}
+                                {% elsif option.selected_value == value %}
+                                    {% assign props = 'selected' %}
+                                {% else %}
+                                  {% assign props = '' %}
+                                {% endif %}
+
+                                <pre>{{ product.options_with_values.size }}</pre>
+
+                                {% comment %}Hide out of stock variants{% endcomment %}
+                                {% if product.options_with_values.size == 1 and section.settings.hide_out_of_stock %}
+                                  {% assign hide = true %}
+                                  {% for v in product.variants %}
+                                    {% if v.option1 == value and v.available %}
+                                      {% assign hide = false %}
+                                    {% endif %}
+                                  {% endfor %}
+                                {% else %}
+                                  {% assign hide = false %}
+                                {% endif %}
+
+                                {% unless hide %}
+                                  <option {{ props }} value="{{ value | escape }}">{{ value }}</option>
+                                {% endunless %}
+                            {% endfor %}
+                        </select>
+                        <label for="SingleOptionSelector-{{ forloop.index0 }}">{{ option.name }}</label>
+                      </wetheme-dropdown>
+
+                      <!-- Size guide link (specific variant - dropdown) -->
+                      {% if section.settings.size_guide_link != blank and section.settings.size_guide_message != blank %}
+                        {% assign option_name = option.name | downcase %}
+                        {% assign  size_guide_variant = section.settings.size_guide_variant | downcase %}
+
+                        {% if option_name == size_guide_variant %}
+                          <a href="{{ section.settings.size_guide_link }}" class="size-guide-link">
+                            {{ section.settings.size_guide_message }}
+                          </a>
+                        {% endif %}
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+                  {% endfor %}
+
+                {% endif %}
+
+  						{% endif %}
+
+  						<select name="id" id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}" class="form-control original-select product-form__variants no-js">
+  							{% for variant in product.variants %}
+  								{% if variant.available %}
+  									<option {% if variant == current_variant %} selected {% endif %} value="{{ variant.id }}">
+  										{{ variant.title }} - <span class="money">{{ variant.price | money }}</span>
+  									</option>
+  								{% else %}
+  									<option disabled>{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+  								{% endif %}
+  							{% endfor %}
+  						</select>
+
+              <!-- Size guide -->
+              {% if section.settings.size_guide_link != blank and section.settings.size_guide_message != blank %}
+                {% render 'size-guide' with section: section %}
+                <!-- Size guide link (no specific variant) -->
+                {% if section.settings.size_guide_variant == blank %}
+                  <div class="col-md-12">
+                    <a href="{{ section.settings.size_guide_link }}" class="size-guide-link">
+                      {{ section.settings.size_guide_message }}
+                    </a>
+                  </div>
+                {% endif %}
+              {% endif %}
+
+
+<!--      pick an option        -->
+
+<!--   {% if section.settings.show_quantity_selector %}
+              <div class="quantity-controls__outer {% if settings.show_swatches != blank %}swatches-wrapper{% else %}selector-wrapper{% endif %} {% if section.settings.image_size == 'large' %}col-md-12{% else %}col-md-6{% endif %} col-sm-12 col-12">
+  				        <label for="quantity" style="font-size: 14px;" >{{ 'products.product.quantity' | t }}：1</label>
+                  <div class="quantity-controls" style="display: none;" >
+                  </div>
+  					    </div>
+  					  {% endif %} -->
+              
+              {% if section.settings.show_quantity_selector %}
+  			        <div id="quantity" class="quantity-controls__outer {% if settings.show_swatches %}swatches-wrapper{% else %}selector-wrapper{% endif %} {% if section.settings.image_size == 'large' %}col-md-12{% else %}col-md-6{% endif %} col-sm-12 col-12">
+  				        <label for="quantity" class="label">{{ 'products.product.quantity' | t }}</label>
+                  <div class="quantity-controls">
+<!--                       <button
+                        type="button"
+                        class="qty-minus alt-focus"
+                        aria-label="Reduce item quantity by one"
+                      >-</button> -->
+<!--                       <input
+                        id="quantity"
+                        class="quantity-selector"
+                        value="1"
+                        min="1"
+                        
+                        type="number"
+                        name="quantity"
+                      > -->
+                    <select
+                                id="quantity"
+                        class="quantity-selector"
+                        value="1"
+                        min="1"
+                            max="3"
+                            name="quantity">
+                      <option>1</option>
+                      {%unless product.type contains 'one' or product.tags contains "サンプル"%}
+                      <option>2</option>
+                      <option>3</option>
+                      {%endunless%}
+                    </select>
+<!--                       <button
+                        type="button"
+                        class="qty-plus alt-focus"
+                        aria-label="Increase item quantity by one"
+                      >+</button> -->
+                  </div>
+  					    </div>
+  					  {% endif %}
+              
+<!--       end        -->
+
+              {% comment %}
+                {% if product.id == 8775203094787 %}
+                 <!-- 同意チェックボックス -->
+                <div class="agreement-checkbox col-sm-12 col-12" style="margin-top:20px;">
+                  <small class="d-block" style="color:red; font-size:12px;">※リニューアレイジアンロックセラムのみ12月下旬に別送予定となります。</small>
+                  <input type="checkbox" id="agreement" name="properties[発送時期について了承する]" value="はい" required>
+                  <label for="agreement" style="position:relative; top:3px;">発送時期について了承する</label>
+                </div>
+                {% endif %}
+              {% endcomment %}
+              
+              
+<!-- AddToCart -->
+           
+              <div class="col-md-12 product-page--submit-action" data-stock-email-enabled="{{ section.settings.show_out_of_stock_email }}">
+                {% assign disabled = pick_an_option %}
+                {% unless current_variant.available %}
+                  {% assign disabled = true %}
+                {% endunless %}
+
+  				       {% if product.tags contains "r-cart" %}
+
+                	    <button
+                          id="before-purchase"
+                  class="btn {% if section.settings.show_smart_checkout and product.selling_plan_groups.size == 0 %} secondary-button{% endif %}"
+                  disabled
+                          style="opacity: 1;
+    display: block;
+    width: 100%;"
+                >
+  					    販売開始前
+  					    </button>
+
+                  {% else %}
+  					    <button
+                  type="submit"
+                  name="add"
+                  id="purchase"
+                  class="btn {% if section.settings.show_smart_checkout and product.selling_plan_groups.size == 0 %} secondary-button{% endif %}"{% if disabled %}
+                  disabled{% endif %}
+                  data-cart-action="{{ section.settings.cart-action }}"
+                >
+  					      {% if pick_an_option or current_variant.available %}
+  					        {{ 'products.product.add_to_cart' | t }}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t }} 
+                  {% endif %}
+  					    </button>
+                
+                {% if section.settings.show_smart_checkout %}
+                  {{ form | payment_button }}
+                {% endif %}
+                  
+                  {% endif %}
+              </div>
+          
+            </div>
+          {% endform %}
+
+          <!--        販売開始時は下記pタグを削除する        -->
+         {% render 'p-ex' %}
+            <!-- End --> 
+
+          
+          {% if section.settings.show_out_of_stock_email %}
+            <div class="variant-out-of-stock" style="display:none;">
+              {{ out_of_stock_email_form }}
+            </div>
+          {% endif %}
+
+        {% if full_width %}
+          </div>
+        {% endif %}
+
+          {% comment %}
+      {% if product.tags contains "wide-layout" %}
+    </div>
+        {% endif %}
+          {% endcomment %}
+
+        {% if section.settings.description_position == "above" %}
+
+            {% if full_width %}
+              <div class="col-sm-12 col-md-6 col-lg-8">
+            {% endif %}
+
+           <!--  説明開始 -->
+            <div class="product-description-wrapper">
+
+          {% comment %}
+          procut.description部分のliquidコード
+              {% render 'product-description-slider', product: product %}
+      {% endcomment %}
+
+          {% comment %}
+          <div style="margin-bottom:20px;">
+          {{ product.metafields.custom.product_ex}}
+          </div>
+          {% endcomment %}
+
+                <!-- 各説明 -->         
+{% assign product_order = "firstessence,releasinglotion,daycream,dayemulsion,nightcream,nightemulsion,lock,cleansing,resetform,hand,colorlip,mask,lip,spots,flex,peal,epsom" | split: "," %}
+
+{% for item in product_order %}
+  {% for tag in product.tags %}
+    {% assign pain = tag | split: '_' %}
+    {% if pain contains item %}
+      <div id="accordion" class="accordion-container inquiry">
+        <div class="accordion-wrap">
+          <p class="accordion-title js-accordion-title set-title">
+           {% case item %}
+              {% when 'firstessence' %}
+                {% if product.tags contains "ファーストエッセンスリニューアル" %}
+                  <span class="ac">ブライテストファーストエッセンスa</span>
+                  <span class="ac abb">瞬間、透明感。</span>
+                {% else %}
+                  <span class="ac">ブライテストファーストエッセンス</span>
+                  <span class="ac abb">内側から発光するような透明感へのファーストステップ</span>
+                {% endif %}
+              {% when 'releasinglotion' %}
+                {% if product.tags contains "ローションリニューアル" %}
+                  <span class="ac">ブライテストリリーシングローションa</span>
+                  <span class="ac abb">静寂を、肌へ。</span>
+                {% else %}
+                  <span class="ac">ブライテストリリーシングローション</span>
+                  <span class="ac abb">ムダを解き放てば、うるおい輝く。</span>
+                {% endif %}
+              {% when 'daycream' %}
+                {% if product.tags contains "デイクリームリニューアル" %}
+                  <span class="ac">ブライテスト マルチプロテクションデイクリームa</span>
+                  <span class="ac abb">敵をも味方に 輝き、つづく。</span>
+                {% else %}
+                  <span class="ac">ブライテスト マルチプロテクションデイクリーム</span>
+                  <span class="ac abb">隙を与えず、しなやかに守り高める透明感。</span>
+                {% endif %}
+              {% when 'dayemulsion' %}
+                {% if product.tags contains "デイエマルジョンリニューアル" %}
+                  <span class="ac">ブライテスト マルチプロテクションデイエマルジョンa</span>
+                  <span class="ac abb">敵をも味方に 輝き、つづく。</span>
+                {% else %}
+                  <span class="ac">ブライテスト マルチプロテクションデイエマルジョン</span>
+                  <span class="ac abb">隙を与えず、しなやかに守り高める透明感。</span>
+                {% endif %}
+              {% when 'nightcream' %}
+                {% if product.tags contains "ナイトクリームリニューアル" %}
+                  <span class="ac">ブライテスト エナジャイジングナイトクリームa</span>
+                  <span class="ac abb">"休息"充電で、挑むは時間と重力。</span>
+                {% else %}
+                  <span class="ac">ブライテスト エナジャイジングナイトクリーム</span>
+                  <span class="ac abb">湧き上がる力。自ら生み出す。</span>
+                {% endif %}
+              {% when 'nightemulsion' %}
+                {% if product.tags contains "ナイトエマルジョンリニューアル" %}
+                  <span class="ac">ブライテスト エナジャイジングナイトエマルジョンa</span>
+                  <span class="ac abb">"休息"充電で、挑むは時間と重力。</span>
+                {% else %}
+                  <span class="ac">ブライテスト エナジャイジングナイトエマルジョン</span>
+                  <span class="ac abb">湧き上がる力。自ら生み出す。</span>
+                {% endif %}
+              {% when 'lock' %}
+                <span class="ac">リニューアレイジ アンロックセラム</span>
+                <span class="ac abb">肌の可能性、アンロック。</span>
+              {% when 'cleansing' %}
+                <span class="ac">ピュリファイン ディープクレンジングジェル</span>
+                <span class="ac abb">今日を落とす。明日が高まる。</span>
+              {% when 'resetform' %}
+                <span class="ac">ピュリファイン リセットフォーム</span>
+                <span class="ac abb">素肌にかえる。素肌をかえる。</span>
+              {% when 'hand' %}
+                <span class="ac">ブライテスト セラムフォーハンド</span>
+                <span class="ac abb">指先までも、輝くような透明感。</span>
+              {% when 'colorlip' %}
+                <span class="ac">ブライテスト カラーリップエッセンス</span>
+                <span class="ac abb">ふっくらなめらか、血色感溢れる唇</span>
+              {% when 'mask' %}
+                <span class="ac">リニューアレイジ グロウマスク</span>
+                <span class="ac abb">さらなる高みを目指す肌に、生まれ変わるような実感を。</span>
+              {% when 'lip' %}
+                <span class="ac">ブライテスト リップエッセンス</span>
+                <span class="ac abb">ふっくらなめらか、生まれたてのような唇</span>
+              {% when 'spots' %}
+                <span class="ac">スポッツコンセントレイトセラム</span>
+                <span class="ac abb">一点の曇りも見逃さない、均一な透明感。</span>
+              {% when 'flex' %}
+                <span class="ac">リニューアレイジ フレキシブルゾーンセラム</span>
+                <span class="ac abb">笑顔の記憶、肌には残さない。</span>
+              {% when 'peal' %}
+                <span class="ac">リニューアレイジ スムースピーリング</span>
+                <span class="ac abb">ひとかわむけた、素直なツヤ。</span>
+              {% when 'epsom' %}
+                <span class="ac">エプソムソルト</span>
+                <span class="ac abb">美しさめぐる。贅沢なバスタイム。</span>
+            {% endcase %}
+          </p>
+          <div class="accordion-content">
+            <div class="c-inner-wrap set-back">
+              {% case item %}
+                {% when 'firstessence' %}
+                  {% render 'ex_firstessence' %}
+                  {% render 'use_firstessence' %}
+                  <div class="each-use">
+                    {% render 'comp_firstessence' %}
+                  </div>
+                {% when 'releasinglotion' %}
+                  {% render 'ex_releasinglotion' %}
+                  {% render 'use_releasinglotion' %}
+                  <div class="each-use">
+                    {% render 'comp_releasinglotion' %}
+                  </div>
+                {% when 'daycream' %}
+                  {% render 'ex_daycream' %}
+                  {% render 'use_daycream' %}
+                  <div class="each-use">
+                    {% render 'comp_daycream' %}
+                  </div>
+                {% when 'dayemulsion' %}
+                  {% render 'ex_dayemulsion' %}
+                  {% render 'use_dayemulsion' %}
+                  <div class="each-use">
+                    {% render 'comp_dayemulsion' %}
+                  </div>
+                {% when 'nightcream' %}
+                  {% render 'ex_nightcream' %}
+                  {% render 'use_nightcream' %}
+                  <div class="each-use">
+                    {% render 'comp_nightcream' %}
+                  </div>
+                {% when 'nightemulsion' %}
+                  {% render 'ex_nightemulsion' %}
+                  {% render 'use_nightemulsion' %}
+                  <div class="each-use">
+                    {% render 'comp_nightemulsion' %}
+                  </div>
+                {% when 'lock' %}
+                  {% render 'ex_lock' %}
+                  {% render 'use_lock' %}
+                  <div class="each-use">
+                    {% render 'comp_lock' %}
+                  </div>
+                {% when 'cleansing' %}
+                  {% render 'ex_cleansing' %}
+                  {% render 'use_cleansing' %}
+                  <div class="each-use">
+                    {% render 'comp_cleansing' %}
+                  </div>
+                {% when 'resetform' %}
+                  {% render 'ex_resetform' %}
+                  {% render 'use_resetform' %}
+                  <div class="each-use">
+                    {% render 'comp_resetform' %}
+                  </div>
+                {% when 'hand' %}
+                  {% render 'ex_hand' %}
+                 {% render 'use_hand' %}
+                  <div class="each-use">
+                    {% render 'comp_hand' %}
+                  </div>
+                {% when 'colorlip' %}
+                  {% render 'ex_colorlip' %}
+                  {% render 'use_colorlip' %}
+                  <div class="each-use">
+                    {% render 'comp_colorlip' %}
+                  </div>
+                {% when 'mask' %}
+                  {% render 'ex_mask' %}
+                  {% render 'use_mask' %}
+                  <div class="each-use">
+                    {% render 'comp_mask' %}
+                  </div>
+                {% when 'lip' %}
+                  {% render 'ex_lip' %}
+                  {% render 'use_lip' %}
+                  <div class="each-use">
+                    {% render 'comp_lip' %}
+                  </div>
+                {% when 'spots' %}
+                  {% render 'ex_spots' %}
+                  {% render 'use_spots' %}
+                  <div class="each-use">
+                    {% render 'comp_spots' %}
+                  </div>
+                {% when 'flex' %}
+                  {% render 'ex_flex' %}
+                  {% render 'use_flex' %}
+                  <div class="each-use">
+                    {% render 'comp_flex' %}
+                  </div>
+                {% when 'peal' %}
+                  {% render 'ex_peal' %}
+                  {% render 'use_peal' %}
+                  <div class="each-use">
+                    {% render 'comp_peal' %}
+                  </div>
+                {% when 'epsom' %}
+                  {% render 'ex_epsom' %}
+                  <div class="each-use">
+                    {% render 'comp_epsom' %}
+                  </div>
+              {% endcase %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+                {% if product.tags contains 'トートバッグ' %}
+                  <!--/#accordion-->
+                    <div id="accordion" class="accordion-container inquiry">
+                    <!--/.accordion-content-->
+                    <div class="accordion-wrap">
+                    <p class="accordion-title js-accordion-title set-title">
+       
+        <span class="ac">オリジナルトートバッグ</span>
+        </p>
+                    <div class="accordion-content">
+                    <div class="c-inner-wrap set-back">
+                                   “大人の為の上質な日常着”を取り扱うセレクトショップ「Chaos」と一緒に作ったトートバッグ<br>
+生地には厚手のキャンバスを使用し、丈夫でしっかりとした作りに。<br>
+ワンハンドルで肩に掛けやすく、滑り落ちにくい設計。<br>
+内側には「ブライテスト リップエッセンス」を収めるポケットと、スマートフォンも収められる大きめポケット
+<br><br>
+サイズ:W320×H400mm
+ハンドル長さ:650mm
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                  {% endif %}
+              
+           <div class="accordion-container m-x" id="accordion">
+                          {% unless product.tags contains 'gift-bag' %}
+                               {% render 'p-qa' %}
+                          {% render 'p-use' %}
+                          {% render 'p-keep' %}
+            {% endunless %}
+                </div>
+
+<!--               説明文終了 -->
+            </div>
+
+            {% if full_width %}
+              </div>
+            {% endif %}
+
+        {% endif %}
+
+        {% if full_width %}
+          <div class="col-sm-12">
+        {% endif %}
+        {% render 'social-sharing' %}
+        {% if full_width %}
+          </div>
+        {% endif %}
+
+        {% if full_width %}
+        </div>
+        {% endif %}
+
+    </section>
+  </div>
+
+  {% unless product == empty %}
+    <script type="application/json" class="product-json">
+      {{ product | json }}
+    </script>
+  {% endunless %}
+
+</div>
+
+{% if settings.show_reviews %}
+  <div class="product-page-reviews-section">
+      <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+  </div>
+{% endif %}
+
+{% if product.id == 8775203094787 or product.id == 8775202373891 %}
+  <script>
+    // MutationObserverの設定
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.addedNodes.length) {
+      const purchaseButton = document.getElementById('purchase');
+      const agreementCheckbox = document.getElementById('agreement');
+      const anygiftButton = document.querySelector('.anygift-e-gift-modal__open-button');
+
+      if ((purchaseButton || anygiftButton) && agreementCheckbox) {
+        // ボタンを初期状態で無効化
+        if (purchaseButton) {
+          purchaseButton.disabled = !agreementCheckbox.checked;
+        }
+        if (anygiftButton) {
+          anygiftButton.disabled = !agreementCheckbox.checked;
+          // スタイルの調整
+          anygiftButton.style.opacity = agreementCheckbox.checked ? '1' : '0.5';
+          anygiftButton.style.cursor = agreementCheckbox.checked ? 'pointer' : 'not-allowed';
+        }
+
+        // チェックボックスのイベントリスナーが未設定の場合のみ設定
+        if (!agreementCheckbox.hasListener) {
+          agreementCheckbox.addEventListener('change', function() {
+            if (purchaseButton) {
+              purchaseButton.disabled = !this.checked;
+            }
+            if (anygiftButton) {
+              anygiftButton.disabled = !this.checked;
+              anygiftButton.style.opacity = this.checked ? '1' : '0.5';
+              anygiftButton.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+            }
+          });
+          agreementCheckbox.hasListener = true;
+        }
+      }
+    }
+  });
+});
+
+// 監視の開始
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+  </script>
+  {% endif %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Product pages",
+        "de": "Produktseiten",
+        "es": "Páginas de producto",
+        "fr": "Pages des produits",
+        "pt-PT": "Páginas de produtos"
+    },
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "show_quantity_selector",
+            "label": {
+                "en": "Show quantity selector",
+                "de": "Anzahlauswähler anzeigen",
+                "es": "Mostrar selector de cantidad",
+                "fr": "Afficher le sélecteur de quantité",
+                "pt-PT": "Mostrar selecionador de quantidade"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_smart_checkout",
+            "label": {
+                "en": "Show dynamic checkout button",
+                "de": "Dynamischen Bezahlbutton anzeigen",
+                "es": "Mostar el botón de compra dinámica",
+                "fr": "Afficher le bouton de paiement dynamique",
+                "pt-PT": "Mostrar botão de checkout dinâmico"
+            },
+            "default": true,
+            "info": {
+                "en": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "de": "Lässt Kunden direkt unter Verwendung einer bekannten Zahlungsmethode bezahlen. [Mehr erfahren](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "es": "Permita a los clientes finalizar su compra directamente utilizando un método de pago que les sea familiar. [Aprenda más](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "fr": "Permet aux clients de payer directement en utilisant un mode de paiement familier. [En savoir plus](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "pt-PT": "Permita que os clientes façam checkout diretamente utilizando um método de pagamento familiar. [Saber mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+            }
+        },
+        {
+            "type": "checkbox",
+            "id": "show_variant_labels",
+            "label": {
+                "en": "Show variant labels",
+                "de": "Variantenbezeichnungen anzeigen",
+                "es": "Mostrar etiquetas de las variantes",
+                "fr": "Afficher les étiquettes des variantes",
+                "pt-PT": "Mostrar etiquetas variantes"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "shipping_policy",
+            "label": {
+                "en": "Show shipping policy link",
+                "de": "Link zur Versandrichtlinie anzeigen",
+                "es": "Mostrar enlace de política de envío",
+                "fr": "Afficher le lien de la politique d'expédition",
+                "pt-PT": "Mostrar hiperligação da política de envios"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "tax_included",
+            "label": {
+                "en": "Show 'tax included' message",
+                "de": "Nachricht \"Steuer enthalten\" anzeigen",
+                "es": "Mostrar mensaje \"impuesto incluido\"",
+                "fr": "Afficher le message « taxe incluse »",
+                "pt-PT": "Mostrar mensagem de 'impostos incluídos'"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "thumbnail_changes_variant",
+            "label": {
+                "en": "Change variant based on the thumbnail",
+                "de": "Variante basierend auf Thumbnail verändern",
+                "es": "Cambiar variante en base a la imagen en miniatura",
+                "fr": "Modifier la variante en fonction de la vignette",
+                "pt-PT": "Alterar base da variante na imagem em miniatura"
+            },
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_out_of_stock_email",
+            "label": {
+                "en": "Enable out of stock email",
+                "de": "Die E-Mail \"Nicht lieferbar\" aktivieren",
+                "es": "Habilitar correo electrónico agotado",
+                "fr": "Activer le courriel Rupture de stock",
+                "pt-PT": "Ativar e-mail de esgotado"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "hide_out_of_stock",
+            "label": {
+                "en": "Hide out of stock variants",
+                "de": "Nicht lieferbare Varianten verbergen",
+                "es": "Ocultar las variantes en el stock",
+                "fr": "Masquer les variantes en rupture de stock",
+                "pt-PT": "Ocultar variantes em falta"
+            },
+            "default": false,
+            "info": {
+                "en": "Hide variants that are out of stock when there's one variant set",
+                "de": "Nicht lieferbare Varianten verbergen, wenn eine Variante eingestellt ist",
+                "es": "Oculta las variantes que no están disponibles en el stock cuando hay un grupo de variaciones",
+                "fr": "Masquer les variantes en rupture de stock lorsqu'il n'y a qu'un seul ensemble de variantes.",
+                "pt-PT": "Ocultar variantes em falta quando houver uma variante definida"
+            }
+        },
+        {
+            "type": "radio",
+            "id": "description_position",
+            "label": {
+                "en": "Cart button location",
+                "de": "Einkaufswagen-Button-Ort",
+                "es": "Ubicación del botón del carrito",
+                "fr": "Emplacement du bouton du panier",
+                "pt-PT": "Localização do botão do carrinho"
+            },
+            "options": [
+                {
+                    "value": "above",
+                    "label": {
+                        "en": "Before product description",
+                        "de": "Vor der Produktbeschreibung",
+                        "es": "Cargar más botones",
+                        "fr": "Avant la description du produit",
+                        "pt-PT": "Antes da descrição do produto"
+                    }
+                },
+                {
+                    "value": "below",
+                    "label": {
+                        "en": "After product description",
+                        "de": "Nach der Produktbeschreibung",
+                        "es": "Después de la descripción del producto",
+                        "fr": "Après la description du produit",
+                        "pt-PT": "Depois da descrição do produto"
+                    }
+                }
+            ],
+            "default": "above"
+        },
+        {
+            "type": "radio",
+            "id": "cart-action",
+            "label": {
+                "en": "Add to Cart action",
+                "de": "Aktion „Zum Einkaufswagen hinzufügen“",
+                "es": "Acción de Añadir al carrito",
+                "fr": "Action d'ajout au panier",
+                "pt-PT": "Ação Adicionar ao Carrinho"
+            },
+            "options": [
+                {
+                    "value": "drawer",
+                    "label": {
+                        "en": "Show drawer",
+                        "de": "Schublade zeigen",
+                        "es": "Mostrar cajón",
+                        "fr": "Afficher le tiroir",
+                        "pt-PT": "Mostrar gaveta"
+                    }
+                },
+                {
+                    "value": "added",
+                    "label": {
+                        "en": "Show 'Added' message",
+                        "de": "„Hinzugefügt“-Mitteilung zeigen",
+                        "es": "Mostar el mensaje de «Añadido»",
+                        "fr": "Afficher le message « Ajouté »",
+                        "pt-PT": "Mostrar mensagem \"Adicionado\""
+                    }
+                },
+                {
+                    "value": "cart",
+                    "label": {
+                        "en": "Go to cart",
+                        "de": "Zum Einkaufswagen gehen",
+                        "es": "Ir al carrito",
+                        "fr": "Aller au panier",
+                        "pt-PT": "Ir para o carrinho"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "pick_an_option",
+            "label": {
+                "en": "Enable 'Pick an option'",
+                "de": "„Eine Option auswählen“ aktivieren",
+                "es": "Habilitar «Escoja una opción»",
+                "fr": "Activez « Choisir une option ».",
+                "pt-PT": "Ativar \"Escolher uma opção\""
+            },
+            "default": false
+        },
+        {
+            "type": "select",
+            "id": "show_discount",
+            "label": {
+                "en": "Enable discount savings?",
+                "de": "Rabattersparnisse aktivieren?",
+                "es": "¿Habilitar ahorros por descuentos?",
+                "fr": "Permettre des économies de rabais ?",
+                "pt-PT": "Ativar promoções?"
+            },
+            "options": [
+                {
+                    "value": "hide",
+                    "label": {
+                        "en": "Hide",
+                        "de": "Verbergen",
+                        "es": "Ocultar",
+                        "fr": "Cacher",
+                        "pt-PT": "Ocultar"
+                    }
+                },
+                {
+                    "value": "percentage",
+                    "label": {
+                        "en": "Percentage",
+                        "de": "Prozentsatz",
+                        "es": "Porcentaje",
+                        "fr": "Pourcentage",
+                        "pt-PT": "Percentagem"
+                    }
+                },
+                {
+                    "value": "value",
+                    "label": {
+                        "en": "Value",
+                        "de": "Wert",
+                        "es": "Valor",
+                        "fr": "Valeur",
+                        "pt-PT": "Valor"
+                    }
+                }
+            ],
+            "default": "hide",
+            "info": {
+                "en": "Discounts will only be shown on variants that are on sale",
+                "de": "Rabatte werden nur auf Varianten angezeigt, die im Angebot sind",
+                "es": "Los descuentos solo se mostrarán en las variantes que están de oferta.",
+                "fr": "Les remises ne s'appliqueront qu'aux variantes en vente.",
+                "pt-PT": "Os descontos apenas serão exibidos em variantes que estejam à venda"
+            }
+        },
+        {
+            "type": "header",
+            "content": {
+                "en": "Social sharing",
+                "de": "Soziales Teilen",
+                "es": "Compartir en redes sociales",
+                "fr": "Partager sur les réseaux sociaux",
+                "pt-PT": "Partilha social"
+            }
+        },
+        {
+            "type": "checkbox",
+            "id": "social_sharing_facebook",
+            "label": {
+                "en": "Facebook",
+                "de": "Facebook",
+                "es": "Facebook",
+                "fr": "Facebook",
+                "pt-PT": "Facebook"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "social_sharing_twitter",
+            "label": {
+                "en": "Twitter",
+                "de": "Twitter",
+                "es": "Twitter",
+                "fr": "Twitter",
+                "pt-PT": "Twitter"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "social_sharing_pinterest",
+            "label": {
+                "en": "Pinterest",
+                "de": "Pinterest",
+                "es": "Pinterest",
+                "fr": "Pinterest",
+                "pt-PT": "Pinterest"
+            },
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": {
+              "en": "Media",
+              "de": "Medien",
+              "es": "Medios de comunicación",
+              "fr": "Médias",
+              "pt-PT": "Multimédia"
+            },
+            "info": {
+              "en": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)",
+              "de": "Mehr Informationen über [Medientypen ](https://help.shopify.com/manual/products/product-media)",
+              "es": "Más información sobre [tipos de archivos multimedia](https://help.shopify.com/manual/products/product-media)",
+              "fr": "En savoir plus sur les [types de supports multimédia](https://help.shopify.com/manual/products/product-media)",
+              "pt-PT": "Saiba mais sobre [media types](https://help.shopify.com/manual/products/product-media)"
+            }
+        },
+        {
+            "type": "select",
+            "id": "image_size",
+            "label": {
+              "en": "Size",
+              "de": "Größe",
+              "es": "Tamaño",
+              "fr": "Taille",
+              "pt-PT": "Tamanho"
+            },
+            "options": [
+                {
+                    "value": "small",
+                    "label": {
+                        "en": "Small",
+                        "de": "Klein",
+                        "es": "Pequeño",
+                        "fr": "Petite",
+                        "pt-PT": "Pequeno"
+                    }
+                },
+                {
+                    "value": "medium",
+                    "label": {
+                        "en": "Medium",
+                        "de": "Mittel",
+                        "es": "Mediano",
+                        "fr": "Moyenne",
+                        "pt-PT": "Médio"
+                    }
+                },
+                {
+                    "value": "large",
+                    "label": {
+                        "en": "Large",
+                        "de": "Groß",
+                        "es": "Grande",
+                        "fr": "Grande",
+                        "pt-PT": "Grande"
+                    }
+                },
+                {
+                    "value": "full-width",
+                    "label": {
+                        "en": "Full width",
+                        "de": "Volle Breite",
+                        "es": "Ancho completo",
+                        "fr": "Pleine largeur",
+                        "pt-PT": "Largura total"
+                    }
+                }
+            ],
+            "default": "medium"
+        },
+        {
+            "type": "select",
+            "id": "thumbnail_position",
+            "label": {
+                "en": "Thumbnail position",
+                "de": "Thumbnail-Position",
+                "es": "Posición de la imagen en miniatura",
+                "fr": "Position de la vignette",
+                "pt-PT": "Posição da imagem em miniatura"
+            },
+            "options": [
+                {
+                    "value": "below",
+                    "label": {
+                        "en": "Below main image",
+                        "de": "Unter Hauptbild",
+                        "es": "Debajo de la imagen principal",
+                        "fr": "Image principale ci-dessous",
+                        "pt-PT": "Imagem principal abaixo"
+                    }
+                },
+                {
+                    "value": "left",
+                    "label": {
+                        "en": "Left of main image",
+                        "de": "Links auf Hauptbild",
+                        "es": "A la izquierda de la imagen principal",
+                        "fr": "Partie gauche de l'image principale",
+                        "pt-PT": "Esquerda da imagem principal"
+                    }
+                },
+                {
+                    "value": "right",
+                    "label": {
+                        "en": "Right of main image",
+                        "de": "Rechts auf Hauptbild",
+                        "es": "A la derecha de la imagen principal",
+                        "fr": "Partie droite de l'image principale",
+                        "pt-PT": "Direita da imagem principal"
+                    }
+                }
+            ],
+            "default": "below"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_zoom",
+            "label": {
+                "en": "Enable image zoom",
+                "de": "Bildzoom aktivieren",
+                "es": "Habilitar zoom sobre la imagen",
+                "fr": "Activer le zoom de l'image",
+                "pt-PT": "Ativar zoom de imagem"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_video_loop",
+            "label": {
+              "de": "Videschleife aktivieren",
+              "en": "Enable video looping",
+              "es": "Habilitar la reproducción de video en bucle",
+              "fr": "Activer le bouclage de la vidéo",
+              "pt-PT": "Ativar ciclo de vídeo"
+            },
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": {
+                "en": "Size guide",
+                "de": "Größenratgeber",
+                "es": "Guía de tallaje",
+                "fr": "Guide des tailles",
+                "pt-PT": "Guia de tamanhos"
+            }
+        },
+        {
+            "type": "url",
+            "id": "size_guide_link",
+            "label": {
+              "en": "Size guide page",
+              "de": "Größenratgeberseite",
+              "es": "Página con la guía de tallaje",
+              "fr": "Page du guide des tailles",
+              "pt-PT": "Página de guia de tamanhos"
+            },
+            "info": {
+              "en": "You will need to create a page to link to. [Learn more](https://help.shopify.com/en/manual/online-store/os/pages)",
+              "de": "Sie müssen eine Seite erstellen, auf die verlinkt wird. [Mehr erfahren](https://help.shopify.com/de/manual/online-store/os/pages)",
+              "es": "Deberá crear una página que vincular. [Más información](https://help.shopify.com/es/manual/online-store/os/pages)",
+              "fr": "Vous devrez créer une page à mettre en lien. [En savoir plus](https://help.shopify.com/fr/manual/online-store/os/pages)",
+              "pt-PT": "Tem de criar uma página para ligar. [Saber mais](https://help.shopify.com/pt-PT/manual/sell-online/online-store/pages)"
+            }
+        },
+        {
+            "type": "text",
+            "id": "size_guide_message",
+            "label": {
+              "en": "Size guide message",
+              "de": "Größenratgeber-Nachricht",
+              "es": "Mensaje de la guía de tallaje",
+              "fr": "Message du guide des tailles",
+              "pt-PT": "Mensagem de guia de tamanhos"
+            },
+			      "default": {
+              "en": "What's my size?",
+              "de": "Was ist meine Größe?",
+              "es": "¿Cuál es mi talla?",
+              "fr": "Quelle est ma taille ?",
+              "pt-PT": "Qual é o meu tamanho?"
+            }
+        },
+        {
+            "type": "text",
+            "id": "size_guide_variant",
+            "label": {
+              "en": "Show on a selected variant",
+              "de": "An einer ausgewählten Variante zeigen",
+              "es": "Mostrar en una variante seleccionada",
+              "fr": "Montrer pour une variante sélectionnée",
+              "pt-PT": "Exibir numa variante selecionada"
+            },
+			      "placeholder": {
+              "en": "Size",
+              "de": "Größe",
+              "es": "Talla",
+              "fr": "Taille",
+              "pt-PT": "Tamanho"
+            },
+			      "info": {
+				      "en": "Leave empty to show on all products",
+              "de": "Leer lassen, um an allen Produkten zu zeigen",
+              "es": "Dejar vacío para mostrar en todos los productos",
+              "fr": "Laisser vide afin de montrer pour tous les produits",
+              "pt-PT": "Deixar em branco para exibir em todos os produtos"
+			      }
+        }
+    ]
+}
+{% endschema %}

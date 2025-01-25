@@ -1,0 +1,272 @@
+{% style %}
+/* .block-award .block-award--item:nth-child(n+2) {
+    margin-top: 40px;
+    padding-top: 80px;
+    border-top: 1px solid #d9d9d9;
+} */
+
+  .block-award .block-award--item {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid #d9d9d9;
+}
+
+  .block-award .block-award--item-row {
+    display: flex;
+  }
+
+  .block-award .block-award--item-intro {
+/*     width: 400px; */
+    width: 40%;
+    max-width:500px;
+}
+
+  .block-award .block-award--item-body {
+    flex: 1;
+    padding-left: 60px;
+}
+
+  .block-award .block-award--item-name {
+    font-size: 18px;
+    line-height: 1.55556;
+    letter-spacing: calc( 120em / 1000);
+    margin: 3px 0 5px;
+/*     font-weight: bold; */
+}
+
+  .block-award .block-award--item-info p {
+    font-size: 15px;
+    line-height: 1.66667;
+    margin: 5px 0 0;
+}
+
+ .block-award .block-award--item-price {
+    /* margin: 5px 0 0; */
+    font-size: 18px;
+    margin: 5px 0px 18px;
+    display: inline-block;
+}
+
+  .block-award .block-award--item-price .product-tax{
+    font-size: 12px;
+}
+
+  .block-award .block-award--item {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+  .block-award .block-award--item-text p{
+    font-size: 14.5px;
+    line-height: 1.71429;
+    color: white;
+    background: #D3B996;
+    padding: 10px 10px 10px 28px;
+    margin-bottom:7px;
+    position:relative;
+}
+
+    .block-award .block-award--item-text p:before{
+ content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: white;
+    left: 12px;
+    top: 19px;
+}
+
+  .block-award .block-award--item-text {
+ margin-top:20px;
+}
+
+  .block-award .block-award--item-button {
+    max-width: 320px;
+    width:100%;
+    margin: 40px 0 0;
+}
+
+  .block-award .block-award--button {
+    font-size: 15px;
+    line-height: 1.71429;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #A79479;
+    color: #A79479;
+    transition: 0.4s ease-in;
+}
+
+  .block-award .block-award--button:after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate3d(0, -50%, 0);
+    border-left: 8px solid #A79479;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    content: "";
+    transition: 0.4s ease-in;
+}
+
+  .award{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+   .award:after{
+  content: "";
+    position: absolute;
+    width: 50px;
+    height: 1.5px;
+    background: #7c664a;
+    left: 0;
+    bottom: -12px;
+  }
+
+   @media screen and (max-width: 800px) {
+ .block-award .block-award--item {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+       .block-award .block-award--item-row {
+    display: block;
+  }
+
+  .block-award .block-award--item-intro {
+/*     width: 400px; */
+    width: 100%;
+    max-width:100%;
+}
+
+  .block-award .block-award--item-body {
+    flex: 1;
+    padding-left: 0px;
+}
+
+     .block-award .block-award--item:nth-child(n+2) {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid #d9d9d9;
+}
+
+     .block-award .block-award--item-button {
+    max-width: 100%;
+    width: 100%;
+    margin: 40px 0 0;
+}
+
+.block-award .block-award--item-info p {
+    font-size: 13px;
+}
+
+     .block-award .block-award--item-name {
+    font-size: 15px;
+}
+
+     .block-award .block-award--item-text p {
+    font-size: 12.5px;
+    padding: 10px 10px 10px 20px;
+}
+
+       .block-award .block-award--item-text p strong{
+    font-size: 15px;
+}
+
+     .block-award .block-award--item-text p:before {
+    content: "";
+    left: 7px;
+}
+  
+   }
+
+  {% endstyle %}
+
+<section class="block-award">
+<div class="block-award--items">
+ {% for block in section.blocks %}
+   {% assign product = block.settings.pro %}
+<div class="block-award--item">
+          <div class="block-award--item-row">
+            <div class="block-award--item-intro">
+              <figure class="block-award--item-image"><a href="{{ product.url }}"><img src="{{ product.featured_media | image_url }}" alt="{{ product.title }}"></a></figure>
+            </div>
+            <div class="block-award--item-body">
+               <div class="block-award--item-info">{{ block.settings.detail }}</div>
+            <h2 class="block-award--item-name" style="font-weight:500; text-transform: none;">{{ product.title }}</h2>
+              <p class="money block-award--item-price">{{ product.price | money }}<span class="product-tax">（税込：{{product.price| times: 1.1|money }})</span></p>
+             <div class="block-award--item-text">
+               <h3 class="award">AWARDS</h3>
+               {% if block.settings.text %}
+{{ block.settings.text }}
+                 {% endif %}
+      {% if block.settings.text02 %}
+{{ block.settings.text02 }}
+                 {% endif %}
+      {% if block.settings.text03 %}
+{{ block.settings.text03 }}
+                 {% endif %}
+              </div>
+              <p class="block-award--item-button"><a href="{{ product.url }}" class="block-award--button">{{ block.settings.text2 }}</a></p>
+            </div>
+          </div>
+        </div>
+  {% endfor %}
+        </div>
+  </section>
+
+        {% schema %}
+{
+    "name": "award block",
+    "class": "homepage-section--slideshow-wrapper",
+    "max_blocks": 12,
+    "settings": [],
+    "blocks": [
+        {
+            "type": "product",
+            "name": "product block",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "pro",
+                    "label": "商品"
+                },
+              {
+                    "type": "richtext",
+                    "id": "detail",
+                    "label": "キャッチコピー"
+                },
+              {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "テキスト"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text02",
+                    "label": "テキスト"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text03",
+                    "label": "テキスト"
+                },
+               {
+                    "type": "text",
+                    "id": "text2",
+                    "label": "詳細を見る",
+                 "default":"詳細を見る"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

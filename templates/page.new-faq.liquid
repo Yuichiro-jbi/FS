@@ -1,0 +1,220 @@
+{% style %}
+.inquiry-p{
+  display:none !important;
+}
+
+  #accordion .accordion-wrap #accordion{
+    padding:10px !important;
+    background:white;
+  }
+
+  .inquiry .accordion-title {
+    display: block;
+    position: relative;
+    padding: 20px 50px 19px 0em !important;
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 14px !important;
+    font-weight: bold;
+    text-indent: 0em;
+}
+
+  .faq-fire h2{
+    margin-top:50px;
+  }
+
+  #faq{
+    padding-bottom:80px;
+  }
+
+  footer{
+    margin-top:0px !important;
+  }
+  {% endstyle %}
+
+<article id="{{page.handle}}" class="page hentry">
+	<header>
+		<div class="title-bar custom-font">
+			<h1 class="main-heading">{{ page.title }}</h1>
+		</div>
+	</header>
+	<section class="entry-content">
+
+      {% comment %}
+ {% if request.path contains '/en/' %}
+      <h2>About products</h2>
+ {% elsif request.path contains '/zh/' %}  
+        <h2>关于产品</h2>
+  {% else %}
+      <h2>各商品について</h2>
+   {% endif %}
+      <div id="accordion" class="accordion-container inquiry">
+<!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Brightest First Essence
+ {% elsif request.path contains '/zh/' %}  
+  最优秀第一精华
+  {% else %}
+    ブライテスト ファーストエッセンス
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_firstessence" %}
+</div>
+</div>
+
+        <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Brightest Releasing Lotion
+ {% elsif request.path contains '/zh/' %}  
+  最优秀释放化妆水
+  {% else %}
+    ブライテスト リリーシングローション
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_releasinglotion" %}
+</div>
+</div>
+
+        <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Brightest Multi Protection Day Cream
+ {% elsif request.path contains '/zh/' %}  
+  最优秀多重保护日间霜
+  {% else %}
+    ブライテスト マルチプロテクションデイクリーム
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_daycream" %}
+</div>
+</div>
+
+        <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+ Brightest Energizing Night Cream
+ {% elsif request.path contains '/zh/' %}  
+  最优秀能量化夜间霜
+  {% else %}
+    ブライテスト エナジャイジングナイトクリーム
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_nightcream" %}
+</div>
+</div>
+
+        <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Brightest Multi Protection Day Emulsion
+ {% elsif request.path contains '/zh/' %}  
+  最优秀多重保护日间乳液
+  {% else %}
+    ブライテスト マルチプロテクションデイエマルジョン
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_dayemulsion" %}
+</div>
+</div>
+
+        <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Brightest Energizing Night Emulsion
+ {% elsif request.path contains '/zh/' %}  
+  最优秀能量化夜间乳液
+  {% else %}
+    ブライテスト エナジャイジングナイトエマルジョン
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_nightemulsion" %}
+</div>
+</div>
+
+        <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Spots Concentrate Serum
+ {% elsif request.path contains '/zh/' %}  
+  斑点浓缩精华液
+  {% else %}
+   スポッツコンセントレイトセラム
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_spots" %}
+</div>
+</div>
+
+             <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Epsom salt
+ {% elsif request.path contains '/zh/' %}  
+  泻盐
+  {% else %}
+  エプソムソルト
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_epsom" %}
+</div>
+</div>
+
+            <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Renewal-age Glow Mask
+ {% elsif request.path contains '/zh/' %}  
+  重生面膜
+  {% else %}
+   リニューアレイジ グロウマスク
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_mask" %}
+</div>
+</div>
+
+            <!--/.accordion-content-->
+<div class="accordion-wrap">
+<p class="accordion-title js-accordion-title">
+  {% if request.path contains '/en/' %}
+Brightest Lip Essence
+ {% elsif request.path contains '/zh/' %}  
+  最优秀护唇精华
+  {% else %}
+  ブライテスト リップエッセンス
+  {% endif %}
+</p>
+<div class="accordion-content">
+{% render "qa_lip" %}
+</div>
+</div>
+      </div>
+      {% endcomment %}
+      
+{{ page.content }} 
+        
+      </div>
+	
+	</section>
+</article>
